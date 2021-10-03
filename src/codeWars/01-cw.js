@@ -66,6 +66,7 @@ function usdCny(usd) {
 
 usdCny(2)
 
+// 8
 const howManyYears = function(date1, date2){
 	let date1New = Number(date1.slice(0, 4));
 	let date2New = Number(date2.slice(0, 4));

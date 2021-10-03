@@ -1,3 +1,4 @@
+// 1
 function truncateString(str, num) {
 	if (str.length > num) {
 		return str.slice(0, num) + "...";
@@ -6,6 +7,30 @@ function truncateString(str, num) {
 	}
 }
 
-truncateString("A-tisket a-tasket A green and yellow basket", 8);
+truncateString("A a A green and yellow basket", 8);
 
-// Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
+// 2
+function findElement(arr, func) {
+	return arr.find(item => func(item));
+}
+
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+// 3
+function booWho(bool) {
+	return typeof(bool) == "boolean";
+}
+
+booWho(null);
+
+// 4
+function titleCase(str) {
+	str = str.toLowerCase().split(' ');
+	for (let i = 0; i < str.length; i++) {
+		str[i] = str[i][0].toUpperCase() + str[i].slice(1);
+	}
+	return str.join(' ');
+}
+
+titleCase("I'm a little tea pot");
