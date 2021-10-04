@@ -112,3 +112,8 @@ function ensureQuestion(s) {
 ensureQuestion("Hello");
 
 // 11
+function check(a, x) {
+	return a.includes(x);
+}
+
+check([66, 101], 66)
