@@ -148,3 +148,8 @@ function makeNegative(num) {
 makeNegative(42)
 
 // 15
+function noSpace(x){
+	return x.split(' ').join("")
+}
+
+noSpace('8shew dddd r     ')
