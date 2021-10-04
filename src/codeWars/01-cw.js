@@ -155,4 +155,18 @@ function noSpace(x){
 noSpace('8shew dddd r     ')
 
 // 16
+function well(x){
+	if (!x.includes("good")) {
+		return "Fail!"
+	}
+	let res = x.filter(item => item === 'good')
+	if (res.length <= 2 ) {
+		return 'Publish!'
+	}
+	if (res.length > 2) {
+		return "I smell a series!"
+	}
+}
 
+
+well(['bad', 'bad', 'bad']);
