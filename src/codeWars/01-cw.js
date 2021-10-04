@@ -99,3 +99,15 @@ function evenOrOdd(str) {
 }
 
 evenOrOdd('1365218735')
+
+// 10
+function ensureQuestion(s) {
+	if (s.includes("?")) {
+		return s
+	} else {
+		return s + "?"
+	}
+}
+
+ensureQuestion("Hello");
+
