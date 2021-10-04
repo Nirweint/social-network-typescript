@@ -128,3 +128,5 @@ function greet(name){
 }
 
 greet("Jim")
+
+// 13
