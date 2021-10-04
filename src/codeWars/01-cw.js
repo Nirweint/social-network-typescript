@@ -137,3 +137,12 @@ function main(verb, noun) {
 main('take ', 'item')
 
 // 14
+function makeNegative(num) {
+	if (num > 0) {
+		return num * -1
+	} else {
+		return num
+	}
+}
+
+makeNegative(42)
