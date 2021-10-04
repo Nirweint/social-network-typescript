@@ -153,3 +153,6 @@ function noSpace(x){
 }
 
 noSpace('8shew dddd r     ')
+
+// 16
+
