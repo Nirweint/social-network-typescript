@@ -40,3 +40,11 @@ let dog = {
 	name: "pasha",
 	numLegs: 4,
 };
+
+// 6
+let dog2 = {
+	name: "Spot",
+	numLegs: 4
+};
+console.log(dog.name)
+console.log(dog.numLegs)
