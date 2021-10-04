@@ -76,3 +76,26 @@ const howManyYears = function(date1, date2){
 howManyYears('1997/10/10', '2015/10/10')
 
 // 9
+function evenOrOdd(str) {
+	let odd = 0;
+	let even = 0;
+	let arr = str.split("").map((item) => Number(item));
+	for(let i = 0; i < arr.length; i++) {
+		if (arr[i] % 2 === 0) {
+			odd = odd + arr[i]
+		} else {
+			even = even + arr[i]
+		}
+	}
+	if(even < odd) {
+		return "Even is greater than Odd"
+	}
+	if(even > odd) {
+		return "Odd is greater than Even"
+	}
+	if(even === odd) {
+		return "Even and Odd are the same"
+	}
+}
+
+evenOrOdd('1365218735')
