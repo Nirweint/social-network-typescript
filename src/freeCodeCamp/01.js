@@ -34,3 +34,9 @@ function titleCase(str) {
 }
 
 titleCase("I'm a little tea pot");
+
+// 5
+let dog = {
+	name: "pasha",
+	numLegs: 4,
+};
