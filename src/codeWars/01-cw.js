@@ -130,3 +130,8 @@ function greet(name){
 greet("Jim")
 
 // 13
+function main(verb, noun) {
+	return verb + noun
+}
+
+main('take ', 'item')
