@@ -66,3 +66,12 @@ let dog4 = {
 };
 
 dog4.sayLegs();
+
+// 9
+// function Dog() {
+// 	this.name = 'pasha';
+// 	this.color = 'yellow';
+// 	this.numLegs = 2;
+// }
+
+// 10
