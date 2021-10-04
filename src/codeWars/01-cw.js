@@ -119,3 +119,12 @@ function check(a, x) {
 check([66, 101], 66)
 
 // 12
+function greet(name){
+	if(name === "Johnny") {
+		return "Hello, my love!";
+	} else {
+		return "Hello, " + name + "!";
+	}
+}
+
+greet("Jim")
