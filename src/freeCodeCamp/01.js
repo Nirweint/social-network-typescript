@@ -46,8 +46,8 @@ let dog2 = {
 	name: "Spot",
 	numLegs: 4
 };
-console.log(dog.name)
-console.log(dog.numLegs)
+console.log(dog2.name)
+console.log(dog2.numLegs)
 
 // 7
 let dog3 = {
@@ -56,4 +56,13 @@ let dog3 = {
 	sayLegs: function() {return `This dog has ${dog.numLegs} legs.`}
 };
 
-dog.sayLegs();
+dog3.sayLegs();
+
+// 8
+let dog4 = {
+	name: "Spot",
+	numLegs: 4,
+	sayLegs: function() {return "This dog has " + this.numLegs + " legs.";}
+};
+
+dog4.sayLegs();
