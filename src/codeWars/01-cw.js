@@ -74,3 +74,5 @@ const howManyYears = function(date1, date2){
 }
 
 howManyYears('1997/10/10', '2015/10/10')
+
+// 9
