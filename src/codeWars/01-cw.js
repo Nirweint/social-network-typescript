@@ -225,3 +225,10 @@ function areYouPlayingBanjo(name) {
 areYouPlayingBanjo("Adam")
 
 // 23
+function capitalizeWord(word) {
+	let second = word.slice(1)
+	let first = word[0].toUpperCase();
+	return first + second
+}
+
+capitalizeWord('word');
