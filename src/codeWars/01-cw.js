@@ -232,3 +232,5 @@ function capitalizeWord(word) {
 }
 
 capitalizeWord('word');
+
+// 24
