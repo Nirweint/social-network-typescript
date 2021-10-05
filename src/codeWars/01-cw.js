@@ -176,3 +176,5 @@ function nameShuffler(str){
 }
 
 nameShuffler('john McClane');
+
+// 18
