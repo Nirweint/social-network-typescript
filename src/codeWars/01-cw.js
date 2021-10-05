@@ -171,3 +171,8 @@ function well(x){
 well(['bad', 'bad', 'bad']);
 
 // 17
+function nameShuffler(str){
+	return str.split(" ").reverse().join(" ");
+}
+
+nameShuffler('john McClane');
