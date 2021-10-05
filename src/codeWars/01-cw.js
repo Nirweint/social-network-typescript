@@ -234,3 +234,5 @@ function capitalizeWord(word) {
 capitalizeWord('word');
 
 // 24
+let a = 123;
+a = a.toString();
