@@ -214,3 +214,12 @@ function formatMoney(amount){
 formatMoney(39.99);
 
 // 22
+function areYouPlayingBanjo(name) {
+	if (name[0] === 'r' || name[0] === 'R') {
+		return name + " plays banjo"
+	} else {
+		return name + " does not play banjo"
+	}
+}
+
+areYouPlayingBanjo("Adam")
