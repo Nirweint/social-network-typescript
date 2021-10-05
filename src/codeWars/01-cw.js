@@ -185,3 +185,8 @@ function stringToArray(string){
 stringToArray("Robin Singh")
 
 // 19
+function numberToString(num) {
+	return num.toString()
+}
+
+numberToString(67)
