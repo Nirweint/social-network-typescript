@@ -213,3 +213,4 @@ function formatMoney(amount){
 
 formatMoney(39.99);
 
+// 22
