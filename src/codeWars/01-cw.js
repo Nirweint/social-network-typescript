@@ -207,3 +207,9 @@ function uefaEuro2016(teams, scores){
 uefaEuro2016(['Germany', 'Ukraine'], [2, 0])
 
 // 21
+function formatMoney(amount){
+	return `$${amount.toFixed(2)}`;
+}
+
+formatMoney(39.99);
+
