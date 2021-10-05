@@ -205,3 +205,5 @@ function uefaEuro2016(teams, scores){
 }
 
 uefaEuro2016(['Germany', 'Ukraine'], [2, 0])
+
+// 21
