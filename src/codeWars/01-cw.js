@@ -175,6 +175,11 @@ function nameShuffler(str){
 	return str.split(" ").reverse().join(" ");
 }
 
-nameShuffler('john McClane');
+nameShuffler('john McLane');
 
 // 18
+function stringToArray(string){
+	return string.split(" ")
+}
+
+stringToArray("Robin Singh")
