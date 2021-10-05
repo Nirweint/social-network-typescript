@@ -183,3 +183,5 @@ function stringToArray(string){
 }
 
 stringToArray("Robin Singh")
+
+// 19
