@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Content = () => {
+export const Content = () => {
     return (
         <div className="content">
             <div>
@@ -24,5 +24,3 @@ const Content = () => {
         </div>
     );
 };
-
-export default Content;

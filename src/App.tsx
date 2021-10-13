@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from "./components/Header/Header";
-import Content from "./components/Content/Content";
-import Sidebar from "./components/Sidebar/Sidebar";
+import {Header} from "./components/Header/Header";
+import {Content} from "./components/Content/Content";
+import {Sidebar} from "./components/Sidebar/Sidebar";
 import "./App.css";
 
 
-const App = () => {
+export const App = () => {
     return (
         <div className="app-wrapper">
             <Header/>
@@ -15,4 +15,4 @@ const App = () => {
     );
 }
 
-export default App;
+
