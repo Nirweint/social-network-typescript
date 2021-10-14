@@ -1,0 +1,8 @@
+.item {
+    color: chartreuse;
+}
+
+.avatar {
+    width: 3rem;
+    border-radius: 50%;
+}
