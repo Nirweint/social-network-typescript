@@ -1,0 +1,27 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+    padding: 0.5em;
+}
+.dialogsItems h2 {
+    margin: 0;
+}
+
+.dialogsItems .active {
+    color: brown;
+}
+
+.dialog {
+
+}
+
+.messages {
+    padding: 0.5em;
+}
+
+.message {
+
+}
