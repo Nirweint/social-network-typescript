@@ -6,4 +6,3 @@ export function Dialogs() {
         <div>Dialogs component</div>
     );
 }
-
