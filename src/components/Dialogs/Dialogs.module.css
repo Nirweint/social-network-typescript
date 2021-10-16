@@ -10,19 +10,6 @@
     margin: 0;
 }
 
-.dialogsItems a.active {
-    color: #df889a;
-}
-
-.dialog {
-
-}
-
-.dialog a {
-    color: #000;
-    text-decoration: none;
-}
-
 .messages {
     padding: 0.5em;
 }
