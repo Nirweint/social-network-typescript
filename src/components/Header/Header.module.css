@@ -1,8 +1,9 @@
 .header {
     grid-area: header;
-    background-color: rosybrown;
+    background-color: #E3D2F1;
     display: flex;
     align-items: center;
+    border-radius: 0 0 10px 10px;
 }
 
 .logo {

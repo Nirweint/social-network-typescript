@@ -1,15 +1,16 @@
 .nav {
     grid-area: nav;
-    background-color: rosybrown;
+    background-color: #F3EDED;
     padding: 0.5em 0 0 0.5em;
+    border-radius: 10px 10px 0 0;
 }
 
 .item a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     font-size: 18px;
 }
 
 .item a.activeLink {
-    color: crimson;
+    color: #df889a;
 }
