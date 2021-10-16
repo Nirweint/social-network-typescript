@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import s from './Dialogs.module.css';
 
 export function Dialogs() {
@@ -7,16 +8,16 @@ export function Dialogs() {
             <div className={s.dialogsItems}>
                 <h2>Dialogs:</h2>
                 <div className={s.dialog + " " + s.active}>
-                    Alex
+                    <NavLink to="/dialogs/1" activeClassName={s.active}>Alex</NavLink>
                 </div>
                 <div className={s.dialog}>
-                    Sofa
+                    <NavLink to="/dialogs/2" activeClassName={s.active}>Sofa</NavLink>
                 </div>
                 <div className={s.dialog}>
-                    Oleg
+                    <NavLink to="/dialogs/3" activeClassName={s.active}>Oleg</NavLink>
                 </div>
                 <div className={s.dialog}>
-                    Pasha
+                    <NavLink to="/dialogs/4" activeClassName={s.active}>Pasha</NavLink>
                 </div>
             </div>
             <div className={s.messages}>

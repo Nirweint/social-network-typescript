@@ -10,12 +10,17 @@
     margin: 0;
 }
 
-.dialogsItems .active {
+.dialogsItems a.active {
     color: #df889a;
 }
 
 .dialog {
 
+}
+
+.dialog a {
+    color: #000;
+    text-decoration: none;
 }
 
 .messages {
