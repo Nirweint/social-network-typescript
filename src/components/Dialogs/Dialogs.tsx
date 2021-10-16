@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
+import {Message} from "./Message/Message";
 
 export function Dialogs() {
     return (
@@ -22,12 +23,5 @@ export function Dialogs() {
     );
 }
 
-type MessageType = {
-    messageText: string
-}
 
-function Message(props: MessageType) {
-    return (
-        <div className={s.message}>{props.messageText}</div>
-    )
-}
+

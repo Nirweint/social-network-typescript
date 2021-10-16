@@ -9,7 +9,7 @@ type DialogItemType = {
 
 export function DialogItem(props: DialogItemType) {
 
-    let path = `/dialogs/${props.id}`
+    let path = '/dialogs/' + props.id
 
     return (
         <div className={s.dialog}>
