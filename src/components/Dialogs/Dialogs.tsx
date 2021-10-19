@@ -29,18 +29,18 @@ export function Dialogs() {
         {id: 4, messageText: "this is so beautiful"},
     ]
 
-    const dialogsItemJSX = dialogsData.map(person => <DialogItem name={person.name} id={person.id}/>)
-    const messageJSX = messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
+    const dialogsElements = dialogsData.map(person => <DialogItem name={person.name} id={person.id}/>)
+    const messagesElements = messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
 
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 <h2>Dialogs:</h2>
-                {dialogsItemJSX}
+                {dialogsElements}
             </div>
             <div className={s.messages}>
-                {messageJSX}
+                {messagesElements}
             </div>
         </div>
     );

@@ -32,7 +32,7 @@ export function MyPosts() {
         },
     ]
 
-    let postJSX = myPostData.map(post => {
+    let postElements = myPostData.map(post => {
         return <Post
             message={post.message}
             likesCount={post.likesCount}
@@ -51,7 +51,7 @@ export function MyPosts() {
                 </div>
             </div>
             <div className={s.posts}>
-                {postJSX}
+                {postElements}
             </div>
         </div>
     );
