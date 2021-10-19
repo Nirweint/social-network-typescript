@@ -4,12 +4,14 @@ import s from './Post.module.css';
 type PostPropsType = {
     message: string
     likesCount: number
+    img: string
+    id: number
 }
 
 export function Post(props: PostPropsType) {
     return (
-        <div className={s.item}>
-            <img className={s.avatar} src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+        <div className={s.item} key={props.id}>
+            <img className={s.avatar} src={props.img}
                  alt="avatar"/>
             <span>{props.message}</span>
             <div>

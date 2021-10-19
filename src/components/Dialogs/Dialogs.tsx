@@ -29,8 +29,8 @@ export function Dialogs() {
         {id: 4, messageText: "this is so beautiful"},
     ]
 
-    let dialogsItemJSX = dialogsData.map(person => <DialogItem name={person.name} id={person.id}/>)
-    let messageJSX = messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
+    const dialogsItemJSX = dialogsData.map(person => <DialogItem name={person.name} id={person.id}/>)
+    const messageJSX = messagesData.map(message => <Message messageText={message.messageText} id={message.id}/>)
 
 
     return (
