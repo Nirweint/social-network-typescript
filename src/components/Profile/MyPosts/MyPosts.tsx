@@ -5,7 +5,7 @@ import {Post} from "./Post/Post";
 export function MyPosts() {
     return (
         <div className={s.myPosts}>
-            My posts
+            <h3>My posts</h3>
             <div>
                 <textarea/>
                 <div>
