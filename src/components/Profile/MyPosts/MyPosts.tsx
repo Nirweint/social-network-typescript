@@ -1,45 +1,21 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
+import {MyPostDataType} from "../Profile";
 
-type MyPostDataType = {
-    id: number
-    message: string
-    likesCount: number
-    img: string
+type MyPostsPropsType = {
+    myPostData: Array<MyPostDataType>
 }
 
-export function MyPosts() {
+export function MyPosts(props: MyPostsPropsType) {
 
-    let myPostData: Array<MyPostDataType> = [
-        {
-            id: 1,
-            message: "Hello, how are you?",
-            likesCount: 4,
-            img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
-        },
-        {
-            id: 2,
-            message: "How was your day?",
-            likesCount: 9,
-            img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
-        },
-        {
-            id: 3,
-            message: "This day is amazing",
-            likesCount: 1,
-            img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
-        },
-    ]
-
-    let postElements = myPostData.map(post => {
+    let postElements = props.myPostData.map(post => {
         return <Post
             message={post.message}
             likesCount={post.likesCount}
             img={post.img}
             id={post.id}/>
     })
-
 
     return (
         <div className={s.myPosts}>
