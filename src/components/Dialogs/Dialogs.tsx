@@ -12,7 +12,7 @@ type DialogsPropsType = {
 export function Dialogs(props: DialogsPropsType) {
 
     const dialogsElements = props.dialogs
-        .map(person => <DialogItem name={person.name} id={person.id}/>)
+        .map(person => <DialogItem name={person.name} id={person.id} img={person.img}/>)
     const messagesElements = props.messages
         .map(message => <Message messageText={message.messageText} id={message.id}/>)
 
@@ -28,6 +28,3 @@ export function Dialogs(props: DialogsPropsType) {
         </div>
     );
 }
-
-
-

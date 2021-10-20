@@ -1,5 +1,7 @@
 .dialog {
-
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
 }
 
 .dialog a {
@@ -9,4 +11,10 @@
 
 a.active {
     color: #df889a;
+}
+
+.avatar {
+    width: 3rem;
+    border-radius: 50%;
+    margin: 0 0.5em 0 0;
 }

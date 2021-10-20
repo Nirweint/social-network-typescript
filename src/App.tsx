@@ -19,7 +19,7 @@ export const App = (props: AppPropsType) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Sidebar/>
+                <Sidebar friends={props.state.Sidebar.friends}/>
                 <div className="app-wrapper-content">
                     <Route
                         path="/profile"

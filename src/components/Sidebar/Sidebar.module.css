@@ -1,8 +1,12 @@
 .nav {
     grid-area: nav;
     background-color: #f3eded;
-    padding: 0.5em 0 0 0.5em;
     border-radius: 10px 10px 0 0;
+}
+
+
+.item {
+    margin: 0 0 0 0.5em;
 }
 
 .item a {
@@ -13,4 +17,8 @@
 
 .item a.activeLink {
     color: #df889a;
+}
+
+.activeFriends {
+    margin: 2em 0 0 0;
 }
