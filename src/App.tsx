@@ -8,12 +8,10 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import "./App.css";
-import {DialogsDataType, MessagesDataType, MyPostDataType} from "./index";
+import {RootStateType} from "./redux/state";
 
 type AppPropsType = {
-    myPostData: Array<MyPostDataType>
-    dialogsData: Array<DialogsDataType>
-    messagesData: Array<MessagesDataType>
+    state: RootStateType
 }
 
 export const App = (props: AppPropsType) => {
@@ -26,14 +24,14 @@ export const App = (props: AppPropsType) => {
                     <Route
                         path="/profile"
                         render={() => <Profile
-                            myPostData={props.myPostData}
+                            posts={props.state.profilePage.posts}
                         />}
                     />
                     <Route
                         path="/dialogs"
                         render={() => <Dialogs
-                            dialogsData={props.dialogsData}
-                            messagesData={props.messagesData}
+                            dialogs={props.state.dialogsPage.dialogs}
+                            messages={props.state.dialogsPage.messages}
                         />}
                     />
 
