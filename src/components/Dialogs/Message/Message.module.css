@@ -1,0 +1,72 @@
+.message {
+    margin: 0 0 10px 5px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.avatar img {
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.cloud {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    background: #c7bec6;
+    color: #fff;
+    min-width: 200px;
+    max-width: 400px;
+    border-radius: 10px;
+    padding: 3px;
+    margin-left: 10px;
+}
+
+/*.cloud:before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    display: block;*/
+
+/*    bottom: 0;*/
+/*    left: -20px;*/
+
+/*    border-style: solid;*/
+/*    border-width: 0 0 20px 30px;*/
+/*    border-color: transparent transparent #c7bec6 transparent;*/
+/*}*/
+
+.name {
+    font-size: 18px;
+    color: #000;
+}
+
+.name.active {
+    align-self: flex-end;
+}
+
+.messageText {
+    flex: 0 1 auto;
+    padding: 0;
+    overflow-wrap: break-word;
+}
+
+.time {
+    color: #000;
+    align-self: flex-end;
+    opacity: .5;
+}
+
+.message.right {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message.right .cloud {
+    background-color: #9f9f9f;
+    margin-right: 10px;
+}
+
+/*.message.right .cloud:before {*/
+/*    border-color: transparent transparent #9f9f9f transparent;*/
+/*}*/

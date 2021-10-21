@@ -14,6 +14,10 @@ export type DialogType = {
 export type MessageType = {
     id: number
     messageText: string
+    name: string
+    time: string
+    avatar: string
+    head: string
 }
 
 export type ProfilePageType = {
@@ -89,20 +93,52 @@ export let state: RootStateType = {
         ],
         messages: [
             {
+                head: "Alex",
                 id: 1,
-                messageText: "hello my friend"
+                messageText: "I'm gonna make him an offer he can't refuse.",
+                name: "Alex",
+                time: "22:00",
+                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
             },
             {
+                head: "Alex",
                 id: 2,
-                messageText: "how are you?"
+                messageText: "A friend should always underestimate your virtues and an enemy overestimate your faults.",
+                name: "Sofa",
+                time: "22:00",
+                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
             },
             {
+                head: "Alex",
                 id: 3,
-                messageText: "love you"
+                messageText: "Revenge is a dish best served cold.",
+                name: "Alex",
+                time: "22:00",
+                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
             },
             {
+                head: "Alex",
                 id: 4,
-                messageText: "this is so beautiful"
+                messageText: "You spend time with your family?",
+                name: "Sofa",
+                time: "22:00",
+                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
+            },
+            {
+                head: "Alex",
+                id: 5,
+                messageText: "Sure I do.",
+                name: "Alex",
+                time: "22:00",
+                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
+            },
+            {
+                head: "Alex",
+                id: 6,
+                messageText: "Good. 'Cause a man who doesn't spend time with his family can never be a real man.",
+                name: "Sofa",
+                time: "22:00",
+                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
             },
         ]
     },
