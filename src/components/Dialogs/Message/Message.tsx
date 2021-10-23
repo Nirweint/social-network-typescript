@@ -12,23 +12,11 @@ type MessagePropsType = {
 
 export function Message(props: MessagePropsType) {
 
-    if (props.name !== props.head) {
-        return (
-            <div className={s.message + " " + s.right} key={props.id}>
-                <div className={s.avatar}>
-                    <img src={props.avatar} alt="avatar"/>
-                </div>
-                <div className={s.cloud}>
-                    <div className={s.name}>{props.name}</div>
-                    <div className={s.messageText}>{props.messageText}</div>
-                    <div className={s.time}>{props.time}</div>
-                </div>
-            </div>
-        )
-    }
+    let messageStyle;
+    props.name === props.head ? messageStyle = s.message + " " + s.right : messageStyle = s.message;
 
     return (
-        <div className={s.message} key={props.id}>
+        <div className={messageStyle} key={props.id}>
             <div className={s.avatar}>
                 <img src={props.avatar} alt="avatar"/>
             </div>
@@ -39,4 +27,5 @@ export function Message(props: MessagePropsType) {
             </div>
         </div>
     )
+
 }
