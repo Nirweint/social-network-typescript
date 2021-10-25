@@ -1,17 +1,28 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
+import {UserInfoType} from "../../../redux/state";
 
-export function ProfileInfo() {
+type ProfileInfoPropsType = {
+    userInfo: UserInfoType
+}
+
+export function ProfileInfo(props: ProfileInfoPropsType) {
     return (
         <div>
             <div>
-                <img className={s.img}
-                     src="https://i.pinimg.com/originals/3a/ff/a4/3affa4e523e653d3b8d4ebeb5d4aac34.jpg"
+                <img className={s.backgroundImg}
+                     src={props.userInfo.backgroundImg}
                      alt="background"/>
             </div>
-            <div>
-                ava + description
+            <div className={s.wrapper}>
+                <img className={s.avatar} src={props.userInfo.avatar} alt="avatar"/>
+                <div>
+                    <div className={s.name}>
+                        <h3>{props.userInfo.firstName} {props.userInfo.lastName}</h3>
+                    </div>
+                    <div className={s.description}>{props.userInfo.description}</div>
+                </div>
             </div>
         </div>
     );
-};
+}

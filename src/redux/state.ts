@@ -5,6 +5,14 @@ export type PostType = {
     img: string
 }
 
+export type UserInfoType = {
+    avatar: string
+    firstName: string
+    lastName: string
+    description: string
+    backgroundImg: string
+}
+
 export type DialogType = {
     id: number
     name: string
@@ -22,6 +30,7 @@ export type MessageType = {
 
 export type ProfilePageType = {
     posts: Array<PostType>
+    userInfo: UserInfoType
 }
 
 export type DialogsPageType = {
@@ -47,24 +56,31 @@ export type RootStateType = {
 
 export let state: RootStateType = {
     profilePage: {
+        userInfo: {
+            avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+            firstName: "Alexander",
+            lastName: "Vakulich",
+            description: "Hello. I'm a front-end developer.",
+            backgroundImg: "https://i.pinimg.com/originals/3a/ff/a4/3affa4e523e653d3b8d4ebeb5d4aac34.jpg",
+        },
         posts: [
             {
                 id: 1,
                 message: "Hello, how are you?",
                 likesCount: 5,
-                img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
                 id: 2,
                 message: "How was your day?",
                 likesCount: 9,
-                img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
                 id: 3,
                 message: "This day is amazing",
                 likesCount: 1,
-                img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
         ]
     },
@@ -73,7 +89,7 @@ export let state: RootStateType = {
             {
                 id: 1,
                 name: "Alex",
-                img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
                 id: 2,
@@ -98,7 +114,7 @@ export let state: RootStateType = {
                 messageText: "I'm gonna make him an offer he can't refuse.",
                 name: "Alex",
                 time: "22:00",
-                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
+                avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
                 head: "Alex",
@@ -114,7 +130,7 @@ export let state: RootStateType = {
                 messageText: "Revenge is a dish best served cold.",
                 name: "Alex",
                 time: "22:00",
-                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
+                avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
                 head: "Alex",
@@ -130,7 +146,7 @@ export let state: RootStateType = {
                 messageText: "Sure I do.",
                 name: "Alex",
                 time: "22:00",
-                avatar: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg",
+                avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
                 head: "Alex",
@@ -147,7 +163,7 @@ export let state: RootStateType = {
             {
                 id: 1,
                 name: "Alex",
-                img: "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
             },
             {
                 id: 2,

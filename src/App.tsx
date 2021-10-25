@@ -25,6 +25,7 @@ export const App = (props: AppPropsType) => {
                         path="/profile"
                         render={() => <Profile
                             posts={props.state.profilePage.posts}
+                            userInfo={props.state.profilePage.userInfo}
                         />}
                     />
                     <Route
