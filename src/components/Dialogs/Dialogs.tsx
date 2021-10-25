@@ -26,7 +26,7 @@ export function Dialogs(props: DialogsPropsType) {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <h2>Dialogs:</h2>
+                <h2 className={s.title}>Dialogs:</h2>
                 {dialogsElements}
             </div>
             <div className={s.messages}>

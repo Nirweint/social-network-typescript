@@ -7,9 +7,6 @@
     padding: 0.5em;
     border-right: 1px solid rgba(0, 0, 0, .3);
 }
-.dialogsItems h2 {
-    margin: 0;
-}
 
 .messages {
     padding: 0.5em;
@@ -20,4 +17,8 @@
 
 .message {
 
+}
+
+.title {
+    margin: 0 0 0.5em 0;
 }

@@ -30,6 +30,7 @@ export const Sidebar = (props: SidebarPropsType) => {
                 <NavLink to="/settings" activeClassName={s.activeLink}>Settings</NavLink>
             </div>
             <div className={s.activeFriends}>
+                <h3 className={s.title}>Friends:</h3>
                 <ActiveFriends friends={props.friends}/>
             </div>
 
