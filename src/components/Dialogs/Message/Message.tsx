@@ -13,7 +13,7 @@ type MessagePropsType = {
 export function Message(props: MessagePropsType) {
 
     let messageStyle;
-    props.name === props.head ? messageStyle = s.message + " " + s.right : messageStyle = s.message;
+    props.name === props.head ? messageStyle = `${s.message} ${s.right}` : messageStyle = s.message;
 
     return (
         <div className={messageStyle} key={props.id}>
