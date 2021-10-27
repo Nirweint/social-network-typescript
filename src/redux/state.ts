@@ -1,10 +1,13 @@
+import {v1} from "uuid";
+import {renderEntireTree} from "../render";
+
+
 export type PostType = {
-    id: number
+    id: string
     message: string
     likesCount: number
     img: string
 }
-
 export type UserInfoType = {
     avatar: string
     firstName: string
@@ -12,13 +15,11 @@ export type UserInfoType = {
     description: string
     backgroundImg: string
 }
-
 export type DialogType = {
     id: number
     name: string
     img: string
 }
-
 export type MessageType = {
     id: number
     messageText: string
@@ -27,23 +28,19 @@ export type MessageType = {
     avatar: string
     head: string
 }
-
 export type ProfilePageType = {
     posts: Array<PostType>
     userInfo: UserInfoType
 }
-
 export type DialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
-
 export type FriendType = {
     id: number
     name: string
     img: string
 }
-
 export type FriendsType = {
     friends: Array<FriendType>
 }
@@ -65,19 +62,19 @@ export let state: RootStateType = {
         },
         posts: [
             {
-                id: 1,
+                id: v1(),
                 message: "Hello, how are you?",
                 likesCount: 5,
                 img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
-                id: 2,
+                id: v1(),
                 message: "How was your day?",
                 likesCount: 9,
                 img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
             {
-                id: 3,
+                id: v1(),
                 message: "This day is amazing",
                 likesCount: 1,
                 img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
@@ -177,4 +174,17 @@ export let state: RootStateType = {
             },
         ]
     }
+}
+
+
+export const addPost = (value: string) => {
+    let newPost = {
+        id: v1(),
+        message: value,
+        likesCount: 0,
+        img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+    }
+
+    state.profilePage.posts.push(newPost)
+    renderEntireTree(state)
 }

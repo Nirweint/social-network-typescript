@@ -5,7 +5,7 @@ type PostPropsType = {
     message: string
     likesCount: number
     img: string
-    id: number
+    id: string
 }
 
 export function Post(props: PostPropsType) {
