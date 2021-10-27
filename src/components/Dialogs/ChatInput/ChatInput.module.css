@@ -1,0 +1,15 @@
+.body {
+    display: flex;
+    padding: 10px;
+    background-color: rgba(199, 190, 198, 0.4);
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.inputItem {
+    flex: 1 1 auto;
+}
+
+.inputBtn {
+    padding: 0.5em;
+}

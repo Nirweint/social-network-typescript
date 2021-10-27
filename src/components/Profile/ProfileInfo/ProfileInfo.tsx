@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './ProfileInfo.module.css';
+import style from './ProfileInfo.module.css';
 import {UserInfoType} from "../../../redux/state";
 
 type ProfileInfoPropsType = {
@@ -7,20 +7,23 @@ type ProfileInfoPropsType = {
 }
 
 export function ProfileInfo(props: ProfileInfoPropsType) {
+
+    const {backgroundImg, avatar, lastName, firstName, description} = props.userInfo;
+
     return (
         <div>
             <div>
-                <img className={s.backgroundImg}
-                     src={props.userInfo.backgroundImg}
+                <img className={style.backgroundImg}
+                     src={backgroundImg}
                      alt="background"/>
             </div>
-            <div className={s.wrapper}>
-                <img className={s.avatar} src={props.userInfo.avatar} alt="avatar"/>
+            <div className={style.wrapper}>
+                <img className={style.avatar} src={avatar} alt="avatar"/>
                 <div>
-                    <div className={s.name}>
-                        <h3>{props.userInfo.firstName} {props.userInfo.lastName}</h3>
+                    <div className={style.name}>
+                        <h3>{firstName} {lastName}</h3>
                     </div>
-                    <div className={s.description}>{props.userInfo.description}</div>
+                    <div className={style.description}>{description}</div>
                 </div>
             </div>
         </div>

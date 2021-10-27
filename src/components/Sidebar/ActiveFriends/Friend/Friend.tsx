@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Friend.module.css';
+import style from './Friend.module.css';
 
 type FriendPropsType = {
     id: number
@@ -10,7 +10,7 @@ type FriendPropsType = {
 export function Friend(props: FriendPropsType ) {
     return (
         <div key={props.id}>
-            <img className={s.avatar} src={props.img} alt="avatar"/>
+            <img className={style.avatar} src={props.img} alt="avatar"/>
             <div>{props.name}</div>
         </div>
     );

@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
-import s from './MyPosts.module.css';
+import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/state";
 
@@ -20,12 +20,20 @@ export function MyPosts(props: MyPostsPropsType) {
             id={post.id}/>
     })
 
+    const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setNewPostText(e.currentTarget.value)
+    }
+    const addPost = () => {
+        let trimmedNewPostText = newPostText.trim();
 
-    const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => setNewPostText(e.currentTarget.value)
-    const addPost = () => props.addPost(newPostText)
+        if (trimmedNewPostText) {
+            props.addPost(trimmedNewPostText)
+            setNewPostText('')
+        }
+    }
 
     return (
-        <div className={s.myPosts}>
+        <div className={style.myPosts}>
             <h3>My posts</h3>
             <div>
                 <textarea
@@ -34,7 +42,7 @@ export function MyPosts(props: MyPostsPropsType) {
                 />
                 <button onClick={addPost}>Add post</button>
             </div>
-            <div className={s.posts}>
+            <div className={style.posts}>
                 {postElements}
             </div>
         </div>

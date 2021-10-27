@@ -5,8 +5,10 @@ import {addPost, RootStateType} from "./redux/state";
 import React from "react";
 
 export let renderEntireTree = (state: RootStateType) => {
-    ReactDOM.render(<BrowserRouter>
-            <App state={state} addPost={addPost}/>
-        </BrowserRouter>, document.getElementById('root')
+    ReactDOM.render(<React.StrictMode>
+            <BrowserRouter>
+                <App state={state} addPost={addPost}/>
+            </BrowserRouter>
+        </React.StrictMode>, document.getElementById('root')
     );
 }

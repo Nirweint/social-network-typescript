@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Post.module.css';
+import style from './Post.module.css';
 
 type PostPropsType = {
     message: string
@@ -10,8 +10,8 @@ type PostPropsType = {
 
 export function Post(props: PostPropsType) {
     return (
-        <div className={s.item} key={props.id}>
-            <img className={s.avatar} src={props.img}
+        <div className={style.item} key={props.id}>
+            <img className={style.avatar} src={props.img}
                  alt="avatar"/>
             <span>{props.message}</span>
             <div>

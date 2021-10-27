@@ -1,8 +1,9 @@
 import React from 'react';
-import s from './Dialogs.module.css';
+import style from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {DialogType, MessageType} from "../../redux/state";
+import {ChatInput} from "./ChatInput/ChatInput";
 
 type DialogsPropsType = {
     dialogs: Array<DialogType>
@@ -24,13 +25,14 @@ export function Dialogs(props: DialogsPropsType) {
         />)
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
-                <h2 className={s.title}>Dialogs:</h2>
+        <div className={style.dialogs}>
+            <div className={style.dialogsItems}>
+                <h2 className={style.title}>Dialogs:</h2>
                 {dialogsElements}
             </div>
-            <div className={s.messages}>
-                {messagesElements}
+            <div className={style.chatBody}>
+                <div className={style.messages}>{messagesElements}</div>
+                <ChatInput/>
             </div>
         </div>
     );
