@@ -39,3 +39,5 @@ export function Dialogs(props: DialogsPropsType) {
         </div>
     );
 }
+
+// TODO add style to messages go up, when you write new messages

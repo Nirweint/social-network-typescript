@@ -15,15 +15,17 @@ export const ChatInput = (props: ChatInputPropsType) => {
     }
 
     const onEnterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && inputValue) {
             props.addMessage(inputValue)
             setInputValue('')
         }
     }
 
     const addMessageHandler = () => {
-        props.addMessage(inputValue)
-        setInputValue('')
+        if (inputValue) {
+            props.addMessage(inputValue)
+            setInputValue('')
+        }
     }
 
     return (
