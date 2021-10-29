@@ -1,6 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    grid-template-rows: 1fr;
     height: 100%;
 }
 
@@ -25,8 +26,9 @@
 }
 
 .chatBody {
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
 }
