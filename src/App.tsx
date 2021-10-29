@@ -8,11 +8,12 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import "./App.css";
-import {RootStateType} from "./redux/state";
+import {addMessage, RootStateType} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
     addPost: (value: string) => void
+    addMessage: (messageText: string) => void
 }
 
 export const App = (props: AppPropsType) => {
@@ -34,6 +35,7 @@ export const App = (props: AppPropsType) => {
                     render={() => <Dialogs
                         dialogs={props.state.dialogsPage.dialogs}
                         messages={props.state.dialogsPage.messages}
+                        addMessage={props.addMessage}
                     />}
                 />
 

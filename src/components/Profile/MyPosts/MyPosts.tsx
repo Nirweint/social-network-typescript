@@ -12,14 +12,6 @@ export function MyPosts(props: MyPostsPropsType) {
 
     let [newPostText, setNewPostText] = useState('')
 
-    const postElements = props.posts.map(post => {
-        return <Post
-            message={post.message}
-            likesCount={post.likesCount}
-            img={post.img}
-            id={post.id}/>
-    })
-
     const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setNewPostText(e.currentTarget.value)
     }
@@ -31,6 +23,13 @@ export function MyPosts(props: MyPostsPropsType) {
             setNewPostText('')
         }
     }
+    const postElements = props.posts.map(post => {
+        return <Post
+            message={post.message}
+            likesCount={post.likesCount}
+            img={post.img}
+            id={post.id}/>
+    })
 
     return (
         <div className={style.myPosts}>

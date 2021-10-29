@@ -178,7 +178,7 @@ export let state: RootStateType = {
 
 
 export const addPost = (value: string) => {
-    let newPost = {
+    let newPost: PostType = {
         id: v1(),
         message: value,
         likesCount: 0,
@@ -186,5 +186,19 @@ export const addPost = (value: string) => {
     }
 
     state.profilePage.posts.push(newPost)
+    renderEntireTree(state)
+}
+
+export const addMessage = (messageText: string) => {
+    let newMessage: MessageType = {
+        head: "Alex",
+        id: 1,
+        messageText: messageText,
+        name: "Alex",
+        time: "22:00",
+        avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+    }
+
+    state.dialogsPage.messages.push(newMessage)
     renderEntireTree(state)
 }

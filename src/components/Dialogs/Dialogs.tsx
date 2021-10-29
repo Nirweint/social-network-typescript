@@ -8,9 +8,11 @@ import {ChatInput} from "./ChatInput/ChatInput";
 type DialogsPropsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
+    addMessage: (messageText: string) => void
 }
 
 export function Dialogs(props: DialogsPropsType) {
+
 
     const dialogsElements = props.dialogs
         .map(person => <DialogItem name={person.name} id={person.id} img={person.img}/>)
@@ -32,7 +34,7 @@ export function Dialogs(props: DialogsPropsType) {
             </div>
             <div className={style.chatBody}>
                 <div className={style.messages}>{messagesElements}</div>
-                <ChatInput/>
+                <ChatInput addMessage={props.addMessage}/>
             </div>
         </div>
     );
