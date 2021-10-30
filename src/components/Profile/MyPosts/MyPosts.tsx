@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent,KeyboardEvent, useState} from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/state";
@@ -12,8 +12,14 @@ export function MyPosts(props: MyPostsPropsType) {
 
     let [newPostText, setNewPostText] = useState('')
 
-    const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const onChangeInputValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewPostText(e.currentTarget.value)
+    }
+
+    const onEnterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            addPost()
+        }
     }
     const addPost = () => {
         let trimmedNewPostText = newPostText.trim();
@@ -35,9 +41,10 @@ export function MyPosts(props: MyPostsPropsType) {
         <div className={style.myPosts}>
             <h3>My posts</h3>
             <div>
-                <textarea
+                <input
                     value={newPostText}
-                    onChange={onChange}
+                    onChange={onChangeInputValueHandler}
+                    onKeyPress={onEnterPressHandler}
                 />
                 <button onClick={addPost}>Add post</button>
             </div>
