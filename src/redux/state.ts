@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 import {renderEntireTree} from "../render";
+import {useState} from "react";
 
 
 export type PostType = {
@@ -31,6 +32,7 @@ export type MessageType = {
 export type ProfilePageType = {
     posts: Array<PostType>
     userInfo: UserInfoType
+    newPostText: string
 }
 export type DialogsPageType = {
     dialogs: Array<DialogType>
@@ -79,7 +81,8 @@ export let state: RootStateType = {
                 likesCount: 1,
                 img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
             },
-        ]
+        ],
+        newPostText: "",
     },
     dialogsPage: {
         dialogs: [
