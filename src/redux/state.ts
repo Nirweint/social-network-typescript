@@ -1,7 +1,4 @@
 import {v1} from "uuid";
-import {renderEntireTree} from "../render";
-import {useState} from "react";
-
 
 export type PostType = {
     id: string
@@ -46,12 +43,12 @@ export type FriendType = {
 export type FriendsType = {
     friends: Array<FriendType>
 }
-
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     Sidebar: FriendsType
 }
+
 
 export let state: RootStateType = {
     profilePage: {
@@ -179,7 +176,13 @@ export let state: RootStateType = {
     }
 }
 
+let renderEntireTree = () => {
+    console.log('state changed')
+}
 
+export const subscribe = (observer: any) => {
+    renderEntireTree = observer;
+}
 export const addPost = (value: string) => {
     let newPost: PostType = {
         id: v1(),
@@ -189,9 +192,8 @@ export const addPost = (value: string) => {
     }
 
     state.profilePage.posts.push(newPost)
-    renderEntireTree(state)
+    renderEntireTree()
 }
-
 export const addMessage = (messageText: string) => {
     let newMessage: MessageType = {
         head: "Alex",
@@ -203,5 +205,5 @@ export const addMessage = (messageText: string) => {
     }
 
     state.dialogsPage.messages.push(newMessage)
-    renderEntireTree(state)
+    renderEntireTree()
 }
