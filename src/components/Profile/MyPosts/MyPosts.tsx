@@ -1,4 +1,4 @@
-import React, {ChangeEvent,KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent,KeyboardEvent} from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/state";
@@ -6,27 +6,28 @@ import {PostType} from "../../../redux/state";
 export type MyPostsPropsType = {
     posts: Array<PostType>
     addPost: (value: string) => void
+    newPostText: string
+    changeNewPostTextCallBack: (newText: string) => void
 }
 
 export function MyPosts(props: MyPostsPropsType) {
 
-    let [newPostText, setNewPostText] = useState('')
+    const onChangeInputValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.changeNewPostTextCallBack(e.currentTarget.value)
 
-    const onChangeInputValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setNewPostText(e.currentTarget.value)
     }
 
-    const onEnterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
             addPost()
         }
     }
     const addPost = () => {
-        let trimmedNewPostText = newPostText.trim();
+        let trimmedNewPostText = props.newPostText.trim();
 
         if (trimmedNewPostText) {
             props.addPost(trimmedNewPostText)
-            setNewPostText('')
+            props.changeNewPostTextCallBack("")
         }
     }
     const postElements = props.posts.map(post => {
@@ -41,8 +42,8 @@ export function MyPosts(props: MyPostsPropsType) {
         <div className={style.myPosts}>
             <h3>My posts</h3>
             <div>
-                <input
-                    value={newPostText}
+                <textarea
+                    value={props.newPostText}
                     onChange={onChangeInputValueHandler}
                     onKeyPress={onEnterPressHandler}
                 />

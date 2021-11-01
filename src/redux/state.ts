@@ -207,3 +207,7 @@ export const addMessage = (messageText: string) => {
     state.dialogsPage.messages.push(newMessage)
     renderEntireTree()
 }
+export const changeNewPostTextCallBack = (newText: string) => {
+    state.profilePage.newPostText = newText
+    renderEntireTree()
+}

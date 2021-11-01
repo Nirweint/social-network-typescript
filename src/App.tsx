@@ -14,6 +14,7 @@ type AppPropsType = {
     state: RootStateType
     addPost: (value: string) => void
     addMessage: (messageText: string) => void
+    changeNewPostTextCallBack: (newText: string) => void
 }
 
 export const App = (props: AppPropsType) => {
@@ -28,6 +29,8 @@ export const App = (props: AppPropsType) => {
                         posts={props.state.profilePage.posts}
                         userInfo={props.state.profilePage.userInfo}
                         addPost={props.addPost}
+                        newPostText={props.state.profilePage.newPostText}
+                        changeNewPostTextCallBack={props.changeNewPostTextCallBack}
                     />}
                 />
                 <Route
