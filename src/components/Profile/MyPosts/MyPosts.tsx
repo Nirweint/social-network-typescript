@@ -5,30 +5,26 @@ import {PostType} from "../../../redux/state";
 
 export type MyPostsPropsType = {
     posts: Array<PostType>
-    addPost: (value: string) => void
+    addPost: () => void
     newPostText: string
     changeNewPostTextCallBack: (newText: string) => void
 }
 
 export function MyPosts(props: MyPostsPropsType) {
 
-    const onChangeInputValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const onChangeTextValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.changeNewPostTextCallBack(e.currentTarget.value)
 
     }
-
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
             addPost()
+            e.preventDefault()
         }
     }
     const addPost = () => {
-        let trimmedNewPostText = props.newPostText.trim();
-
-        if (trimmedNewPostText) {
-            props.addPost(trimmedNewPostText)
+            props.addPost()
             props.changeNewPostTextCallBack("")
-        }
     }
     const postElements = props.posts.map(post => {
         return <Post
@@ -44,7 +40,7 @@ export function MyPosts(props: MyPostsPropsType) {
             <div>
                 <textarea
                     value={props.newPostText}
-                    onChange={onChangeInputValueHandler}
+                    onChange={onChangeTextValueHandler}
                     onKeyPress={onEnterPressHandler}
                 />
                 <button onClick={addPost}>Add post</button>

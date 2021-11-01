@@ -183,17 +183,26 @@ let renderEntireTree = () => {
 export const subscribe = (observer: any) => {
     renderEntireTree = observer;
 }
-export const addPost = (value: string) => {
+export const changeNewPostTextCallBack = (newText: string) => {
+    state.profilePage.newPostText = newText
+    renderEntireTree()
+
+}
+export const addPost = () => {
+    let trimmedNewText = state.profilePage.newPostText.trim();
     let newPost: PostType = {
         id: v1(),
-        message: value,
+        message: trimmedNewText,
         likesCount: 0,
         img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
     }
+    if (trimmedNewText) {
+        state.profilePage.posts.push(newPost)
+        renderEntireTree()
+    }
 
-    state.profilePage.posts.push(newPost)
-    renderEntireTree()
 }
+
 export const addMessage = (messageText: string) => {
     let newMessage: MessageType = {
         head: "Alex",
@@ -205,9 +214,5 @@ export const addMessage = (messageText: string) => {
     }
 
     state.dialogsPage.messages.push(newMessage)
-    renderEntireTree()
-}
-export const changeNewPostTextCallBack = (newText: string) => {
-    state.profilePage.newPostText = newText
     renderEntireTree()
 }
