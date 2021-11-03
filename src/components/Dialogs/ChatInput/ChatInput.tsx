@@ -2,36 +2,36 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from "./ChatInput.module.css"
 
 type ChatInputPropsType = {
-    addMessage: (messageText: string) => void
+    addMessage: () => void
+    newMessageText: string
+    onChangeInputValueMessage: (inputValue: string) => void
 }
 
 export const ChatInput = (props: ChatInputPropsType) => {
 
-    let [inputValue, setInputValue] = useState('')
 
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const messageValue = e.currentTarget.value
-        setInputValue(messageValue)
+        props.onChangeInputValueMessage(e.currentTarget.value)
+
     }
 
     const onEnterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter" && inputValue) {
-            props.addMessage(inputValue)
-            setInputValue('')
+        if (e.key === "Enter" && props.newMessageText) {
+            props.addMessage()
         }
     }
 
     const addMessageHandler = () => {
-        if (inputValue) {
-            props.addMessage(inputValue)
-            setInputValue('')
+        if (props.newMessageText) {
+            props.addMessage()
+            props.onChangeInputValueMessage("")
         }
     }
 
     return (
-        <div className={style.body} >
+        <div className={style.body}>
             <input
-                value={inputValue}
+                value={props.newMessageText}
                 onChange={onChangeInputHandler}
                 className={style.inputItem}
                 onKeyPress={onEnterPressHandler}

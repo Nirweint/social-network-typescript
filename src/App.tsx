@@ -13,8 +13,9 @@ import {RootStateType} from "./redux/state";
 type AppPropsType = {
     state: RootStateType
     addPost: () => void
-    addMessage: (messageText: string) => void
+    addMessage: () => void
     changeNewPostTextCallBack: (newText: string) => void
+    onChangeInputValueMessage: (inputValue: string) => void
 }
 
 export const App = (props: AppPropsType) => {
@@ -39,6 +40,8 @@ export const App = (props: AppPropsType) => {
                         dialogs={props.state.dialogsPage.dialogs}
                         messages={props.state.dialogsPage.messages}
                         addMessage={props.addMessage}
+                        newMessageText={props.state.dialogsPage.newMessageText}
+                        onChangeInputValueMessage={props.onChangeInputValueMessage}
                     />}
                 />
 

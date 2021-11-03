@@ -34,6 +34,7 @@ export type ProfilePageType = {
 export type DialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
+    newMessageText: string
 }
 export type FriendType = {
     id: string
@@ -153,7 +154,8 @@ export let state: RootStateType = {
                 time: "22:00",
                 avatar: "https://sun9-80.userapi.com/impg/gJeHyr8s0kj96H0LVEz1Gq7vHteh1QYV8_Kdow/FRSJlnhrNaY.jpg?size=878x627&quality=96&sign=00b60f8e76d747c622535e511da56ce4&type=album",
             },
-        ]
+        ],
+        newMessageText: "",
     },
     Sidebar: {
         friends: [
@@ -177,17 +179,21 @@ export let state: RootStateType = {
 }
 
 let renderEntireTree = () => {
-    console.log('state changed')
 }
-
-export const subscribe = (observer: any) => {
+export const subscribe = (observer: ()=> void) => {
     renderEntireTree = observer;
 }
+
 export const changeNewPostTextCallBack = (newText: string) => {
     state.profilePage.newPostText = newText
     renderEntireTree()
+}
+export const onChangeInputValueMessage = (inputValue: string) => {
+    state.dialogsPage.newMessageText = inputValue
+    renderEntireTree()
 
 }
+
 export const addPost = () => {
     let trimmedNewText = state.profilePage.newPostText.trim();
     let newPost: PostType = {
@@ -202,12 +208,11 @@ export const addPost = () => {
     }
 
 }
-
-export const addMessage = (messageText: string) => {
+export const addMessage = () => {
     let newMessage: MessageType = {
         head: "Alex",
         id: v1(),
-        messageText: messageText,
+        messageText: state.dialogsPage.newMessageText,
         name: "Alex",
         time: "22:00",
         avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",

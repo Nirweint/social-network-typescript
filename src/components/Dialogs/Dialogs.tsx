@@ -8,7 +8,9 @@ import {ChatInput} from "./ChatInput/ChatInput";
 type DialogsPropsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    addMessage: (messageText: string) => void
+    addMessage: () => void
+    newMessageText: string
+    onChangeInputValueMessage: (inputValue: string) => void
 }
 
 export function Dialogs(props: DialogsPropsType) {
@@ -35,7 +37,11 @@ export function Dialogs(props: DialogsPropsType) {
             </div>
             <div className={style.chatBody}>
                 <div className={style.messages}>{messagesElements}</div>
-                <ChatInput addMessage={props.addMessage}/>
+                <ChatInput
+                    addMessage={props.addMessage}
+                    newMessageText={props.newMessageText}
+                    onChangeInputValueMessage={props.onChangeInputValueMessage}
+                />
             </div>
         </div>
     );

@@ -1,11 +1,19 @@
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import {App} from "./App";
-import {addMessage, addPost, changeNewPostTextCallBack, state, subscribe} from "./redux/state";
+import {
+    addMessage,
+    addPost,
+    changeNewPostTextCallBack,
+    onChangeInputValueMessage,
+    state,
+    subscribe
+} from "./redux/state";
 import React from "react";
 import './index.css'
 
 let renderEntireTree = () => {
+    console.log("rerendered")
     ReactDOM.render(<React.StrictMode>
             <BrowserRouter>
                 <App
@@ -13,6 +21,7 @@ let renderEntireTree = () => {
                     addPost={addPost}
                     addMessage={addMessage}
                     changeNewPostTextCallBack={changeNewPostTextCallBack}
+                    onChangeInputValueMessage={onChangeInputValueMessage}
                 />
             </BrowserRouter>
         </React.StrictMode>, document.getElementById('root')
