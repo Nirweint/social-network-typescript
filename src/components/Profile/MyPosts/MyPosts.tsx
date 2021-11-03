@@ -1,4 +1,4 @@
-import React, {ChangeEvent,KeyboardEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/state";
@@ -18,16 +18,17 @@ export function MyPosts(props: MyPostsPropsType) {
     }
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
-            addPost()
+            addPostHandler()
             e.preventDefault()
         }
     }
-    const addPost = () => {
-            props.addPost()
-            props.changeNewPostTextCallBack("")
+    const addPostHandler = () => {
+        props.addPost()
+        props.changeNewPostTextCallBack("")
     }
     const postElements = props.posts.map(post => {
         return <Post
+            key={post.id}
             message={post.message}
             likesCount={post.likesCount}
             img={post.img}
@@ -43,7 +44,7 @@ export function MyPosts(props: MyPostsPropsType) {
                     onChange={onChangeTextValueHandler}
                     onKeyPress={onEnterPressHandler}
                 />
-                <button onClick={addPost}>Add post</button>
+                <button onClick={addPostHandler}>Add post</button>
             </div>
             <div className={style.posts}>
                 {postElements}

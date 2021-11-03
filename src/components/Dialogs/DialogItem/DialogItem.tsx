@@ -4,7 +4,7 @@ import style from './DialogItem.module.css';
 
 type DialogItemPropsType = {
     name: string
-    id: number
+    id: string
     img: string
 }
 

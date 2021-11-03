@@ -3,7 +3,7 @@ import style from './Message.module.css';
 
 type MessagePropsType = {
     messageText: string
-    id: number
+    id: string
     name: string
     time: string
     avatar: string

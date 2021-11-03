@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Friend.module.css';
 
 type FriendPropsType = {
-    id: number
+    id: string
     name: string
     img: string
 }
