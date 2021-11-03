@@ -13,7 +13,6 @@ import React from "react";
 import './index.css'
 
 let renderEntireTree = () => {
-    console.log("rerendered")
     ReactDOM.render(<React.StrictMode>
             <BrowserRouter>
                 <App

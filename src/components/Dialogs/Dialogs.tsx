@@ -15,18 +15,23 @@ type DialogsPropsType = {
 
 export function Dialogs(props: DialogsPropsType) {
 
-
     const dialogsElements = props.dialogs
-        .map(person => <DialogItem key={person.id} name={person.name} id={person.id} img={person.img}/>)
+        .map(p => <DialogItem
+            key={p.id}
+            name={p.name}
+            id={p.id}
+            img={p.img}
+        />)
+
     const messagesElements = props.messages
-        .map(message => <Message
-            key={message.id}
-            messageText={message.messageText}
-            id={message.id}
-            name={message.name}
-            time={message.time}
-            avatar={message.avatar}
-            head={message.head}
+        .map(m => <Message
+            key={m.id}
+            messageText={m.messageText}
+            id={m.id}
+            name={m.name}
+            time={m.time}
+            avatar={m.avatar}
+            head={m.head}
         />)
 
     return (
