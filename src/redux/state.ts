@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 
+// Store types ---------------------------
 export type PostType = {
     id: string
     message: string
@@ -56,7 +57,9 @@ export type StoreType = {
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
 }
+// -----------------------------------------
 
+// Actions types ------------------------------
 type AddPostActionType = {
     type: "ADD-POST"
 }
@@ -73,11 +76,26 @@ type OnChangeInputValueMessageActionType = {
     inputValue: string
 }
 
-
 export type ActionsTypes = AddPostActionType | ChangeNewPostTextCallBackActionType
     | AddMessageActionType | OnChangeInputValueMessageActionType
 
+// --------------------------------------------
 
+// Action creators ------------------------
+export const addPostAC = (): AddPostActionType => {
+    return {
+        type: "ADD-POST",
+    }
+}
+export const changeNewPostTextCallBackAC = (newText: string): ChangeNewPostTextCallBackActionType => {
+    return {
+        type: "CHANGE-NEW-POST-TEXT-CALL-BACK",
+        newText: newText
+    }
+}
+
+
+// Store ---------------------------
 export const store: StoreType = {
     _state: {
         profilePage: {
@@ -252,3 +270,5 @@ export const store: StoreType = {
     }
 
 }
+
+// -------------------------

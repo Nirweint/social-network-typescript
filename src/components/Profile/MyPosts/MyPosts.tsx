@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ActionsTypes, PostType} from "../../../redux/state";
+import {ActionsTypes, addPostAC, changeNewPostTextCallBackAC, PostType} from "../../../redux/state";
 
 export type MyPostsPropsType = {
     posts: Array<PostType>
@@ -12,7 +12,7 @@ export type MyPostsPropsType = {
 export function MyPosts(props: MyPostsPropsType) {
 
     const onChangeTextValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch({type: "CHANGE-NEW-POST-TEXT-CALL-BACK", newText: e.currentTarget.value})
+        props.dispatch(changeNewPostTextCallBackAC(e.currentTarget.value))
     }
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
@@ -21,7 +21,7 @@ export function MyPosts(props: MyPostsPropsType) {
         }
     }
     const addPostHandler = () => {
-        props.dispatch({type: "ADD-POST"})
+        props.dispatch(addPostAC())
     }
 
     return (
