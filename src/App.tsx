@@ -8,10 +8,11 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import "./App.css";
-import {StoreType} from "./redux/state";
+import {ActionsTypes, StoreType} from "./redux/state";
 
 type AppPropsType = {
     store: StoreType
+    dispatch: (action: ActionsTypes) => void
 }
 
 export const App = (props: AppPropsType) => {
@@ -27,9 +28,8 @@ export const App = (props: AppPropsType) => {
                     render={() => <Profile
                         posts={state.profilePage.posts}
                         userInfo={state.profilePage.userInfo}
-                        addPost={props.store.addPost.bind(props.store)}
                         newPostText={state.profilePage.newPostText}
-                        changeNewPostTextCallBack={props.store.changeNewPostTextCallBack.bind(props.store)}
+                        dispatch={props.dispatch}
                     />}
                 />
                 <Route

@@ -1,20 +1,18 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {PostType} from "../../../redux/state";
+import {ActionsTypes, PostType} from "../../../redux/state";
 
 export type MyPostsPropsType = {
     posts: Array<PostType>
-    addPost: () => void
     newPostText: string
-    changeNewPostTextCallBack: (newText: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 export function MyPosts(props: MyPostsPropsType) {
 
     const onChangeTextValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeNewPostTextCallBack(e.currentTarget.value)
-
+        props.dispatch({type: "CHANGE-NEW-POST-TEXT-CALL-BACK", newText: e.currentTarget.value})
     }
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
@@ -23,17 +21,8 @@ export function MyPosts(props: MyPostsPropsType) {
         }
     }
     const addPostHandler = () => {
-        props.addPost()
-        props.changeNewPostTextCallBack("")
+        props.dispatch({type: "ADD-POST"})
     }
-    const postElements = props.posts.map(post => {
-        return <Post
-            key={post.id}
-            message={post.message}
-            likesCount={post.likesCount}
-            img={post.img}
-            id={post.id}/>
-    })
 
     return (
         <div className={style.myPosts}>
@@ -47,7 +36,15 @@ export function MyPosts(props: MyPostsPropsType) {
                 <button onClick={addPostHandler}>Add post</button>
             </div>
             <div className={style.posts}>
-                {postElements}
+                {props.posts.map(post => {
+                    return <Post
+                        key={post.id}
+                        message={post.message}
+                        likesCount={post.likesCount}
+                        img={post.img}
+                        id={post.id}
+                    />
+                })}
             </div>
         </div>
     );

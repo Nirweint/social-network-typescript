@@ -51,14 +51,24 @@ export type RootStateType = {
 }
 export type StoreType = {
     _state: RootStateType
-    changeNewPostTextCallBack: (newText: string) => void
     onChangeInputValueMessage: (inputValue: string) => void
-    addPost: () => void
     addMessage: () => void
     subscribe: (observer: () => void) => void
     _renderEntireTree: () => void
     getState: () => RootStateType
+    dispatch: (action: ActionsTypes) => void
 }
+
+type AddPostActionType = {
+    type: "ADD-POST"
+}
+type ChangeNewPostTextCallBackActionType = {
+    type: "CHANGE-NEW-POST-TEXT-CALL-BACK"
+    newText: string
+}
+
+export type ActionsTypes = AddPostActionType | ChangeNewPostTextCallBackActionType
+
 
 export const store: StoreType = {
     _state: {
@@ -187,49 +197,52 @@ export const store: StoreType = {
             ]
         }
     },
-    changeNewPostTextCallBack(newText: string) {
-        this._state.profilePage.newPostText = newText
-        this._renderEntireTree()
+    _renderEntireTree() {
+
+    },
+    getState() {
+        return this._state
+    },
+    subscribe(observer) {
+        this._renderEntireTree = observer;
     },
     onChangeInputValueMessage(inputValue: string) {
         this._state.dialogsPage.newMessageText = inputValue
         this._renderEntireTree()
 
     },
-    addPost() {
-        let trimmedNewText = this._state.profilePage.newPostText.trim();
-        let newPost: PostType = {
-            id: v1(),
-            message: trimmedNewText,
-            likesCount: 0,
-            img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
-        }
-        if (trimmedNewText) {
-            this._state.profilePage.posts.push(newPost)
+    addMessage() {
+        // let newMessage: MessageType = {
+        //     head: "Alex",
+        //     id: v1(),
+        //     messageText: this._state.dialogsPage.newMessageText,
+        //     name: "Alex",
+        //     time: "22:00",
+        //     avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+        // }
+        //
+        // this._state.dialogsPage.messages.push(newMessage)
+        // this._renderEntireTree()
+    },
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let trimmedNewText = this._state.profilePage.newPostText.trim();
+            let newPost: PostType = {
+                id: v1(),
+                message: trimmedNewText,
+                likesCount: 0,
+                img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+            }
+            if (trimmedNewText) {
+                this._state.profilePage.posts.push(newPost)
+                this._state.profilePage.newPostText = '';
+                this._renderEntireTree()
+            }
+        } else if (action.type === "CHANGE-NEW-POST-TEXT-CALL-BACK") {
+            this._state.profilePage.newPostText = action.newText
             this._renderEntireTree()
         }
 
-    },
-    addMessage() {
-        let newMessage: MessageType = {
-            head: "Alex",
-            id: v1(),
-            messageText: this._state.dialogsPage.newMessageText,
-            name: "Alex",
-            time: "22:00",
-            avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
-        }
+    }
 
-        this._state.dialogsPage.messages.push(newMessage)
-        this._renderEntireTree()
-    },
-    _renderEntireTree() {
-
-    },
-    subscribe(observer) {
-        this._renderEntireTree = observer;
-    },
-    getState() {
-        return this._state
-    },
 }
