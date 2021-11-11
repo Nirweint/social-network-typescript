@@ -2,15 +2,14 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogType, MessageType} from "../../redux/state";
+import {ActionsTypes, DialogType, MessageType} from "../../redux/state";
 import {ChatInput} from "./ChatInput/ChatInput";
 
 type DialogsPropsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    addMessage: () => void
     newMessageText: string
-    onChangeInputValueMessage: (inputValue: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 export function Dialogs(props: DialogsPropsType) {
@@ -43,9 +42,8 @@ export function Dialogs(props: DialogsPropsType) {
             <div className={style.chatBody}>
                 <div className={style.messages}>{messagesElements}</div>
                 <ChatInput
-                    addMessage={props.addMessage}
                     newMessageText={props.newMessageText}
-                    onChangeInputValueMessage={props.onChangeInputValueMessage}
+                    dispatch={props.dispatch}
                 />
             </div>
         </div>

@@ -51,8 +51,6 @@ export type RootStateType = {
 }
 export type StoreType = {
     _state: RootStateType
-    onChangeInputValueMessage: (inputValue: string) => void
-    addMessage: () => void
     subscribe: (observer: () => void) => void
     _renderEntireTree: () => void
     getState: () => RootStateType
@@ -67,7 +65,17 @@ type ChangeNewPostTextCallBackActionType = {
     newText: string
 }
 
+type AddMessageActionType = {
+    type: "ADD-MESSAGE"
+}
+type OnChangeInputValueMessageActionType = {
+    type: "ON-CHANGE-INPUT-VALUE-MESSAGE"
+    inputValue: string
+}
+
+
 export type ActionsTypes = AddPostActionType | ChangeNewPostTextCallBackActionType
+    | AddMessageActionType | OnChangeInputValueMessageActionType
 
 
 export const store: StoreType = {
@@ -206,24 +214,6 @@ export const store: StoreType = {
     subscribe(observer) {
         this._renderEntireTree = observer;
     },
-    onChangeInputValueMessage(inputValue: string) {
-        this._state.dialogsPage.newMessageText = inputValue
-        this._renderEntireTree()
-
-    },
-    addMessage() {
-        // let newMessage: MessageType = {
-        //     head: "Alex",
-        //     id: v1(),
-        //     messageText: this._state.dialogsPage.newMessageText,
-        //     name: "Alex",
-        //     time: "22:00",
-        //     avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
-        // }
-        //
-        // this._state.dialogsPage.messages.push(newMessage)
-        // this._renderEntireTree()
-    },
     dispatch(action) {
         if (action.type === "ADD-POST") {
             let trimmedNewText = this._state.profilePage.newPostText.trim();
@@ -240,6 +230,22 @@ export const store: StoreType = {
             }
         } else if (action.type === "CHANGE-NEW-POST-TEXT-CALL-BACK") {
             this._state.profilePage.newPostText = action.newText
+            this._renderEntireTree()
+        } else if (action.type === "ADD-MESSAGE") {
+            let newMessage: MessageType = {
+                head: "Alex",
+                id: v1(),
+                messageText: this._state.dialogsPage.newMessageText,
+                name: "Alex",
+                time: "22:00",
+                avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+            }
+
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = ''
+            this._renderEntireTree()
+        } else if (action.type === "ON-CHANGE-INPUT-VALUE-MESSAGE") {
+            this._state.dialogsPage.newMessageText = action.inputValue
             this._renderEntireTree()
         }
 

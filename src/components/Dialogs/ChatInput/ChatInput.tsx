@@ -1,30 +1,29 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from "./ChatInput.module.css"
+import {ActionsTypes} from "../../../redux/state";
 
 type ChatInputPropsType = {
-    addMessage: () => void
     newMessageText: string
-    onChangeInputValueMessage: (inputValue: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 export const ChatInput = (props: ChatInputPropsType) => {
 
 
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.onChangeInputValueMessage(e.currentTarget.value)
+        props.dispatch({type : "ON-CHANGE-INPUT-VALUE-MESSAGE", inputValue: e.currentTarget.value})
 
     }
 
     const onEnterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && props.newMessageText) {
-            props.addMessage()
+            props.dispatch({type: "ADD-MESSAGE"})
         }
     }
 
     const addMessageHandler = () => {
         if (props.newMessageText) {
-            props.addMessage()
-            props.onChangeInputValueMessage("")
+            props.dispatch({type: "ADD-MESSAGE"})
         }
     }
 

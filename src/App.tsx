@@ -37,9 +37,8 @@ export const App = (props: AppPropsType) => {
                     render={() => <Dialogs
                         dialogs={state.dialogsPage.dialogs}
                         messages={state.dialogsPage.messages}
-                        addMessage={props.store.addMessage.bind(props.store)}
                         newMessageText={state.dialogsPage.newMessageText}
-                        onChangeInputValueMessage={props.store.onChangeInputValueMessage.bind(props.store)}
+                        dispatch={props.dispatch}
                     />}
                 />
 
