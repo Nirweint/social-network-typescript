@@ -8,40 +8,38 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import "./App.css";
-import {RootStateType} from "./redux/state";
+import {StoreType} from "./redux/state";
 
 type AppPropsType = {
-    state: RootStateType
-    addPost: () => void
-    addMessage: () => void
-    changeNewPostTextCallBack: (newText: string) => void
-    onChangeInputValueMessage: (inputValue: string) => void
+    store: StoreType
 }
 
 export const App = (props: AppPropsType) => {
+    const state = props.store.getState();
+
     return (
         <div className="app-wrapper">
             <Header/>
-            <Sidebar friends={props.state.Sidebar.friends}/>
+            <Sidebar friends={state.Sidebar.friends}/>
             <div className="app-wrapper-content">
                 <Route
                     path="/profile"
                     render={() => <Profile
-                        posts={props.state.profilePage.posts}
-                        userInfo={props.state.profilePage.userInfo}
-                        addPost={props.addPost}
-                        newPostText={props.state.profilePage.newPostText}
-                        changeNewPostTextCallBack={props.changeNewPostTextCallBack}
+                        posts={state.profilePage.posts}
+                        userInfo={state.profilePage.userInfo}
+                        addPost={props.store.addPost.bind(props.store)}
+                        newPostText={state.profilePage.newPostText}
+                        changeNewPostTextCallBack={props.store.changeNewPostTextCallBack.bind(props.store)}
                     />}
                 />
                 <Route
                     path="/dialogs"
                     render={() => <Dialogs
-                        dialogs={props.state.dialogsPage.dialogs}
-                        messages={props.state.dialogsPage.messages}
-                        addMessage={props.addMessage}
-                        newMessageText={props.state.dialogsPage.newMessageText}
-                        onChangeInputValueMessage={props.onChangeInputValueMessage}
+                        dialogs={state.dialogsPage.dialogs}
+                        messages={state.dialogsPage.messages}
+                        addMessage={props.store.addMessage.bind(props.store)}
+                        newMessageText={state.dialogsPage.newMessageText}
+                        onChangeInputValueMessage={props.store.onChangeInputValueMessage.bind(props.store)}
                     />}
                 />
 
