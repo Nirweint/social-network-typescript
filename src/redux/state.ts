@@ -60,38 +60,35 @@ export type StoreType = {
 // -----------------------------------------
 
 // Actions types ------------------------------
-type AddPostActionType = {
-    type: "ADD-POST"
-}
-type ChangeNewPostTextCallBackActionType = {
-    type: "CHANGE-NEW-POST-TEXT-CALL-BACK"
-    newText: string
-}
 
-type AddMessageActionType = {
-    type: "ADD-MESSAGE"
-}
-type OnChangeInputValueMessageActionType = {
-    type: "ON-CHANGE-INPUT-VALUE-MESSAGE"
-    inputValue: string
-}
-
-export type ActionsTypes = AddPostActionType | ChangeNewPostTextCallBackActionType
-    | AddMessageActionType | OnChangeInputValueMessageActionType
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextCallBackAC>
+    | ReturnType<typeof addMessageAC> | ReturnType<typeof onChangeInputValueMessageAC>
 
 // --------------------------------------------
 
 // Action creators ------------------------
-export const addPostAC = (): AddPostActionType => {
+export const addPostAC = () => {
     return {
         type: "ADD-POST",
-    }
+    } as const
 }
-export const changeNewPostTextCallBackAC = (newText: string): ChangeNewPostTextCallBackActionType => {
+export const changeNewPostTextCallBackAC = (newText: string) => {
     return {
         type: "CHANGE-NEW-POST-TEXT-CALL-BACK",
         newText: newText
-    }
+    } as const
+}
+
+export const addMessageAC = () => {
+    return {
+        type: "ADD-MESSAGE",
+    } as const
+}
+export const onChangeInputValueMessageAC = (inputValue: string) => {
+    return {
+        type: "ON-CHANGE-INPUT-VALUE-MESSAGE",
+        inputValue: inputValue
+    } as const
 }
 
 
