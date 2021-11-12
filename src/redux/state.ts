@@ -1,5 +1,10 @@
 import {v1} from "uuid";
 
+const ADD_POST = "ADD-POST"
+const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
+const ADD_MESSAGE = "ADD-MESSAGE"
+const ON_CHANGE_INPUT_VALUE_MESSAGE = "ON-CHANGE-INPUT-VALUE-MESSAGE"
+
 // Store types ---------------------------
 export type PostType = {
     id: string
@@ -69,24 +74,24 @@ export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof chan
 // Action creators ------------------------
 export const addPostAC = () => {
     return {
-        type: "ADD-POST",
+        type: ADD_POST,
     } as const
 }
 export const changeNewPostTextCallBackAC = (newText: string) => {
     return {
-        type: "CHANGE-NEW-POST-TEXT-CALL-BACK",
+        type: CHANGE_NEW_POST_TEXT_CALL_BACK,
         newText: newText
     } as const
 }
 
 export const addMessageAC = () => {
     return {
-        type: "ADD-MESSAGE",
+        type: ADD_MESSAGE,
     } as const
 }
 export const onChangeInputValueMessageAC = (inputValue: string) => {
     return {
-        type: "ON-CHANGE-INPUT-VALUE-MESSAGE",
+        type: ON_CHANGE_INPUT_VALUE_MESSAGE,
         inputValue: inputValue
     } as const
 }
@@ -230,7 +235,7 @@ export const store: StoreType = {
         this._renderEntireTree = observer;
     },
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             let trimmedNewText = this._state.profilePage.newPostText.trim();
             let newPost: PostType = {
                 id: v1(),
@@ -243,10 +248,10 @@ export const store: StoreType = {
                 this._state.profilePage.newPostText = '';
                 this._renderEntireTree()
             }
-        } else if (action.type === "CHANGE-NEW-POST-TEXT-CALL-BACK") {
+        } else if (action.type === CHANGE_NEW_POST_TEXT_CALL_BACK) {
             this._state.profilePage.newPostText = action.newText
             this._renderEntireTree()
-        } else if (action.type === "ADD-MESSAGE") {
+        } else if (action.type === ADD_MESSAGE) {
             let newMessage: MessageType = {
                 head: "Alex",
                 id: v1(),
@@ -259,7 +264,7 @@ export const store: StoreType = {
             this._state.dialogsPage.messages.push(newMessage)
             this._state.dialogsPage.newMessageText = ''
             this._renderEntireTree()
-        } else if (action.type === "ON-CHANGE-INPUT-VALUE-MESSAGE") {
+        } else if (action.type === ON_CHANGE_INPUT_VALUE_MESSAGE) {
             this._state.dialogsPage.newMessageText = action.inputValue
             this._renderEntireTree()
         }
