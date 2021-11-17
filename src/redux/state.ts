@@ -1,11 +1,6 @@
 import {v1} from "uuid";
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
-
-const ADD_POST = "ADD-POST"
-const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
-const ADD_MESSAGE = "ADD-MESSAGE"
-const ON_CHANGE_INPUT_VALUE_MESSAGE = "ON-CHANGE-INPUT-VALUE-MESSAGE"
+import {addPostAC, changeNewPostTextCallBackAC, profileReducer} from "./profile-reducer";
+import {addMessageAC, dialogsReducer, onChangeInputValueMessageAC} from "./dialogs-reducer";
 
 // Store types ---------------------------
 export type PostType = {
@@ -72,31 +67,6 @@ export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof chan
     | ReturnType<typeof addMessageAC> | ReturnType<typeof onChangeInputValueMessageAC>
 
 // --------------------------------------------
-
-// Action creators ------------------------
-export const addPostAC = () => {
-    return {
-        type: ADD_POST,
-    } as const
-}
-export const changeNewPostTextCallBackAC = (newText: string) => {
-    return {
-        type: CHANGE_NEW_POST_TEXT_CALL_BACK,
-        newText: newText
-    } as const
-}
-
-export const addMessageAC = () => {
-    return {
-        type: ADD_MESSAGE,
-    } as const
-}
-export const onChangeInputValueMessageAC = (inputValue: string) => {
-    return {
-        type: ON_CHANGE_INPUT_VALUE_MESSAGE,
-        inputValue: inputValue
-    } as const
-}
 
 
 // Store ---------------------------
