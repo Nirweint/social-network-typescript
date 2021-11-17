@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {profileReducer} from "./profile-reducer";
+import {dialogsReducer} from "./dialogs-reducer";
 
 const ADD_POST = "ADD-POST"
 const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
@@ -53,7 +55,7 @@ export type FriendsType = {
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
-    Sidebar: FriendsType
+    sidebar: FriendsType
 }
 export type StoreType = {
     _state: RootStateType
@@ -205,7 +207,7 @@ export const store: StoreType = {
             ],
             newMessageText: "",
         },
-        Sidebar: {
+        sidebar: {
             friends: [
                 {
                     id: v1(),
@@ -235,40 +237,9 @@ export const store: StoreType = {
         this._renderEntireTree = observer;
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let trimmedNewText = this._state.profilePage.newPostText.trim();
-            let newPost: PostType = {
-                id: v1(),
-                message: trimmedNewText,
-                likesCount: 0,
-                img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
-            }
-            if (trimmedNewText) {
-                this._state.profilePage.posts.push(newPost)
-                this._state.profilePage.newPostText = '';
-                this._renderEntireTree()
-            }
-        } else if (action.type === CHANGE_NEW_POST_TEXT_CALL_BACK) {
-            this._state.profilePage.newPostText = action.newText
-            this._renderEntireTree()
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage: MessageType = {
-                head: "Alex",
-                id: v1(),
-                messageText: this._state.dialogsPage.newMessageText,
-                name: "Alex",
-                time: "22:00",
-                avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
-            }
-
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
-            this._renderEntireTree()
-        } else if (action.type === ON_CHANGE_INPUT_VALUE_MESSAGE) {
-            this._state.dialogsPage.newMessageText = action.inputValue
-            this._renderEntireTree()
-        }
-
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._renderEntireTree()
     }
 
 }
