@@ -1,4 +1,4 @@
-import {ActionsTypes, PostType, ProfilePageType} from "./state";
+import {ActionsTypes, PostType, ProfilePageType} from "./store";
 import {v1} from "uuid";
 
 const ADD_POST = "ADD-POST"

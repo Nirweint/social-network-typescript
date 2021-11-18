@@ -63,8 +63,10 @@ export type StoreType = {
 
 // Actions types ------------------------------
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextCallBackAC>
-    | ReturnType<typeof addMessageAC> | ReturnType<typeof onChangeInputValueMessageAC>
+export type ActionsTypes = ReturnType<typeof addPostAC> |
+    ReturnType<typeof changeNewPostTextCallBackAC> |
+    ReturnType<typeof addMessageAC> |
+    ReturnType<typeof onChangeInputValueMessageAC>
 
 // --------------------------------------------
 
