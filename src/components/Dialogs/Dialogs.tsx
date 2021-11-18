@@ -3,9 +3,9 @@ import style from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsPageType} from "../../redux/store";
-import {ChatInput} from "./ChatInput/ChatInput";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
+import {ChatInputContainer} from "./ChatInput/ChatInputContainer";
 
 type DialogsPropsType = {}
 
@@ -40,7 +40,7 @@ export function Dialogs(props: DialogsPropsType) {
             </div>
             <div className={style.chatBody}>
                 <div className={style.messages}>{messagesElements}</div>
-                <ChatInput
+                <ChatInputContainer
                     newMessageText={dialogsPage.newMessageText}
                 />
             </div>

@@ -1,29 +1,24 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from "./ChatInput.module.css"
-import {addMessageAC, onChangeInputValueMessageAC} from "../../../redux/dialogs-reducer";
-import {useDispatch} from "react-redux";
 
 type ChatInputPropsType = {
     newMessageText: string
+    changeInput: (newMessageText: string) => void
+    addMessageOnEnterPress: (keyValue: string) => void
+    addMessage: () => void
 }
 
 export const ChatInput = (props: ChatInputPropsType) => {
 
-    let dispatch = useDispatch()
 
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(onChangeInputValueMessageAC(e.currentTarget.value))
-
+        props.changeInput(e.currentTarget.value)
     }
     const onEnterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter" && props.newMessageText) {
-            addMessageHandler()
-        }
+            props.addMessageOnEnterPress(e.key)
     }
     const addMessageHandler = () => {
-        props.newMessageText.trim() &&
-        dispatch(addMessageAC())
-        dispatch(onChangeInputValueMessageAC(''))
+        props.addMessage()
     }
 
     return (
