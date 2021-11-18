@@ -8,37 +8,44 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import "./App.css";
-import {ActionsTypes, StoreType} from "./redux/store";
+import {ActionsTypes, DialogsPageType, FriendsType, ProfilePageType, RootStateType, StoreType} from "./redux/store";
+import {useDispatch, useSelector} from "react-redux";
+import {RootReducerType} from "./redux/redux-store";
 
 type AppPropsType = {
-    store: StoreType
-    dispatch: (action: ActionsTypes) => void
+    // store: StoreType
+    // dispatch: (action: ActionsTypes) => void
 }
 
 export const App = (props: AppPropsType) => {
-    const state = props.store.getState();
+
+    let dispatch = useDispatch()
+
+
+    let dialogsPage = useSelector<RootReducerType, DialogsPageType>(state => state.dialogsPage)
+    let sidebar = useSelector<RootReducerType, FriendsType>(state => state.sidebar)
 
     return (
         <div className="app-wrapper">
             <Header/>
-            <Sidebar friends={state.sidebar.friends}/>
+            <Sidebar friends={sidebar.friends}/>
             <div className="app-wrapper-content">
                 <Route
                     path="/profile"
                     render={() => <Profile
-                        posts={state.profilePage.posts}
-                        userInfo={state.profilePage.userInfo}
-                        newPostText={state.profilePage.newPostText}
-                        dispatch={props.dispatch}
+                        // posts={profilePage.posts}
+                        // userInfo={profilePage.userInfo}
+                        // newPostText={profilePage.newPostText}
+                        // dispatch={dispatch}
                     />}
                 />
                 <Route
                     path="/dialogs"
                     render={() => <Dialogs
-                        dialogs={state.dialogsPage.dialogs}
-                        messages={state.dialogsPage.messages}
-                        newMessageText={state.dialogsPage.newMessageText}
-                        dispatch={props.dispatch}
+                        dialogs={dialogsPage.dialogs}
+                        messages={dialogsPage.messages}
+                        newMessageText={dialogsPage.newMessageText}
+                        dispatch={dispatch}
                     />}
                 />
 

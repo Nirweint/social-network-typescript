@@ -2,25 +2,28 @@ import React from 'react';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import style from './Profile.module.css';
-import {ActionsTypes, PostType, UserInfoType} from "../../redux/store";
+import {ActionsTypes, PostType, ProfilePageType, UserInfoType} from "../../redux/store";
+import {useSelector} from "react-redux";
+import {RootReducerType} from "../../redux/redux-store";
 
 
 type ProfilePropsType = {
-    posts: Array<PostType>
-    userInfo: UserInfoType
-    newPostText: string
-    dispatch: (action: ActionsTypes) => void
+    // posts: Array<PostType>
+    // userInfo: UserInfoType
+    // newPostText: string
+    // dispatch: (action: ActionsTypes) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {
+    let profilePage = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
 
     return (
         <div>
-            <ProfileInfo userInfo={props.userInfo}/>
+            <ProfileInfo userInfo={profilePage.userInfo}/>
             <MyPosts
-                posts={props.posts}
-                newPostText={props.newPostText}
-                dispatch={props.dispatch}
+                posts={profilePage.posts}
+                newPostText={profilePage.newPostText}
+                // dispatch={props.dispatch}
             />
         </div>
     );

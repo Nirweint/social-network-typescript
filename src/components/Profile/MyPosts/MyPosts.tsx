@@ -3,17 +3,20 @@ import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {ActionsTypes, PostType} from "../../../redux/store";
 import {addPostAC, changeNewPostTextCallBackAC} from "../../../redux/profile-reducer";
+import {useDispatch} from "react-redux";
 
 export type MyPostsPropsType = {
     posts: Array<PostType>
     newPostText: string
-    dispatch: (action: ActionsTypes) => void
+    // dispatch: (action: ActionsTypes) => void
 }
 
 export function MyPosts(props: MyPostsPropsType) {
 
+    let dispatch = useDispatch()
+
     const onChangeTextValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(changeNewPostTextCallBackAC(e.currentTarget.value))
+        dispatch(changeNewPostTextCallBackAC(e.currentTarget.value))
     }
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
@@ -22,7 +25,7 @@ export function MyPosts(props: MyPostsPropsType) {
         }
     }
     const addPostHandler = () => {
-        props.dispatch(addPostAC())
+        dispatch(addPostAC())
     }
 
     return (
