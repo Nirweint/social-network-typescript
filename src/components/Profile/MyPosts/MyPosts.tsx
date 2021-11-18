@@ -16,6 +16,7 @@ export function MyPosts(props: MyPostsPropsType) {
     let dispatch = useDispatch()
 
     const onChangeTextValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        e.currentTarget.value.trim() &&
         dispatch(changeNewPostTextCallBackAC(e.currentTarget.value))
     }
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -25,7 +26,9 @@ export function MyPosts(props: MyPostsPropsType) {
         }
     }
     const addPostHandler = () => {
+        props.newPostText &&
         dispatch(addPostAC())
+        dispatch(changeNewPostTextCallBackAC(''))
     }
 
     return (

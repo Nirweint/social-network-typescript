@@ -84,21 +84,18 @@ export const dialogsReducer = (state: DialogsPageType = initialDialogsState, act
 
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMessage: MessageType = {
-                head: "Alex",
-                id: v1(),
-                messageText: state.newMessageText,
-                name: "Alex",
-                time: "22:00",
-                avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
-            }
+            return {...state, messages: [...state.messages, {
+                    head: "Alex",
+                    id: v1(),
+                    messageText: state.newMessageText,
+                    name: "Alex",
+                    time: "22:00",
+                    avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+                }]}
 
-            state.messages.push(newMessage)
-            state.newMessageText = ''
-            return state;
         case ON_CHANGE_INPUT_VALUE_MESSAGE:
-            state.newMessageText = action.inputValue
-            return state;
+            return {...state, newMessageText: action.inputValue}
+
         default:
             return state;
     }

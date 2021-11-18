@@ -25,6 +25,7 @@ export const ChatInput = (props: ChatInputPropsType) => {
     const addMessageHandler = () => {
         if (props.newMessageText) {
             props.dispatch(addMessageAC())
+            props.dispatch(onChangeInputValueMessageAC(''))
         }
     }
 

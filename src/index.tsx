@@ -6,8 +6,7 @@ import React from "react";
 import './index.css'
 import {Provider} from "react-redux";
 
-let renderEntireTree = () => {
-    debugger
+// let renderEntireTree = () => {
     ReactDOM.render(<React.StrictMode>
             <BrowserRouter>
                 <Provider store={store}>
@@ -20,10 +19,10 @@ let renderEntireTree = () => {
             </BrowserRouter>
         </React.StrictMode>, document.getElementById('root')
     );
-}
-renderEntireTree();
+// }
+// renderEntireTree();
 
-store.subscribe(() => {
-    renderEntireTree();
-    // store.getState()
-});
+// store.subscribe(() => {
+//     renderEntireTree();
+//     // store.getState()
+// });
