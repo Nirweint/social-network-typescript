@@ -2,19 +2,18 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {ActionsTypes, DialogType, MessageType} from "../../redux/store";
+import {DialogsPageType} from "../../redux/store";
 import {ChatInput} from "./ChatInput/ChatInput";
+import {useSelector} from "react-redux";
+import {RootReducerType} from "../../redux/redux-store";
 
-type DialogsPropsType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-    newMessageText: string
-    dispatch: (action: ActionsTypes) => void
-}
+type DialogsPropsType = {}
 
 export function Dialogs(props: DialogsPropsType) {
 
-    const dialogsElements = props.dialogs
+    let dialogsPage = useSelector<RootReducerType, DialogsPageType>(state => state.dialogsPage)
+
+    const dialogsElements = dialogsPage.dialogs
         .map(p => <DialogItem
             key={p.id}
             name={p.name}
@@ -22,7 +21,7 @@ export function Dialogs(props: DialogsPropsType) {
             img={p.img}
         />)
 
-    const messagesElements = props.messages
+    const messagesElements = dialogsPage.messages
         .map(m => <Message
             key={m.id}
             messageText={m.messageText}
@@ -42,8 +41,7 @@ export function Dialogs(props: DialogsPropsType) {
             <div className={style.chatBody}>
                 <div className={style.messages}>{messagesElements}</div>
                 <ChatInput
-                    newMessageText={props.newMessageText}
-                    dispatch={props.dispatch}
+                    newMessageText={dialogsPage.newMessageText}
                 />
             </div>
         </div>

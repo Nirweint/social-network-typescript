@@ -1,6 +1,5 @@
-import {v1} from "uuid";
-import {addPostAC, changeNewPostTextCallBackAC, profileReducer} from "./profile-reducer";
-import {addMessageAC, dialogsReducer, onChangeInputValueMessageAC} from "./dialogs-reducer";
+import {addPostAC, changeNewPostTextCallBackAC} from "./profile-reducer";
+import {addMessageAC, onChangeInputValueMessageAC} from "./dialogs-reducer";
 
 // Store types ---------------------------
 export type PostType = {
@@ -59,7 +58,6 @@ export type StoreType = {
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
 }
-// -----------------------------------------
 
 // Actions types ------------------------------
 
@@ -67,9 +65,6 @@ export type ActionsTypes = ReturnType<typeof addPostAC> |
     ReturnType<typeof changeNewPostTextCallBackAC> |
     ReturnType<typeof addMessageAC> |
     ReturnType<typeof onChangeInputValueMessageAC>
-
-// --------------------------------------------
-
 
 // Store ---------------------------
 // export const store: StoreType = {
@@ -215,5 +210,3 @@ export type ActionsTypes = ReturnType<typeof addPostAC> |
 //     }
 //
 // }
-
-// -------------------------

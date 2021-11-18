@@ -1,5 +1,7 @@
-import {ActionsTypes, PostType, ProfilePageType} from "./store";
+import {ActionsTypes, ProfilePageType} from "./store";
 import {v1} from "uuid";
+
+const imgForNewPost = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
 
 const ADD_POST = "ADD-POST"
 const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
@@ -39,13 +41,11 @@ export const profileReducer = (state: ProfilePageType = initialProfileState, act
 
     switch (action.type) {
         case ADD_POST:
-            let trimmedNewText = state.newPostText.trim();
-
             return {...state, posts: [...state.posts ,{
                         id: v1(),
-                        message: trimmedNewText,
+                        message: state.newPostText,
                         likesCount: 0,
-                        img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+                        img: imgForNewPost,
                     }]}
 
         case CHANGE_NEW_POST_TEXT_CALL_BACK:

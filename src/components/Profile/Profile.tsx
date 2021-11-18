@@ -2,16 +2,12 @@ import React from 'react';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import style from './Profile.module.css';
-import {ActionsTypes, PostType, ProfilePageType, UserInfoType} from "../../redux/store";
+import {ProfilePageType} from "../../redux/store";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
 
 
 type ProfilePropsType = {
-    // posts: Array<PostType>
-    // userInfo: UserInfoType
-    // newPostText: string
-    // dispatch: (action: ActionsTypes) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {
@@ -23,7 +19,6 @@ export const Profile = (props: ProfilePropsType) => {
             <MyPosts
                 posts={profilePage.posts}
                 newPostText={profilePage.newPostText}
-                // dispatch={props.dispatch}
             />
         </div>
     );
