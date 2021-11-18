@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './MyPosts.module.css';
 import {PostType} from "../../../redux/store";
 import {addPostAC, changeNewPostTextCallBackAC} from "../../../redux/profile-reducer";
 import {useDispatch} from "react-redux";
@@ -18,9 +17,8 @@ export function MyPostsContainer(props: MyPostsPropsType) {
         dispatch(changeNewPostTextCallBackAC(textValue))
     }
     const addPostOnEnterPress = (keyValue: string) => {
-        if (keyValue === 'Enter') {
-            addPost()
-        }
+        keyValue === 'Enter' &&
+        addPost()
     }
     const addPost = () => {
         props.newPostText.trim() &&

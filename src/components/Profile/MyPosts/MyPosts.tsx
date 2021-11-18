@@ -19,7 +19,7 @@ export function MyPosts(props: MyPostsPropsType) {
     }
     const addPostOnEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         props.addPostOnEnterPress(e.key)
-        e.preventDefault()
+        e.key === "Enter" && e.preventDefault() // to think about
     }
     const addPostHandler = () => {
         props.addPost()
