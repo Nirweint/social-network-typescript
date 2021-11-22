@@ -1,4 +1,4 @@
-import {ActionsTypes, ProfilePageType} from "./store";
+import {ActionsTypes, PostType, ProfilePageType} from "./store";
 import {v1} from "uuid";
 
 const imgForNewPost = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
@@ -33,11 +33,11 @@ const initialProfileState = {
             likesCount: 1,
             img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
         },
-    ],
+    ] as Array<PostType>,
     newPostText: "",
 }
 
-export const profileReducer = (state: ProfilePageType = initialProfileState, action: ActionsTypes) => {
+export const profileReducer = (state: ProfilePageType = initialProfileState, action: ActionsTypes): ProfilePageType => {
 
     switch (action.type) {
         case ADD_POST:

@@ -2,24 +2,24 @@ import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/store";
+import {MyPostsPropsType} from "./MyPostsContainer";
 
-export type MyPostsPropsType = {
-    posts: Array<PostType>
-    newPostText: string
-    addPost: () => void
-    ChangeTextValue: (textValue: string) => void
-    addPostOnEnterPress: (keyValue: string) => void
-}
+// export type MyPostsPropsType = {
+//     posts: Array<PostType>
+//     newPostText: string
+//     addPost: () => void
+//     changeTextValue: (textValue: string) => void
+//     addPostOnEnterPress: (keyValue: string) => void
+// }
 
 export function MyPosts(props: MyPostsPropsType) {
 
-
     const onChangeTextValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.ChangeTextValue(e.currentTarget.value)
+        props.changeTextValue(e.currentTarget.value)
     }
     const addPostOnEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         props.addPostOnEnterPress(e.key)
-        e.key === "Enter" && e.preventDefault() // to think about
+        e.key === "Enter" && e.preventDefault()// to think about
     }
     const addPostHandler = () => {
         props.addPost()
