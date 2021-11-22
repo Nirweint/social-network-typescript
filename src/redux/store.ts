@@ -1,5 +1,6 @@
 import {addPostAC, changeNewPostTextCallBackAC} from "./profile-reducer";
 import {addMessageAC, onChangeInputValueMessageAC} from "./dialogs-reducer";
+import {setUsersAC, toggleFollowAC, UserType} from "./users-reducer";
 
 // Store types ---------------------------
 export type PostType = {
@@ -50,6 +51,7 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     sidebar: FriendsType
+    usersPage: Array<UserType>
 }
 export type StoreType = {
     _state: RootStateType
@@ -64,7 +66,9 @@ export type StoreType = {
 export type ActionsTypes = ReturnType<typeof addPostAC> |
     ReturnType<typeof changeNewPostTextCallBackAC> |
     ReturnType<typeof addMessageAC> |
-    ReturnType<typeof onChangeInputValueMessageAC>
+    ReturnType<typeof onChangeInputValueMessageAC> |
+    ReturnType<typeof toggleFollowAC> |
+    ReturnType<typeof setUsersAC>
 
 // Store ---------------------------
 // export const store: StoreType = {
