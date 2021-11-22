@@ -10,7 +10,9 @@ type ActiveFriendsPropsType = {
 
 export function ActiveFriends(props: ActiveFriendsPropsType) {
 
-    let FriendElement = props.friends.map(friend =><NavLink activeClassName={style.activeLink} key={friend.id} to={`/dialogs/${friend.id}`}><Friend  id={friend.id} name={friend.name} img={friend.img}/></NavLink> )
+    const activeLinkStyle = ({isActive}: {isActive: boolean}) => isActive ? style.activeLink : ""
+
+    let FriendElement = props.friends.map(friend =><NavLink className={activeLinkStyle} key={friend.id} to={`/dialogs/${friend.id}`}><Friend  id={friend.id} name={friend.name} img={friend.img}/></NavLink> )
 
     return (
         <div className={style.activeFriends}>

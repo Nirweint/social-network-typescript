@@ -4,7 +4,7 @@ import style from './Profile.module.css';
 import {ProfilePageType} from "../../redux/store";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
-import {SuperMyPostsContainer} from "./MyPosts/MyPostsContainer";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 
 type ProfilePropsType = {
@@ -16,7 +16,7 @@ export const Profile = (props: ProfilePropsType) => {
     return (
         <div>
             <ProfileInfo userInfo={profilePage.userInfo}/>
-            <SuperMyPostsContainer
+            <MyPostsContainer
                 // posts={profilePage.posts}
                 // newPostText={profilePage.newPostText}
             />

@@ -12,24 +12,28 @@ type SidebarPropsType = {}
 export const Sidebar = (props: SidebarPropsType) => {
     let sidebar = useSelector<RootReducerType, FriendsType>(state => state.sidebar)
 
-    const activeLinkStyle = style.activeLink;
+    // const activeLinkStyle = style.activeLink;
+    const activeLinkStyle = ({isActive}: {isActive: boolean}) => isActive ? style.activeLink : ""
 
     return (
         <nav className={style.nav}>
             <div className={style.item}>
-                <NavLink to="/profile" activeClassName={activeLinkStyle}>Profile</NavLink>
+                <NavLink to="/profile" className={activeLinkStyle}>Profile</NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to="/dialogs" activeClassName={activeLinkStyle}>Messages</NavLink>
+                <NavLink to="/dialogs" className={activeLinkStyle}>Messages</NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to="/news" activeClassName={activeLinkStyle}>News</NavLink>
+                <NavLink to="/news" className={activeLinkStyle}>News</NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to="/music" activeClassName={activeLinkStyle}>Music</NavLink>
+                <NavLink to="/music" className={activeLinkStyle}>Music</NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to="/settings" activeClassName={activeLinkStyle}>Settings</NavLink>
+                <NavLink to="/settings" className={activeLinkStyle}>Settings</NavLink>
+            </div>
+            <div className={style.item}>
+                <NavLink to="/users" className={activeLinkStyle}>Users</NavLink>
             </div>
             <div className={style.activeFriends}>
                 <h3 className={style.title}>Friends:</h3>

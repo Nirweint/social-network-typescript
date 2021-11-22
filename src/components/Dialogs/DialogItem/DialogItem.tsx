@@ -10,12 +10,13 @@ type DialogItemPropsType = {
 
 export function DialogItem(props: DialogItemPropsType) {
 
-    let path = '/dialogs/' + props.id
+    const activeLinkStyle = ({isActive}: {isActive: boolean}) => isActive ? style.active : ""
+    const path = '/dialogs/' + props.id
 
     return (
         <div className={style.dialog}>
             <img className={style.avatar} src={props.img} alt="avatar"/>
-            <NavLink to={path} activeClassName={style.active}>{props.name}</NavLink>
+            <NavLink to={path} className={activeLinkStyle}>{props.name}</NavLink>
         </div>
     )
 }
