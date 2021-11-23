@@ -6,19 +6,11 @@ import React from "react";
 import './index.css'
 import {Provider} from "react-redux";
 
-// let renderEntireTree = () => {
-    ReactDOM.render(<React.StrictMode>
-            <BrowserRouter>
-                <Provider store={store}>
-                    <App/>
-                </Provider>
-            </BrowserRouter>
-        </React.StrictMode>, document.getElementById('root')
-    );
-// }
-// renderEntireTree();
-
-// store.subscribe(() => {
-//     renderEntireTree();
-//     // store.getState()
-// });
+ReactDOM.render(<React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>, document.getElementById('root')
+);

@@ -1,10 +1,10 @@
-import {ActionsTypes} from "./store";
+import {ActionsTypes} from "../store";
 import {v1} from "uuid";
 
 export const img = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
 
-const TOGGLE_FOLLOW = "TOGGLE-FOLLOW"
-const SET_USERS = "SET-USERS";
+export const TOGGLE_FOLLOW = "TOGGLE-FOLLOW"
+export const SET_USERS = "SET-USERS";
 
 type UserLocationType = {
     city: string
@@ -75,16 +75,3 @@ export const usersReducer = (state:UsersPageType = initialUsersState, action: Ac
     }
 }
 
-export const toggleFollowAC = (userId: string) => {
-    return {
-        type: TOGGLE_FOLLOW,
-        userId: userId
-    } as const
-}
-
-export const setUsersAC = (users: Array<UserType>) => {
-    return {
-        type: SET_USERS,
-        users: users,
-    } as const
-}

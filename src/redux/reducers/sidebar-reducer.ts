@@ -1,4 +1,4 @@
-import {FriendsType} from "./store";
+import {FriendsType} from "../store";
 import {v1} from "uuid";
 
 

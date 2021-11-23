@@ -1,9 +1,9 @@
 import React from 'react';
 import {PostType, RootStateType} from "../../../redux/store";
-import {addPostAC, changeNewPostTextCallBackAC} from "../../../redux/profile-reducer";
 import {connect, useDispatch} from "react-redux";
 import {MyPosts} from "./MyPosts";
 import {Dispatch} from "redux";
+import {addPostAC, changeNewPostTextCallBackAC} from "../../../redux/action-creators/profile";
 
 // export type MyPostsPropsType = {
 //     posts: Array<PostType>

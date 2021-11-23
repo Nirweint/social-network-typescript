@@ -1,6 +1,7 @@
-import {addPostAC, changeNewPostTextCallBackAC} from "./profile-reducer";
-import {addMessageAC, onChangeInputValueMessageAC} from "./dialogs-reducer";
-import {setUsersAC, toggleFollowAC, UserType} from "./users-reducer";
+import {UserType} from "./reducers/users-reducer";
+import {addPostAC, changeNewPostTextCallBackAC} from "./action-creators/profile";
+import {addMessageAC, onChangeInputValueMessageAC} from "./action-creators/dialog";
+import {setUsersAC, toggleFollowAC} from "./action-creators/users";
 
 // Store types ---------------------------
 export type PostType = {

@@ -1,7 +1,7 @@
 import React from 'react';
-import {addMessageAC, onChangeInputValueMessageAC} from "../../../redux/dialogs-reducer";
 import {useDispatch} from "react-redux";
 import {ChatInput} from "./ChatInput";
+import {addMessageAC, onChangeInputValueMessageAC} from "../../../redux/action-creators/dialog";
 
 type ChatInputPropsType = {
     newMessageText: string

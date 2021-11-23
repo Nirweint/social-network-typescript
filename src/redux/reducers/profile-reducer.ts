@@ -1,10 +1,10 @@
-import {ActionsTypes, PostType, ProfilePageType} from "./store";
+import {ActionsTypes, PostType, ProfilePageType} from "../store";
 import {v1} from "uuid";
 
 const imgForNewPost = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
 
-const ADD_POST = "ADD-POST"
-const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
+export const ADD_POST = "ADD-POST"
+export const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
 
 const initialProfileState = {
     userInfo: {
@@ -55,14 +55,3 @@ export const profileReducer = (state: ProfilePageType = initialProfileState, act
     }
 }
 
-export const addPostAC = () => {
-    return {
-        type: ADD_POST,
-    } as const
-}
-export const changeNewPostTextCallBackAC = (newText: string) => {
-    return {
-        type: CHANGE_NEW_POST_TEXT_CALL_BACK,
-        newText: newText
-    } as const
-}

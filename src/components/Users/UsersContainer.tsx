@@ -1,15 +1,16 @@
 import React from 'react';
 import s from './Users.module.css';
 import {Users} from "./Users";
-import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../redux/redux-store";
-import {img, setUsersAC, toggleFollowAC, UsersPageType, UserType} from "../../redux/users-reducer";
+import {img, UserType} from "../../redux/reducers/users-reducer";
 import {Button} from "../../UI/Button/Button";
 import {v1} from "uuid";
+import {setUsersAC, toggleFollowAC} from "../../redux/action-creators/users";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useActions} from "../../hooks/useActions";
 
 export const UsersContainer = () => {
-    let usersPage = useSelector<RootReducerType, UsersPageType>(state => state.usersPage)
-    let dispatch = useDispatch()
+    let users = useTypedSelector(state => state.usersPage.users)
+    const {toggleFollowAC, setUsersAC} = useActions()
 
     const newUsers = [
         {
@@ -18,7 +19,7 @@ export const UsersContainer = () => {
             img: img,
             fullName: "Nastya",
             status: "I'm front-end developer",
-            location: {city: "Mins", country: "Belarus"}
+            location: {city: "Minsk", country: "Belarus"}
         },
         {
             id: v1(),
@@ -31,18 +32,17 @@ export const UsersContainer = () => {
     ]
 
     const onFollowClick = (userId: string) => {
-        dispatch(toggleFollowAC(userId))
+        toggleFollowAC(userId)
     }
-
     const setUsers = (users: Array<UserType>) => {
-        dispatch(setUsersAC(users))
+        setUsersAC(users)
     }
 
 
     return (
         <div>
             {
-                usersPage.users.map(u => {
+                users.map(u => {
                     return (
                         <Users
                             key={u.id}
