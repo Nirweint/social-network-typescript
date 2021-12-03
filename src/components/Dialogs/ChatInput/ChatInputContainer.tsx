@@ -1,7 +1,7 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
 import {ChatInput} from "./ChatInput";
 import {addMessageAC, onChangeInputValueMessageAC} from "../../../redux/action-creators/dialog";
+import {useActions} from "../../../hooks/useActions";
 
 type ChatInputPropsType = {
     newMessageText: string
@@ -9,10 +9,10 @@ type ChatInputPropsType = {
 
 export const ChatInputContainer = (props: ChatInputPropsType) => {
 
-    let dispatch = useDispatch()
+    let {addMessageAC, onChangeInputValueMessageAC} = useActions()
 
     const changeInput = (newMessageText: string) => {
-        dispatch(onChangeInputValueMessageAC(newMessageText))
+        onChangeInputValueMessageAC(newMessageText)
 
     }
     const addMessageOnEnterPress = (keyValue: string) => {
@@ -22,8 +22,8 @@ export const ChatInputContainer = (props: ChatInputPropsType) => {
     }
     const addMessage = () => {
         props.newMessageText.trim() &&
-        dispatch(addMessageAC())
-        dispatch(onChangeInputValueMessageAC(''))
+        addMessageAC()
+        onChangeInputValueMessageAC('')
     }
 
     return (

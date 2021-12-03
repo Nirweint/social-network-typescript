@@ -6,14 +6,18 @@ import {DialogsPageType} from "../../redux/store";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
 import {ChatInputContainer} from "./ChatInput/ChatInputContainer";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 type DialogsPropsType = {}
 
 export function Dialogs(props: DialogsPropsType) {
-
+    //get dialogsPage with useSelector, here i can get only state from reducer
     let dialogsPage = useSelector<RootReducerType, DialogsPageType>(state => state.dialogsPage)
 
-    const dialogsElements = dialogsPage.dialogs
+    // get dialogs with custom hook, here i get in dialogsPage/dialogs. i can't do this with useSelector
+    let dialogs = useTypedSelector(state => state.dialogsPage.dialogs)
+
+    const dialogsElements = dialogs
         .map(p => <DialogItem
             key={p.id}
             name={p.name}
