@@ -13,41 +13,12 @@ export const UsersContainer = () => {
     let users = useTypedSelector(state => state.usersPage.users)
     const {toggleFollowAC, setUsersAC} = useActions()
 
-    // const newUsers = [
-    //     {
-    //         id: v1(),
-    //         isFollowed: false,
-    //         img: img,
-    //         fullName: "Nastya",
-    //         status: "I'm front-end developer",
-    //         location: {city: "Minsk", country: "Belarus"}
-    //     },
-    //     {
-    //         id: v1(),
-    //         followed: true,
-    //         img: img,
-    //         name: "Vova",
-    //         status: "I'm front-end developer",
-    //         location: {city: "Mogilev", country: "Belarus"}
-    //     },
-    // "items": [
-    //     {
-    //         "name": "mrfreiii",
-    //         "id": 21144,
-    //         "uniqueUrlName": null,
-    //         "photos": {
-    //             "small": null,
-    //             "large": null
-    //         },
-    //         "status": null,
-    //         "followed": false
-    //     },
-    // ]
-
-    if (users.length === 4) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            setUsers(response.data.items)
-        })
+    let getUsers = () => {
+        if (users.length < 5) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                setUsers(response.data.items)
+            })
+        }
     }
 
     const onFollowClick = (userId: number) => {
@@ -77,7 +48,8 @@ export const UsersContainer = () => {
                 })
             }
             <div>
-                {/*<Button onClick={() => setUsers(response)}>Show More</Button>*/}
+                <Button onClick={() => setUsers(users)}>Show More</Button>
+                <Button onClick={getUsers}>Get More</Button>
             </div>
         </div>
 
