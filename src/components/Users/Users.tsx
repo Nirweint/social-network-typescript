@@ -1,43 +1,41 @@
 import React from 'react';
 import s from './Users.module.css';
 import {Button} from "../../UI/Button/Button";
+import defaultImg from "../../assets/images/user-avatar.webp"
 
 type UsersPropsType = {
     onClick: () => void
-    id: string
-    isFollowed: boolean
+    id: number
+    followed: boolean
     img: string
-    fullName: string
+    name: string
     status: string
-    city: string
-    country: string
 }
 
-export const Users: React.FC<UsersPropsType> = ({onClick, id, isFollowed, img, fullName, status, city, country, ...props
-                                                }) => {
+export const Users: React.FC<UsersPropsType> = ({onClick, id, followed, img, name, status, ...props}) => {
 
     return (
         <div className={s.container}>
-            <div key={id} id={id} className={s.item}>
+            <div key={id} id={id.toString()} className={s.item}>
                 <div className={s.follow}>
-                    <img className={s.avatar} src={img} alt="avatar"/>
+                    <img className={s.avatar} src={img !== null ? img : defaultImg} alt="avatar"/>
                     <Button
-                        red={isFollowed}
+                        red={followed}
                         onClick={onClick}
                     >
-                        {isFollowed ? "Unfollow" : "Follow"}
+                        {followed ? "Unfollow" : "Follow"}
                     </Button>
                 </div>
                 <div className={s.information}>
                     <div className={s.information__item}>
-                        <h3>{fullName}</h3>
+                        <h3>{name}</h3>
                         <div className={s.status}>
                             {status}
                         </div>
                     </div>
                     <div>
-                        <span>{city}</span>
-                        <div>{country}</div>
+                        <span>{"city"}</span>
+                        <div>{"country"}</div>
                     </div>
                 </div>
             </div>

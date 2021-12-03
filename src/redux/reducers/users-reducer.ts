@@ -12,10 +12,10 @@ type UserLocationType = {
 }
 
 export type UserType = {
-    id: string
-    isFollowed: boolean
-    img: string
-    fullName: string
+    id: number
+    followed: boolean
+    photos: {small: string, large: string}
+    name: string
     status: string
     location: UserLocationType
 }
@@ -27,34 +27,46 @@ export type UsersPageType = {
 const initialUsersState: UsersPageType = {
     users: [
         {
-            id: v1(),
-            isFollowed: false,
-            img: img,
-            fullName: "Alexander",
+            id: 1,
+            followed: false,
+            photos: {
+                small: img,
+                large: "",
+            },
+            name: "Alexander",
             status: "I'm front-end developer",
             location: {city: "Pinsk", country: "Belarus"}
         },
         {
-            id: v1(),
-            isFollowed: true,
-            img: img,
-            fullName: "Sofi",
+            id: 2,
+            followed: true,
+            photos: {
+                small: img,
+                large: "",
+            },
+            name: "Sofi",
             status: "I'm bitch girl",
             location: {city: "Pinsk", country: "Belarus"}
         },
         {
-            id: v1(),
-            isFollowed: false,
-            img: img,
-            fullName: "Oleg",
+            id: 3,
+            followed: false,
+            photos: {
+                small: img,
+                large: "",
+            },
+            name: "Oleg",
             status: "I'm engineer",
             location: {city: "Minsk", country: "Belarus"}
         },
         {
-            id: v1(),
-            isFollowed: false,
-            img: img,
-            fullName: "Pasha",
+            id: 4,
+            followed: false,
+            photos: {
+                small: img,
+                large: "",
+            },
+            name: "Pasha",
             status: "I'm engineer",
             location: {city: "Minsk", country: "Belarus"}
         },
@@ -65,7 +77,7 @@ export const usersReducer = (state:UsersPageType = initialUsersState, action: Ac
 
     switch (action.type) {
         case TOGGLE_FOLLOW:
-            return {...state, users: state.users.map(u => u.id === action.userId ? {...u, isFollowed: !u.isFollowed} : u)}
+            return {...state, users: state.users.map(u => u.id === action.userId ? {...u, followed: !u.followed} : u)}
 
         case SET_USERS:
             return {...state, users: [...state.users, ...action.users]}
