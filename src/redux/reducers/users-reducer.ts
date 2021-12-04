@@ -13,11 +13,11 @@ type UserLocationType = {
 
 export type UserType = {
     id: number
-    followed: boolean
-    photos: {small: string, large: string}
     name: string
     status: string
-    location: UserLocationType
+    photos: {small: string, large: string}
+    followed: boolean
+    // location: UserLocationType
 }
 
 export type UsersPageType = {
@@ -25,7 +25,7 @@ export type UsersPageType = {
 }
 
 const initialUsersState: UsersPageType = {
-    users: []
+    users: [] as Array<UserType>
     // users: [
     //     {
     //         id: 1,
