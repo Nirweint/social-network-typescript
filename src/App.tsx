@@ -20,7 +20,7 @@ export const App = (props: AppPropsType) => {
             <Sidebar/>
             <div className="app-wrapper-content">
                 <Routes>
-                    <Route path="/" element={<Navigate to="/profile"/> }/>
+                    <Route path="/" element={<Navigate to="/profile"/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/dialogs" element={<Dialogs/>}/>
                     <Route path="/news" element={<News/>}/>

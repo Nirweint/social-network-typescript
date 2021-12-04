@@ -14,5 +14,3 @@ let rootReducer = combineReducers({
 export type RootReducerType = ReturnType<typeof rootReducer>
 
 export let store = createStore(rootReducer);
-
-console.log(store.getState())

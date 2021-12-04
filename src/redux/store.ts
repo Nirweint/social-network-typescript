@@ -48,19 +48,19 @@ export type FriendType = {
 export type FriendsType = {
     friends: Array<FriendType>
 }
-export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogsPageType
-    sidebar: FriendsType
-    usersPage: Array<UserType>
-}
-export type StoreType = {
-    _state: RootStateType
-    subscribe: (observer: () => void) => void
-    _renderEntireTree: () => void
-    getState: () => RootStateType
-    dispatch: (action: ActionsTypes) => void
-}
+// export type RootStateType = {
+//     profilePage: ProfilePageType
+//     dialogsPage: DialogsPageType
+//     sidebar: FriendsType
+//     usersPage: Array<UserType>
+// }
+// export type StoreType = {
+//     _state: RootStateType
+//     subscribe: (observer: () => void) => void
+//     _renderEntireTree: () => void
+//     getState: () => RootStateType
+//     dispatch: (action: ActionsTypes) => void
+// }
 
 // Actions types ------------------------------
 

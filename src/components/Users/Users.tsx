@@ -1,44 +1,45 @@
 import React from 'react';
-import s from './Users.module.css';
+import {User} from "./User";
 import {Button} from "../../UI/Button/Button";
-import defaultImg from "../../assets/images/user-avatar.webp"
+import axios from "axios";
+import {UsersContainerPropsType} from "./UsersContainer";
 
-type UsersPropsType = {
-    onClick: () => void
-    id: number
-    followed: boolean
-    img: string
-    name: string
-    status: string
-}
+class Users extends React.Component<UsersContainerPropsType> {
 
-export const Users: React.FC<UsersPropsType> = ({onClick, id, followed, img, name, status, ...props}) => {
+    constructor(props: UsersContainerPropsType) {
+        super(props);
 
-    return (
-        <div className={s.container}>
-            <div key={id} id={id.toString()} className={s.item}>
-                <div className={s.follow}>
-                    <img className={s.avatar} src={img !== null ? img : defaultImg} alt="avatar"/>
-                    <Button
-                        red={followed}
-                        onClick={onClick}
-                    >
-                        {followed ? "Unfollow" : "Follow"}
-                    </Button>
-                </div>
-                <div className={s.information}>
-                    <div className={s.information__item}>
-                        <h3>{name}</h3>
-                        <div className={s.status}>
-                            {status}
-                        </div>
-                    </div>
-                    <div>
-                        <span>{"city"}</span>
-                        <div>{"country"}</div>
-                    </div>
-                </div>
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                this.props.setUsers(response.data.items)
+            })
+    }
+
+    render() {
+        return (
+            <div>
+                {
+                    this.props.users && this.props.users.map(u => {
+                        return (
+                            <User
+                                key={u.id}
+                                id={u.id}
+                                followed={u.followed}
+                                img={u.photos.small}
+                                name={u.name}
+                                status={u.status}
+                                // city={u.location.city}
+                                // country={u.location.country}
+                                onClick={() => this.props.onFollowClick(u.id)}
+                            />
+                        )
+                    })
+                }
+                {/*<div>*/}
+                {/*    <Button onClick={this.getUsers}>Get Users from rest API</Button>*/}
+                {/*</div>*/}
             </div>
-        </div>
-    );
+        );
+    }
 }
+
+export default Users;

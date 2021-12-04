@@ -25,55 +25,56 @@ export type UsersPageType = {
 }
 
 const initialUsersState: UsersPageType = {
-    users: [
-        {
-            id: 1,
-            followed: false,
-            photos: {
-                small: img,
-                large: "",
-            },
-            name: "Alexander",
-            status: "I'm front-end developer",
-            location: {city: "Pinsk", country: "Belarus"}
-        },
-        {
-            id: 2,
-            followed: true,
-            photos: {
-                small: img,
-                large: "",
-            },
-            name: "Sofi",
-            status: "I'm bitch girl",
-            location: {city: "Pinsk", country: "Belarus"}
-        },
-        {
-            id: 3,
-            followed: false,
-            photos: {
-                small: img,
-                large: "",
-            },
-            name: "Oleg",
-            status: "I'm engineer",
-            location: {city: "Minsk", country: "Belarus"}
-        },
-        {
-            id: 4,
-            followed: false,
-            photos: {
-                small: img,
-                large: "",
-            },
-            name: "Pasha",
-            status: "I'm engineer",
-            location: {city: "Minsk", country: "Belarus"}
-        },
-    ]
+    users: []
+    // users: [
+    //     {
+    //         id: 1,
+    //         followed: false,
+    //         photos: {
+    //             small: img,
+    //             large: "",
+    //         },
+    //         name: "Alexander",
+    //         status: "I'm front-end developer",
+    //         location: {city: "Pinsk", country: "Belarus"}
+    //     },
+    //     {
+    //         id: 2,
+    //         followed: true,
+    //         photos: {
+    //             small: img,
+    //             large: "",
+    //         },
+    //         name: "Sofi",
+    //         status: "I'm bitch girl",
+    //         location: {city: "Pinsk", country: "Belarus"}
+    //     },
+    //     {
+    //         id: 3,
+    //         followed: false,
+    //         photos: {
+    //             small: img,
+    //             large: "",
+    //         },
+    //         name: "Oleg",
+    //         status: "I'm engineer",
+    //         location: {city: "Minsk", country: "Belarus"}
+    //     },
+    //     {
+    //         id: 4,
+    //         followed: false,
+    //         photos: {
+    //             small: img,
+    //             large: "",
+    //         },
+    //         name: "Pasha",
+    //         status: "I'm engineer",
+    //         location: {city: "Minsk", country: "Belarus"}
+    //     },
+    // ]
 }
 
-export const usersReducer = (state:UsersPageType = initialUsersState, action: ActionsTypes): UsersPageType => {
+export const usersReducer = (state = initialUsersState, action: ActionsTypes): UsersPageType => {
 
     switch (action.type) {
         case TOGGLE_FOLLOW:

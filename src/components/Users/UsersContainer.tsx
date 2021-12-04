@@ -1,57 +1,37 @@
-import React from 'react';
-import s from './Users.module.css';
-import {Users} from "./Users";
-import {img, UserType} from "../../redux/reducers/users-reducer";
-import {Button} from "../../UI/Button/Button";
-import {v1} from "uuid";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {UserType} from "../../redux/reducers/users-reducer";
 import {setUsersAC, toggleFollowAC} from "../../redux/action-creators/users";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {useActions} from "../../hooks/useActions";
-import axios from "axios";
+import Users from "./Users";
+import {RootReducerType} from "../../redux/redux-store";
 
-export const UsersContainer = () => {
-    let users = useTypedSelector(state => state.usersPage.users)
-    const {toggleFollowAC, setUsersAC} = useActions()
-
-    let getUsers = () => {
-        if (users.length < 5) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                setUsers(response.data.items)
-            })
-        }
-    }
-
-    const onFollowClick = (userId: number) => {
-        toggleFollowAC(userId)
-    }
-    const setUsers = (users: Array<UserType>) => {
-        setUsersAC(users)
-    }
-
-    return (
-        <div>
-            {
-               users && users.map(u => {
-                    return (
-                        <Users
-                            key={u.id}
-                            id={u.id}
-                            followed={u.followed}
-                            img={u.photos.small}
-                            name={u.name}
-                            status={u.status}
-                            // city={u.location.city}
-                            // country={u.location.country}
-                            onClick={() => onFollowClick(u.id)}
-                        />
-                    )
-                })
-            }
-            <div>
-                <Button onClick={() => setUsers(users)}>Show More</Button>
-                <Button onClick={getUsers}>Get More</Button>
-            </div>
-        </div>
-
-    );
+export type mapStateToPropsType = {
+    users: Array<UserType>,
 }
+
+export type mapDispatchToPropsType = {
+    onFollowClick: (userId: number) => void,
+    setUsers: (users: Array<UserType>) => void,
+}
+
+export type UsersContainerPropsType = mapStateToPropsType & mapDispatchToPropsType
+
+
+let mapStateToProps = (state: RootReducerType): mapStateToPropsType => {
+    return {
+        users: state.usersPage.users
+    }
+}
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
+    return {
+        onFollowClick: (userId: number) => {
+            dispatch(toggleFollowAC(userId))
+        },
+        setUsers: (users: Array<UserType>) => {
+            dispatch(setUsersAC(users))
+        },
+    }
+}
+
+
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
