@@ -1,10 +1,10 @@
 import React from 'react';
-import {PostType} from "../../../redux/store";
 import {connect, useDispatch} from "react-redux";
 import {MyPosts} from "./MyPosts";
 import {Dispatch} from "redux";
 import {addPostAC, changeNewPostTextCallBackAC} from "../../../redux/action-creators/profile";
 import {RootReducerType} from "../../../redux/redux-store";
+import {PostType} from "../../../redux/reducers/profile-reducer";
 
 // export type MyPostsPropsType = {
 //     posts: Array<PostType>

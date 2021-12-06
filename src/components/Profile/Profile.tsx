@@ -1,21 +1,18 @@
 import React from 'react';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
-import style from './Profile.module.css';
-import {ProfilePageType} from "../../redux/store";
-import {useSelector} from "react-redux";
-import {RootReducerType} from "../../redux/redux-store";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
+import {ProfilePageType} from "../../redux/reducers/profile-reducer";
 
 
 type ProfilePropsType = {
 }
 
-export const Profile = (props: ProfilePropsType) => {
-    let profilePage = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
+export const Profile = (props: ProfilePageType) => {
+    // let userInfo = useTypedSelector(state => state.profilePage.userInfo)
 
     return (
         <div>
-            <ProfileInfo userInfo={profilePage.userInfo}/>
+            <ProfileInfo userInfo={props.userInfo}/>
             <MyPostsContainer
                 // posts={profilePage.posts}
                 // newPostText={profilePage.newPostText}

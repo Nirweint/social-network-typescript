@@ -1,27 +1,18 @@
-import {addPostAC, changeNewPostTextCallBackAC} from "./action-creators/profile";
+import {
+    addPostACType,
+    changeNewPostTextCallBackACType, setUserInfoACType,
+} from "./action-creators/profile";
 import {addMessageAC, onChangeInputValueMessageAC} from "./action-creators/dialog";
 import {
-    setCurrentPageACType, setTotalCountACType,
-    setUsersAC,
+    setCurrentPageACType,
+    setTotalCountACType,
     setUsersACType,
-    toggleFollowAC,
-    toggleFollowACType, toggleIsFetchingACType
+    toggleFollowACType,
+    toggleIsFetchingACType
 } from "./action-creators/users";
 
 // Store types ---------------------------
-export type PostType = {
-    id: string
-    message: string
-    likesCount: number
-    img: string
-}
-export type UserInfoType = {
-    avatar: string
-    firstName: string
-    lastName: string
-    description: string
-    backgroundImg: string
-}
+
 export type DialogType = {
     id: string
     name: string
@@ -35,11 +26,7 @@ export type MessageType = {
     avatar: string
     head: string
 }
-export type ProfilePageType = {
-    posts: Array<PostType>
-    userInfo: UserInfoType
-    newPostText: string
-}
+
 export type DialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
@@ -69,15 +56,17 @@ export type FriendsType = {
 
 // Actions types ------------------------------
 
-export type ActionsTypes = ReturnType<typeof addPostAC> |
-    ReturnType<typeof changeNewPostTextCallBackAC> |
-    ReturnType<typeof addMessageAC> |
-    ReturnType<typeof onChangeInputValueMessageAC> |
-    toggleFollowACType |
-    setUsersACType |
-    setCurrentPageACType |
-    setTotalCountACType |
-    toggleIsFetchingACType
+export type ActionsTypes =
+    addPostACType
+    | changeNewPostTextCallBackACType
+    | setUserInfoACType
+    | ReturnType<typeof addMessageAC>
+    | ReturnType<typeof onChangeInputValueMessageAC>
+    | toggleFollowACType
+    | setUsersACType
+    | setCurrentPageACType
+    | setTotalCountACType
+    | toggleIsFetchingACType
 
 // Store ---------------------------
 // export const store: StoreType = {

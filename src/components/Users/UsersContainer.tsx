@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
 import {UsersPageType, UserType} from "../../redux/reducers/users-reducer";
 import {
     setCurrentPageAC,

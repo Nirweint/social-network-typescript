@@ -2,6 +2,7 @@ import React from 'react';
 import s from './User.module.css';
 import {Button} from "../../UI/Button/Button";
 import defaultImg from "../../assets/images/user-avatar.webp"
+import {NavLink} from "react-router-dom";
 
 type UsersPropsType = {
     onClick: () => void
@@ -18,7 +19,9 @@ export const User: React.FC<UsersPropsType> = ({onClick, id, followed, img, name
         <div className={s.container}>
             <div key={id} id={id.toString()} className={s.item}>
                 <div className={s.follow}>
-                    <img className={s.avatar} src={img !== null ? img : defaultImg} alt="avatar"/>
+                    <NavLink to={`/profile/${id}`}>
+                        <img className={s.avatar} src={img !== null ? img : defaultImg} alt="avatar"/>
+                    </NavLink>
                     <Button
                         red={followed}
                         onClick={onClick}

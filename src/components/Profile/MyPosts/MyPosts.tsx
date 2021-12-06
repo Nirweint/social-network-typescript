@@ -1,8 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {PostType} from "../../../redux/store";
 import {MyPostsPropsType} from "./MyPostsContainer";
+import {PostType} from "../../../redux/reducers/profile-reducer";
 
 // export type MyPostsPropsType = {
 //     posts: Array<PostType>

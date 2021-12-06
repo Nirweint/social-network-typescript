@@ -1,13 +1,24 @@
-import {ADD_POST, CHANGE_NEW_POST_TEXT_CALL_BACK} from "../reducers/profile-reducer";
+import {ADD_POST, CHANGE_NEW_POST_TEXT_CALL_BACK, SET_USER_INFO, UserInfoType} from "../reducers/profile-reducer";
 
+export type addPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = () => {
     return {
         type: ADD_POST,
     } as const
 }
+
+export type changeNewPostTextCallBackACType = ReturnType<typeof changeNewPostTextCallBackAC>
 export const changeNewPostTextCallBackAC = (newText: string) => {
     return {
         type: CHANGE_NEW_POST_TEXT_CALL_BACK,
         newText: newText
+    } as const
+}
+
+export type setUserInfoACType = ReturnType<typeof setUserInfoAC>
+export const setUserInfoAC = (userInfo: UserInfoType) => {
+    return {
+        type: SET_USER_INFO,
+        userInfo
     } as const
 }

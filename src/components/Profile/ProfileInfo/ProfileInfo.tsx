@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
-import {UserInfoType} from "../../../redux/store";
+import {UserInfoType} from "../../../redux/reducers/profile-reducer";
+import {Preloader} from "../../common/Preloader/Preloader";
 
 type ProfileInfoPropsType = {
     userInfo: UserInfoType
@@ -8,22 +9,27 @@ type ProfileInfoPropsType = {
 
 export function ProfileInfo(props: ProfileInfoPropsType) {
 
-    const {backgroundImg, avatar, lastName, firstName, description} = props.userInfo;
+    const {photos, fullName, lookingForAJobDescription,aboutMe } = props.userInfo;
+
+    if(!props.userInfo) {
+        return <Preloader/>
+    }
 
     return (
         <div>
             <div>
                 <img className={style.backgroundImg}
-                     src={backgroundImg}
+                     src={photos.large}
                      alt="background"/>
             </div>
             <div className={style.wrapper}>
-                <img className={style.avatar} src={avatar} alt="avatar"/>
+                <img className={style.avatar} src={photos.small} alt="avatar"/>
                 <div>
                     <div className={style.name}>
-                        <h3>{firstName} {lastName}</h3>
+                        <h3>{fullName}</h3>
                     </div>
-                    <div className={style.description}>{description}</div>
+                    <div className={style.description}>{aboutMe}</div>
+                    <div className={style.description}>{lookingForAJobDescription} </div>
                 </div>
             </div>
         </div>
