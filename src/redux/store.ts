@@ -1,4 +1,3 @@
-import {UserType} from "./reducers/users-reducer";
 import {addPostAC, changeNewPostTextCallBackAC} from "./action-creators/profile";
 import {addMessageAC, onChangeInputValueMessageAC} from "./action-creators/dialog";
 import {
@@ -6,7 +5,7 @@ import {
     setUsersAC,
     setUsersACType,
     toggleFollowAC,
-    toggleFollowACType
+    toggleFollowACType, toggleIsFetchingACType
 } from "./action-creators/users";
 
 // Store types ---------------------------
@@ -77,7 +76,8 @@ export type ActionsTypes = ReturnType<typeof addPostAC> |
     toggleFollowACType |
     setUsersACType |
     setCurrentPageACType |
-    setTotalCountACType
+    setTotalCountACType |
+    toggleIsFetchingACType
 
 // Store ---------------------------
 // export const store: StoreType = {

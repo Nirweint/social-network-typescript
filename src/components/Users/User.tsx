@@ -33,10 +33,6 @@ export const User: React.FC<UsersPropsType> = ({onClick, id, followed, img, name
                             {status}
                         </div>
                     </div>
-                    <div>
-                        <span>{"city"}</span>
-                        <div>{"country"}</div>
-                    </div>
                 </div>
             </div>
         </div>

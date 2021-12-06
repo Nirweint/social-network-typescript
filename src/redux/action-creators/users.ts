@@ -1,4 +1,11 @@
-import {SET_CURRENT_PAGE, SET_TOTAL_COUNT, SET_USERS, TOGGLE_FOLLOW, UserType} from "../reducers/users-reducer";
+import {
+    SET_CURRENT_PAGE,
+    SET_TOTAL_COUNT,
+    SET_USERS,
+    TOGGLE_FOLLOW,
+    TOGGLE_IS_FETCHING,
+    UserType
+} from "../reducers/users-reducer";
 
 
 export type toggleFollowACType = ReturnType<typeof toggleFollowAC>
@@ -30,5 +37,13 @@ export const setTotalCountAC = (totalCount: number) => {
     return {
         type: SET_TOTAL_COUNT,
         totalCount,
+    } as const
+}
+
+export type toggleIsFetchingACType = ReturnType<typeof toggleIsFetchingAC>
+export const toggleIsFetchingAC = (isFetching: boolean) => {
+    return {
+        type: TOGGLE_IS_FETCHING,
+        isFetching,
     } as const
 }
