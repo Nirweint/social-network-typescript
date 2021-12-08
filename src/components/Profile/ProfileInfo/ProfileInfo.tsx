@@ -8,12 +8,11 @@ type ProfileInfoPropsType = {
 }
 
 export function ProfileInfo(props: ProfileInfoPropsType) {
-
-    const {photos, fullName, lookingForAJobDescription,aboutMe } = props.userInfo;
-
-    if(!props.userInfo) {
+    if (!props.userInfo) {
         return <Preloader/>
     }
+    const {photos, fullName, lookingForAJobDescription, aboutMe} = props.userInfo;
+
 
     return (
         <div>
