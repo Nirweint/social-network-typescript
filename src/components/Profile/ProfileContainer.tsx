@@ -14,14 +14,16 @@ export const ProfileContainer: React.FC = () => {
 
 
     useEffect(() => {
-        debugger
-        let pathname = location.pathname
-        axios.get(`https://social-network.samuraijs.com/api/1.0${pathname}` )
+        let loc = location.state
+        let userId;
+        loc !== null ? userId = loc : userId = 2
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(
                 response => {
                     setUserInfoAC(response.data)
                 }
             )
+
     }, [])
 
     return (

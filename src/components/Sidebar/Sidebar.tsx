@@ -18,7 +18,7 @@ export const Sidebar = (props: SidebarPropsType) => {
     return (
         <nav className={style.nav}>
             <div className={style.item}>
-                <NavLink to="/profile" className={activeLinkStyle}>Profile</NavLink>
+                <NavLink to="/profile/2" className={activeLinkStyle}>Profile</NavLink>
             </div>
             <div className={style.item}>
                 <NavLink to="/dialogs" className={activeLinkStyle}>Messages</NavLink>
