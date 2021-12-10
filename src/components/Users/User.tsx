@@ -20,7 +20,7 @@ export const User: React.FC<UsersPropsType> = ({onClick, id, followed, img, name
         <div className={s.container} key={id}>
             <div  id={id.toString()} className={s.item}>
                 <div className={s.follow}>
-                       <NavLink to={`/profile/${id}`} state={+id}>
+                       <NavLink to={`/profile/${id}`}>
                            <img
                                className={s.avatar}
                                src={img !== null ? img : defaultImg}

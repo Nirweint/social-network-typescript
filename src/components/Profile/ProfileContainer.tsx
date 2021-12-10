@@ -4,19 +4,17 @@ import axios from "axios";
 import {setUserInfoAC} from "../../redux/action-creators/profile";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useActions} from "../../hooks/useActions";
-import {useLocation} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 export const ProfileContainer: React.FC = () => {
 
     const userInfo = useTypedSelector(state => state.profilePage.userInfo)
     const {setUserInfoAC} = useActions()
-    const location = useLocation();
-
+    const params = useParams<'userId'>()
 
     useEffect(() => {
-        let loc = location.state
         let userId;
-        loc !== null ? userId = loc : userId = 2
+        params.userId !== null ? userId = params.userId : userId = 2
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(
                 response => {
@@ -24,7 +22,7 @@ export const ProfileContainer: React.FC = () => {
                 }
             )
 
-    }, [])
+    }, [params])
 
     return (
         <div>
