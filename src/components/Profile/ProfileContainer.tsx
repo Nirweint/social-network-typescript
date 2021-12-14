@@ -9,12 +9,13 @@ import {useParams} from "react-router-dom";
 export const ProfileContainer: React.FC = () => {
 
     const userInfo = useTypedSelector(state => state.profilePage.userInfo)
+    const authId = useTypedSelector(state => state.auth.id)
     const {setUserInfoAC} = useActions()
     const params = useParams<'userId'>()
 
     useEffect(() => {
         let userId;
-        params.userId !== null ? userId = params.userId : userId = 2
+        params.userId !== null ? userId = params.userId : userId = authId
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(
                 response => {
