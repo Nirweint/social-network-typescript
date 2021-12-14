@@ -25,7 +25,9 @@ export type UsersContainerPropsType = UsersPageType & mapDispatchToPropsType
 class UsersContainer extends React.Component<UsersContainerPropsType> {
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.count}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.count}`, {
+            withCredentials: true,
+        })
             .then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items);
@@ -36,10 +38,49 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
     setCurrentPageHandler = (p: number) => {
         this.props.setCurrentPage(p)
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.count}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.count}`, {
+            withCredentials: true,
+        })
             .then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
+            })
+    }
+
+    toggleFollow = (userId: number) => {
+        this.props.toggleIsFetching(true)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {withCredentials: true,})
+            .then(response => {
+                if (response.data === true) {
+                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
+                        withCredentials: true,
+                        headers: {
+                            "API-KEY": "9776f825-db80-4051-9f58-6c0d39788ac9"
+                        },
+                    })
+                        .then(res => {
+                            if (res.data.resultCode === 0) {
+                                this.props.onFollowClick(userId)
+                            }
+                            this.props.toggleIsFetching(false)
+                            console.log(res)
+                        })
+                }
+                if (response.data === false) {
+                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
+                        withCredentials: true,
+                        headers: {
+                            "API-KEY": "9776f825-db80-4051-9f58-6c0d39788ac9"
+                        }
+                    })
+                        .then(res => {
+                            if (res.data.resultCode === 0) {
+                                this.props.onFollowClick(userId)
+                            }
+                            this.props.toggleIsFetching(false)
+                            console.log(res)
+                        })
+                }
             })
     }
 
@@ -54,7 +95,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                         count={this.props.count}
                         currentPage={this.props.currentPage}
                         totalCount={this.props.totalCount}
-                        onFollowClick={this.props.onFollowClick}
+                        onFollowClick={this.toggleFollow}
                         setCurrentPageHandler={this.setCurrentPageHandler}
                     />
                 }
@@ -72,27 +113,6 @@ let mapStateToProps = (state: RootReducerType): UsersPageType => {
         isFetching: state.usersPage.isFetching
     }
 }
-// let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
-//     return {
-//         onFollowClick: (userId: number) => {
-//             dispatch(toggleFollowAC(userId))
-//         },
-//         setUsers: (users: Array<UserType>) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (currentPage: number) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         setTotalCount: (totalCount: number) => {
-//             dispatch(setTotalCountAC(totalCount))
-//         },
-//         toggleIsFetching: (isFetching: boolean) => {
-//             dispatch(toggleIsFetchingAC(isFetching))
-//         }
-//
-//     }
-// }
-
 
 export default connect(mapStateToProps, {
     onFollowClick: toggleFollowAC,

@@ -39,13 +39,13 @@ export const usersReducer = (state = initialUsersState, action: ActionsTypes): U
         case SET_USERS:
             return {...state, users: [...action.users]}
 
-        case "SET-CURRENT-PAGE":
+        case SET_CURRENT_PAGE:
             return {...state, currentPage: action.currentPage}
 
-        case "SET-TOTAL-COUNT":
+        case SET_TOTAL_COUNT:
             return {...state, totalCount: action.totalCount}
 
-        case "TOGGLE-IS-FETCHING":
+        case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
 
         default:

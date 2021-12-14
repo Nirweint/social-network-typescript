@@ -8,12 +8,14 @@ import {
 } from "../reducers/users-reducer";
 
 
+
 export type toggleFollowACType = ReturnType<typeof toggleFollowAC>
 export const toggleFollowAC = (userId: number) => {
     return {
         type: TOGGLE_FOLLOW,
         userId: userId
     } as const
+
 }
 
 export type setUsersACType = ReturnType<typeof setUsersAC>

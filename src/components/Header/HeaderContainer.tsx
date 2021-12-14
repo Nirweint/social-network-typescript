@@ -2,8 +2,8 @@ import React from 'react';
 import {Header, HeaderPropsType} from "./Header";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setAuthUserDataAC} from "../../redux/reducers/auth-reducer";
 import {RootReducerType} from "../../redux/redux-store";
+import {setAuthUserDataAC} from "../../redux/action-creators/auth";
 
 type mapDispatchToPropsType = {
     setAuthUserDataAC: (payload: { id: number, login: string, email: string }) => void
