@@ -1,15 +1,14 @@
-import {
-    addPostACType,
-    changeNewPostTextCallBackACType, setUserInfoACType,
-} from "./action-creators/profile";
-import {addMessageAC, onChangeInputValueMessageAC} from "./action-creators/dialog";
+import {addPostACType, changeNewPostTextCallBackACType, setUserInfoACType,} from "./action-creators/profile";
+import {addMessageACType, onChangeInputValueMessageACType} from "./action-creators/dialog";
 import {
     setCurrentPageACType,
     setTotalCountACType,
     setUsersACType,
     toggleFollowACType,
-    toggleIsFetchingACType
+    toggleIsFetchingACType,
+    toggleIsFollowingProgressACType
 } from "./action-creators/users";
+
 
 // Store types ---------------------------
 
@@ -60,13 +59,17 @@ export type ActionsTypes =
     addPostACType
     | changeNewPostTextCallBackACType
     | setUserInfoACType
-    | ReturnType<typeof addMessageAC>
-    | ReturnType<typeof onChangeInputValueMessageAC>
+    | addMessageACType
+    | onChangeInputValueMessageACType
     | toggleFollowACType
     | setUsersACType
     | setCurrentPageACType
     | setTotalCountACType
     | toggleIsFetchingACType
+    | toggleIsFollowingProgressACType
+
+
+
 
 // Store ---------------------------
 // export const store: StoreType = {

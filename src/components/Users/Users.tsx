@@ -8,6 +8,7 @@ type UsersPropsType = {
     count: number
     totalCount: number
     currentPage: number
+    followingInProgress: number[]
     onFollowClick: (userId: number) => void
     setCurrentPageHandler: (p: number) => void
 }
@@ -19,6 +20,10 @@ export const Users = (props: UsersPropsType) => {
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
+    }
+
+    const isButtonDisabledHandler = (userId: number) => {
+        return props.followingInProgress.some(id => id === userId)
     }
 
     return (
@@ -39,6 +44,7 @@ export const Users = (props: UsersPropsType) => {
 
             {
                 props.users && props.users.map(u => {
+
                     return (
                         <User
                             key={u.id}
@@ -47,6 +53,7 @@ export const Users = (props: UsersPropsType) => {
                             img={u.photos.small}
                             name={u.name}
                             status={u.status}
+                            isButtonDisabled={isButtonDisabledHandler(u.id)}
                             // city={u.location.city}
                             // country={u.location.country}
                             onClick={() => props.onFollowClick(u.id)}
@@ -54,9 +61,6 @@ export const Users = (props: UsersPropsType) => {
                     )
                 })
             }
-            {/*<div>*/}
-            {/*    <Button onClick={this.getUsers}>Get UsersAPIComponent from rest API</Button>*/}
-            {/*</div>*/}
         </div>
     );
 }

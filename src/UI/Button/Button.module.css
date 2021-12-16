@@ -10,30 +10,47 @@
     transition-duration: 0.3s;
 }
 
-.default {
-
-}
-
-.default:hover {
+.btn:hover {
     background-color: #e7e7e7;
 }
 
 .btn:disabled {
     opacity: 0.5;
+    border-color: #fff;
     cursor: default;
 }
 
 .btn:disabled:hover {
     background-color: #fff;
+    opacity: 0.5;
+    cursor: default;
 }
 
+/*.btn:hover:enabled{*/
+/*    opacity: 0.5;*/
+/*    cursor: default;*/
+/*}*/
+
 .red {
-    background: #e3d2f1;
-    color: #9f9f9f;
+    background: #fff;
+    color: #000;
+    border-color: #e3d2f1;
 }
 
 .red:hover {
-    background-color: #fff;
+    background-color: #e3d2f1;
     color: #000;
     border: 2px solid #e3d2f1;
+}
+
+.red:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.red:disabled:hover {
+    opacity: 0.5;
+    cursor: default;
+    background: #fff;
+    border-color: #fff;
 }

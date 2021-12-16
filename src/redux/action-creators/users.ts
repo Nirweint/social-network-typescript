@@ -3,7 +3,7 @@ import {
     SET_TOTAL_COUNT,
     SET_USERS,
     TOGGLE_FOLLOW,
-    TOGGLE_IS_FETCHING,
+    TOGGLE_IS_FETCHING, TOGGLE_FOLLOWING_PROGRESS,
     UserType
 } from "../reducers/users-reducer";
 
@@ -47,5 +47,14 @@ export const toggleIsFetchingAC = (isFetching: boolean) => {
     return {
         type: TOGGLE_IS_FETCHING,
         isFetching,
+    } as const
+}
+
+export type toggleIsFollowingProgressACType = ReturnType<typeof toggleFollowingProgressAC>
+export const toggleFollowingProgressAC = (followingInProgress: boolean, userId: number) => {
+    return {
+        type: TOGGLE_FOLLOWING_PROGRESS,
+        followingInProgress,
+        userId,
     } as const
 }

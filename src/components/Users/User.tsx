@@ -11,9 +11,10 @@ type UsersPropsType = {
     img: string
     name: string
     status: string
+    isButtonDisabled: boolean
 }
 
-export const User: React.FC<UsersPropsType> = ({onClick, id, followed, img, name, status , ...props}) => {
+export const User: React.FC<UsersPropsType> = ({onClick, id, followed, img, name, status ,isButtonDisabled, ...props}) => {
 
 
     return (
@@ -28,6 +29,7 @@ export const User: React.FC<UsersPropsType> = ({onClick, id, followed, img, name
                            />
                        </NavLink>
                     <Button
+                        disabled={isButtonDisabled}
                         red={followed}
                         onClick={onClick}
                     >

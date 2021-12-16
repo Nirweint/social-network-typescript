@@ -4,7 +4,7 @@ import {
     setCurrentPageAC,
     setTotalCountAC,
     setUsersAC,
-    toggleFollowAC,
+    toggleFollowAC, toggleFollowingProgressAC,
     toggleIsFetchingAC
 } from "../../redux/action-creators/users";
 import {RootReducerType} from "../../redux/redux-store";
@@ -19,6 +19,7 @@ export type mapDispatchToPropsType = {
     setCurrentPage: (currentPage: number) => void
     setTotalCount: (totalCount: number) => void
     toggleIsFetching: (isFetching: boolean) => void
+    toggleFollowingProgress: (followingInProgress: boolean, userId: number) => void
 }
 export type UsersContainerPropsType = UsersPageType & mapDispatchToPropsType
 
@@ -43,6 +44,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
     }
 
     toggleFollow = (userId: number) => {
+        this.props.toggleFollowingProgress(true, userId)
         usersAPI.isFollowed(userId).then(
             data => {
                 if (data === true) {
@@ -51,6 +53,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                             if (data.resultCode === 0) {
                                 this.props.onFollowClick(userId)
                             }
+                            this.props.toggleFollowingProgress(false, userId)
                         })
                 }
                 if (data === false) {
@@ -59,6 +62,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                             if (data.resultCode === 0) {
                                 this.props.onFollowClick(userId)
                             }
+                            this.props.toggleFollowingProgress(false, userId)
                         })
                 }
 
@@ -76,6 +80,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                         count={this.props.count}
                         currentPage={this.props.currentPage}
                         totalCount={this.props.totalCount}
+                        followingInProgress={this.props.followingInProgress}
                         onFollowClick={this.toggleFollow}
                         setCurrentPageHandler={this.setCurrentPageHandler}
                     />
@@ -92,7 +97,8 @@ let
             count: state.usersPage.count,
             totalCount: state.usersPage.totalCount,
             currentPage: state.usersPage.currentPage,
-            isFetching: state.usersPage.isFetching
+            isFetching: state.usersPage.isFetching,
+            followingInProgress: state.usersPage.followingInProgress,
         }
     }
 
@@ -102,8 +108,5 @@ export default connect(mapStateToProps, {
     setCurrentPage: setCurrentPageAC,
     setTotalCount: setTotalCountAC,
     toggleIsFetching: toggleIsFetchingAC,
-})
-
-(
-    UsersContainer
-);
+    toggleFollowingProgress: toggleFollowingProgressAC,
+})(UsersContainer);
