@@ -1,6 +1,8 @@
 import {connect} from "react-redux";
-import {getIsFollowedTC, getUsersTC, UsersPageType, UserType} from "../../redux/reducers/users-reducer";
+import {UsersPageType, UserType} from "../../redux/reducers/users-reducer";
 import {
+    getIsFollowedTC,
+    getUsersTC,
     setCurrentPageAC,
     setTotalCountAC,
     setUsersAC,

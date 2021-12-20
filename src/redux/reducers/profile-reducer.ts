@@ -1,5 +1,8 @@
 import {ActionsTypes} from "../store";
 import {v1} from "uuid";
+import {ThunkType} from "../redux-store";
+import {profileAPI} from "../../api/api";
+import {setUserInfoAC} from "../action-creators/profile";
 
 const imgForNewPost = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
 

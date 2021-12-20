@@ -6,7 +6,8 @@ import {
     TOGGLE_IS_FETCHING, TOGGLE_FOLLOWING_PROGRESS,
     UserType
 } from "../reducers/users-reducer";
-
+import {ThunkType} from "../redux-store";
+import {usersAPI} from "../../api/api";
 
 
 export type toggleFollowACType = ReturnType<typeof toggleFollowAC>
@@ -57,4 +58,43 @@ export const toggleFollowingProgressAC = (followingInProgress: boolean, userId: 
         followingInProgress,
         userId,
     } as const
+}
+
+// THUNK
+export const getUsersTC = (currentPage: number, count: number): ThunkType => async dispatch => {
+    try {
+        dispatch(toggleIsFetchingAC(true))
+        const res = await usersAPI.getUsers(currentPage, count)
+        dispatch(toggleIsFetchingAC(false))
+        dispatch(setCurrentPageAC(currentPage))
+        dispatch(setUsersAC(res.items));
+        dispatch(setTotalCountAC(res.totalCount));
+
+    } catch (e: any) { // TODO how to type this?
+        throw new Error(e)
+    }
+
+}
+
+export const getIsFollowedTC = (userId: number): ThunkType => async dispatch => {
+    try {
+        dispatch(toggleFollowingProgressAC(true, userId))
+        const res = await usersAPI.isFollowed(userId)
+        if (res === true) {
+            const res = await usersAPI.unfollowUser(userId)
+            if (res.resultCode === 0) {
+                dispatch(toggleFollowAC(userId))
+            }
+            dispatch(toggleFollowingProgressAC(false, userId))
+        }
+        if (res === false) {
+            const res = await usersAPI.followUser(userId)
+            if (res.resultCode === 0) {
+                dispatch(toggleFollowAC(userId))
+            }
+            dispatch(toggleFollowingProgressAC(false, userId))
+        }
+    } catch (e: any) {
+        throw new Error(e)
+    }
 }
