@@ -1,4 +1,4 @@
-import {ActionsTypes} from "../store";
+import {ActionsTypes} from "../redux-store";
 
 export const TOGGLE_FOLLOW = "TOGGLE-FOLLOW"
 export const SET_USERS = "SET-USERS";

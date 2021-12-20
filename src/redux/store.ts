@@ -1,15 +1,3 @@
-import {addPostACType, changeNewPostTextCallBackACType, setUserInfoACType,} from "./action-creators/profile";
-import {addMessageACType, onChangeInputValueMessageACType} from "./action-creators/dialog";
-import {
-    setCurrentPageACType,
-    setTotalCountACType,
-    setUsersACType,
-    toggleFollowACType,
-    toggleIsFetchingACType,
-    toggleIsFollowingProgressACType
-} from "./action-creators/users";
-
-
 // Store types ---------------------------
 
 export type DialogType = {
@@ -54,21 +42,6 @@ export type FriendsType = {
 // }
 
 // Actions types ------------------------------
-
-export type ActionsTypes =
-    addPostACType
-    | changeNewPostTextCallBackACType
-    | setUserInfoACType
-    | addMessageACType
-    | onChangeInputValueMessageACType
-    | toggleFollowACType
-    | setUsersACType
-    | setCurrentPageACType
-    | setTotalCountACType
-    | toggleIsFetchingACType
-    | toggleIsFollowingProgressACType
-
-
 
 
 // Store ---------------------------

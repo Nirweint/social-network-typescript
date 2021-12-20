@@ -1,8 +1,5 @@
-import {ActionsTypes} from "../store";
 import {v1} from "uuid";
-import {ThunkType} from "../redux-store";
-import {profileAPI} from "../../api/api";
-import {setUserInfoAC} from "../action-creators/profile";
+import {ActionsTypes} from "../redux-store";
 
 const imgForNewPost = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
 
@@ -63,7 +60,7 @@ const initialProfileState: ProfilePageType = {
         },
         photos: {
             small: imgForNewPost,
-            large:"https://i.pinimg.com/originals/3a/ff/a4/3affa4e523e653d3b8d4ebeb5d4aac34.jpg",
+            large: "https://i.pinimg.com/originals/3a/ff/a4/3affa4e523e653d3b8d4ebeb5d4aac34.jpg",
         },
     } as UserInfoType,
     posts: [

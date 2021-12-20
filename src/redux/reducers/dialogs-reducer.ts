@@ -1,5 +1,6 @@
 import {v1} from "uuid";
-import {ActionsTypes, DialogsPageType} from "../store";
+import {DialogsPageType} from "../store";
+import {ActionsTypes} from "../redux-store";
 
 const avatarImage = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw";
 
