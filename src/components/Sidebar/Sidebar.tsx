@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {Navigate, NavLink} from 'react-router-dom';
 import style from './Sidebar.module.css';
 import {FriendsType} from "../../redux/store";
 import {ActiveFriends} from "./ActiveFriends/ActiveFriends";
@@ -15,13 +15,15 @@ export const Sidebar = (props: SidebarPropsType) => {
     const authId = useTypedSelector(state => state.auth.id)
 
     // const activeLinkStyle = style.activeLink;
-    const activeLinkStyle = ({isActive}: {isActive: boolean}) => isActive ? style.activeLink : ""
+    const activeLinkStyle = ({isActive}: { isActive: boolean }) => isActive ? style.activeLink : ""
 
     return (
         <nav className={style.nav}>
             <div className={style.item}>
-                {/*TODO need to write logic, what to show when user not authorezed. insted of string*/}
-                <NavLink to={`/profile/${authId ? authId : ""}`} className={activeLinkStyle}>Profile</NavLink>
+                <NavLink
+                    to={`/profile/${authId ? authId : <Navigate to="/login"/>}`}
+                    className={activeLinkStyle}>
+                    Profile</NavLink>
             </div>
             <div className={style.item}>
                 <NavLink to="/dialogs" className={activeLinkStyle}>Messages</NavLink>

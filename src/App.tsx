@@ -9,6 +9,7 @@ import "./App.css";
 import UsersContainer from "./components/Users/UsersContainer";
 import {ProfileContainer} from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import {Login} from "./components/Login/Login";
 
 type AppPropsType = {}
 
@@ -22,6 +23,7 @@ export const App = (props: AppPropsType) => {
                 <Routes>
                     <Route path="/" element={<Navigate to="/profile/"/>}/>
                     <Route path="/profile/:userId" element={<ProfileContainer/>}/>
+                    <Route path="/login" element={<Login/>}/>
                     <Route path="/dialogs" element={<Dialogs/>}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/music" element={<Music/>}/>

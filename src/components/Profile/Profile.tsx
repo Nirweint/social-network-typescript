@@ -9,7 +9,6 @@ type ProfilePropsType = {
 }
 
 export const Profile = (props: ProfilePropsType) => {
-    // let userInfo = useTypedSelector(state => state.profilePage.userInfo)
 
     return (
         <div>
