@@ -1,8 +1,8 @@
 import React from 'react';
 import {Friend} from "./Friend/Friend";
-import {FriendType} from "../../../redux/store";
 import style from './ActiveFriends.module.css';
 import { NavLink } from 'react-router-dom';
+import {FriendType} from "../../../redux/reducers/sidebar-reducer";
 
 type ActiveFriendsPropsType = {
     friends: Array<FriendType>

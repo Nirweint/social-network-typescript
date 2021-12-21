@@ -2,12 +2,12 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsPageType} from "../../redux/store";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
 import {ChatInputContainer} from "./ChatInput/ChatInputContainer";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {Navigate} from "react-router-dom";
+import {DialogsPageType} from "../../redux/reducers/dialogs-reducer";
 
 type DialogsPropsType = {}
 

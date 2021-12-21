@@ -1,11 +1,30 @@
 import {v1} from "uuid";
-import {DialogsPageType} from "../store";
-import {ActionsTypes} from "../redux-store";
+import {DialogsActionsType} from "../action-creators/dialog";
 
 const avatarImage = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw";
 
 export const ADD_MESSAGE = "ADD-MESSAGE"
 export const ON_CHANGE_INPUT_VALUE_MESSAGE = "ON-CHANGE-INPUT-VALUE-MESSAGE"
+
+export type DialogType = {
+    id: string
+    name: string
+    img: string
+}
+export type MessageType = {
+    id: string
+    messageText: string
+    name: string
+    time: string
+    avatar: string
+    head: string
+}
+
+export type DialogsPageType = {
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+    newMessageText: string
+}
 
 const initialDialogsState = {
     dialogs: [
@@ -83,7 +102,7 @@ const initialDialogsState = {
     newMessageText: "",
 }
 
-export const dialogsReducer = (state: DialogsPageType = initialDialogsState, action: ActionsTypes): DialogsPageType => {
+export const dialogsReducer = (state: DialogsPageType = initialDialogsState, action: DialogsActionsType): DialogsPageType => {
 
     switch (action.type) {
         case ADD_MESSAGE:

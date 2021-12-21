@@ -5,17 +5,10 @@ import {sidebarReducer} from "./reducers/sidebar-reducer";
 import {usersReducer} from "./reducers/users-reducer";
 import {authReducer} from "./reducers/auth-reducer";
 import thunkMiddleware, {ThunkAction} from "redux-thunk";
-import {addPostACType, changeNewPostTextCallBackACType, setUserInfoACType} from "./action-creators/profile";
-import {addMessageACType, onChangeInputValueMessageACType} from "./action-creators/dialog";
-import {
-    setCurrentPageACType,
-    setTotalCountACType,
-    setUsersACType,
-    toggleFollowACType,
-    toggleIsFetchingACType,
-    toggleIsFollowingProgressACType
-} from "./action-creators/users";
-import {setAuthUserDataACType} from "./action-creators/auth";
+import {ProfileActionsType} from "./action-creators/profile";
+import {DialogsActionsType} from "./action-creators/dialog";
+import {UsersActionsType} from "./action-creators/users";
+import {AuthActionsType} from "./action-creators/auth";
 
 let rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -29,22 +22,9 @@ export type RootReducerType = ReturnType<typeof rootReducer>
 
 export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-export type ThunkType = ThunkAction<void, RootReducerType, unknown, ActionsTypes>
+export type ThunkType = ThunkAction<void, RootReducerType, unknown, RootActionsType>
 
-export type ActionsTypes =
-    addPostACType
-    | changeNewPostTextCallBackACType
-    | setUserInfoACType
-    | addMessageACType
-    | onChangeInputValueMessageACType
-    | toggleFollowACType
-    | setUsersACType
-    | setCurrentPageACType
-    | setTotalCountACType
-    | toggleIsFetchingACType
-    | toggleIsFollowingProgressACType
-    | setAuthUserDataACType
-
+export type RootActionsType = AuthActionsType | DialogsActionsType | ProfileActionsType | UsersActionsType
 
 //@ts-ignore
 window.store = store

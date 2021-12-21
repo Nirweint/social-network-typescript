@@ -1,11 +1,11 @@
 import React from 'react';
 import {Navigate, NavLink} from 'react-router-dom';
 import style from './Sidebar.module.css';
-import {FriendsType} from "../../redux/store";
 import {ActiveFriends} from "./ActiveFriends/ActiveFriends";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {FriendsType} from "../../redux/reducers/sidebar-reducer";
 
 
 type SidebarPropsType = {}

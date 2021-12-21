@@ -1,6 +1,13 @@
-import {FriendsType} from "../store";
 import {v1} from "uuid";
 
+export type FriendType = {
+    id: string
+    name: string
+    img: string
+}
+export type FriendsType = {
+    friends: Array<FriendType>
+}
 
 const initialSidebarState = {
     friends: [

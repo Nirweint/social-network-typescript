@@ -2,6 +2,8 @@ import {ADD_POST, CHANGE_NEW_POST_TEXT_CALL_BACK, SET_USER_INFO, UserInfoType} f
 import {ThunkType} from "../redux-store";
 import {profileAPI} from "../../api/api";
 
+export type ProfileActionsType = addPostACType | changeNewPostTextCallBackACType | setUserInfoACType
+
 export type addPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = () => {
     return {

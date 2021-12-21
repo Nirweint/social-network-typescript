@@ -1,32 +1,8 @@
-// Store types ---------------------------
 
-export type DialogType = {
-    id: string
-    name: string
-    img: string
-}
-export type MessageType = {
-    id: string
-    messageText: string
-    name: string
-    time: string
-    avatar: string
-    head: string
+export type Some = {
+
 }
 
-export type DialogsPageType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-    newMessageText: string
-}
-export type FriendType = {
-    id: string
-    name: string
-    img: string
-}
-export type FriendsType = {
-    friends: Array<FriendType>
-}
 // export type RootStateType = {
 //     profilePage: ProfilePageType
 //     dialogsPage: DialogsPageType

@@ -9,6 +9,13 @@ import {
 import {ThunkType} from "../redux-store";
 import {usersAPI} from "../../api/api";
 
+export type UsersActionsType =
+    toggleFollowACType
+    | setUsersACType
+    | setCurrentPageACType
+    | setTotalCountACType
+    | toggleIsFetchingACType
+    | toggleIsFollowingProgressACType
 
 export type toggleFollowACType = ReturnType<typeof toggleFollowAC>
 export const toggleFollowAC = (userId: number) => {

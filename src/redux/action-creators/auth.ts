@@ -2,6 +2,8 @@ import {SET_USER_DATA} from "../reducers/auth-reducer";
 import {ThunkType} from "../redux-store";
 import {authAPI} from "../../api/api";
 
+export type AuthActionsType = setAuthUserDataACType
+
 export type setAuthUserDataACType = ReturnType<typeof setAuthUserDataAC>
 export const setAuthUserDataAC = (payload: { id: number, login: string, email: string }) => {
     return {
@@ -19,5 +21,4 @@ export const getUserDataTC = (): ThunkType => async dispatch => {
     } catch (e: any) {
         throw new Error(e)
     }
-
 }

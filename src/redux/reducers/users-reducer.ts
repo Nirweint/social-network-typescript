@@ -1,5 +1,4 @@
-import {ActionsTypes} from "../redux-store";
-
+import {UsersActionsType} from "../action-creators/users";
 export const TOGGLE_FOLLOW = "TOGGLE-FOLLOW"
 export const SET_USERS = "SET-USERS";
 export const SET_CURRENT_PAGE = "SET-CURRENT-PAGE"
@@ -33,7 +32,7 @@ const initialUsersState: UsersPageType = {
     followingInProgress: [],
 }
 
-export const usersReducer = (state = initialUsersState, action: ActionsTypes): UsersPageType => {
+export const usersReducer = (state = initialUsersState, action: UsersActionsType): UsersPageType => {
 
     switch (action.type) {
         case TOGGLE_FOLLOW:

@@ -1,4 +1,4 @@
-import {setAuthUserDataACType} from "../action-creators/auth";
+import {AuthActionsType, setAuthUserDataACType} from "../action-creators/auth";
 
 export const SET_USER_DATA = "SET_USER_DATA";
 
@@ -16,9 +16,7 @@ const initState: AuthStateType = {
     isAuth: false
 }
 
-type RootActionTypes = setAuthUserDataACType
-
-export const authReducer = (state = initState, action: RootActionTypes): AuthStateType=> {
+export const authReducer = (state = initState, action: AuthActionsType): AuthStateType=> {
     switch (action.type) {
         case SET_USER_DATA: {
             return {...state, ...action.payload, isAuth: true}

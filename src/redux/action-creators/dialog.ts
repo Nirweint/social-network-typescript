@@ -1,5 +1,7 @@
 import {ADD_MESSAGE, ON_CHANGE_INPUT_VALUE_MESSAGE} from "../reducers/dialogs-reducer";
 
+export type DialogsActionsType = addMessageACType | onChangeInputValueMessageACType
+
 export type addMessageACType = ReturnType<typeof addMessageAC>
 export const addMessageAC = () => {
     return {
