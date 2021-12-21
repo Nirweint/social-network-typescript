@@ -14,16 +14,10 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
     }
     const {photos, fullName, lookingForAJobDescription, aboutMe} = props.userInfo;
 
-    let isPhotosLargeExists = photos.large ? photos.large : "https://image.freepik.com/free-vector/sky-blue-background-with-bokeh-light-effect_1017-33332.jpg"
     let isPhotosSmallExists = photos.small ? photos.small : avatarDefault
 
     return (
         <div>
-            <div>
-                <img className={style.backgroundImg}
-                     src={isPhotosLargeExists}
-                     alt="background"/>
-            </div>
             <div className={style.wrapper}>
                 <img className={style.avatar} src={isPhotosSmallExists} alt="avatar"/>
                 <div>
