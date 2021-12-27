@@ -13,6 +13,7 @@ import {RootReducerType} from "../../redux/redux-store";
 import React from "react";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
+import {compose} from "redux";
 
 export type mapDispatchToPropsType = {
     onFollowClick: (userId: number) => void,
@@ -71,12 +72,15 @@ let
         }
     }
 
-export default connect(mapStateToProps, {
-    onFollowClick: toggleFollowAC,
-    setUsers: setUsersAC,
-    setCurrentPage: setCurrentPageAC,
-    setTotalCount: setTotalCountAC,
-    toggleIsFetching: toggleIsFetchingAC,
-    getUsers: getUsersTC,
-    getIsFollowed: getIsFollowedTC,
-})(UsersContainer);
+
+export default compose(
+    connect(mapStateToProps, {
+        onFollowClick: toggleFollowAC,
+        setUsers: setUsersAC,
+        setCurrentPage: setCurrentPageAC,
+        setTotalCount: setTotalCountAC,
+        toggleIsFetching: toggleIsFetchingAC,
+        getUsers: getUsersTC,
+        getIsFollowed: getIsFollowedTC,
+    })
+)(UsersContainer)
