@@ -6,18 +6,15 @@ import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
 import {ChatInputContainer} from "./ChatInput/ChatInputContainer";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {Navigate} from "react-router-dom";
 import {DialogsPageType} from "../../redux/reducers/dialogs-reducer";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
-type DialogsPropsType = {}
-
-export function Dialogs(props: DialogsPropsType) {
+export const Dialogs: React.FC = withAuthRedirect(() => {
     //get dialogsPage with useSelector, here i can get only state from reducer
     let dialogsPage = useSelector<RootReducerType, DialogsPageType>(state => state.dialogsPage)
 
     // get dialogs with custom hook, here i get in dialogsPage/dialogs. i can't do this with useSelector
     let dialogs = useTypedSelector(state => state.dialogsPage.dialogs)
-    const isAuth = useTypedSelector(state => state.auth.isAuth)
 
     const dialogsElements = dialogs
         .map(p => <DialogItem
@@ -37,8 +34,6 @@ export function Dialogs(props: DialogsPropsType) {
             avatar={m.avatar}
             head={m.head}
         />)
-
-    if (!isAuth) return <Navigate to="/login"/>
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
@@ -53,6 +48,6 @@ export function Dialogs(props: DialogsPropsType) {
             </div>
         </div>
     );
-}
+})
 
 // TODO add style to messages go up, when you write new messages

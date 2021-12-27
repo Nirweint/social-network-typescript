@@ -77,8 +77,8 @@ export const getUsersTC = (currentPage: number, count: number): ThunkType => asy
         dispatch(setUsersAC(res.items));
         dispatch(setTotalCountAC(res.totalCount));
 
-    } catch (e: any) { // TODO how to type this?
-        throw new Error(e)
+    } catch (err: any) { // TODO how to type this?
+        console.warn(err)
     }
 
 }
@@ -101,7 +101,7 @@ export const getIsFollowedTC = (userId: number): ThunkType => async dispatch => 
             }
             dispatch(toggleFollowingProgressAC(false, userId))
         }
-    } catch (e: any) {
-        throw new Error(e)
+    } catch (err: any) {
+        console.warn(err)
     }
 }

@@ -32,7 +32,7 @@ export const setUserInfoTC = (userId: string | number | null | undefined): Thunk
     try {
         const res = await profileAPI.getProfile(userId)
         dispatch(setUserInfoAC(res))
-    } catch (e: any) {
-        throw new Error(e)
+    } catch (err: any) {
+        console.warn(err)
     }
 }
