@@ -1,8 +1,9 @@
 import React from 'react';
-import style from './ProfileInfo.module.css';
+import s from './ProfileInfo.module.css';
 import {UserInfoType} from "../../../redux/reducers/profile-reducer";
 import {Preloader} from "../../common/Preloader/Preloader";
 import avatarDefault from "../../../assets/images/user-avatar.webp";
+import {ProfileStatus} from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
     userInfo: UserInfoType
@@ -18,14 +19,15 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
 
     return (
         <div>
-            <div className={style.wrapper}>
-                <img className={style.avatar} src={isPhotosSmallExists} alt="avatar"/>
+            <div className={s.wrapper}>
+                <img className={s.avatar} src={isPhotosSmallExists} alt="avatar"/>
                 <div>
-                    <div className={style.name}>
+                    <div className={s.name}>
                         <h3>{fullName}</h3>
                     </div>
-                    <div className={style.description}>{aboutMe}</div>
-                    <div className={style.description}>{lookingForAJobDescription} </div>
+                    <ProfileStatus status={"lox"}/>
+                    <div className={s.description}>{aboutMe}</div>
+                    <div className={s.description}>{lookingForAJobDescription} </div>
                 </div>
             </div>
         </div>

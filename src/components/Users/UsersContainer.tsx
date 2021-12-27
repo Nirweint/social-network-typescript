@@ -73,7 +73,7 @@ let
     }
 
 
-export default compose(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {
         onFollowClick: toggleFollowAC,
         setUsers: setUsersAC,
