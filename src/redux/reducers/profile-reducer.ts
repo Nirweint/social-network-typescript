@@ -1,11 +1,13 @@
 import {v1} from "uuid";
 import {ProfileActionsType} from "../action-creators/profile";
-import avatarDefault from "../../assets/images/user-avatar.webp"
+
 const imgForNewPost = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw"
 
 export const ADD_POST = "ADD-POST"
 export const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
 export const SET_USER_INFO = "SET-USER-INFO"
+export const SET_PROFILE_STATUS = "SET-PROFILE-STATUS"
+
 
 export type PostType = {
     id: string
@@ -40,6 +42,7 @@ export type ProfilePageType = {
     posts: Array<PostType>
     userInfo: UserInfoType
     newPostText: string
+    status: string
 }
 
 const initialProfileState: ProfilePageType = {
@@ -85,6 +88,7 @@ const initialProfileState: ProfilePageType = {
         },
     ] as Array<PostType>,
     newPostText: "",
+    status: "",
 }
 
 export const profileReducer = (state = initialProfileState, action: ProfileActionsType): ProfilePageType => {
@@ -105,6 +109,10 @@ export const profileReducer = (state = initialProfileState, action: ProfileActio
 
         case SET_USER_INFO: {
             return {...state, userInfo: action.userInfo}
+        }
+
+        case SET_PROFILE_STATUS: {
+            return {...state, status: action.status}
         }
 
         default:

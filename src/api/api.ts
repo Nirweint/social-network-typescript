@@ -28,9 +28,17 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    getProfile(userId: string | number | null | undefined) {
+    getProfile(userId: number) {
         return instance.get(`/profile/${userId}`)
-            .then(response => response.data)
+            .then(response => response)
+    },
+    getProfileStatus(userId: number) {
+        return instance.get(`/profile/status/${userId}`)
+            .then(response => response)
+    },
+    updateProfileStatus(status: string) {
+        return instance.put(`/profile/status/`, {status})
+            .then(response => response)
     }
 }
 

@@ -7,6 +7,8 @@ import {ProfileStatus} from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
     userInfo: UserInfoType
+    status: string
+    updateProfileStatusHandler: (status: string) => void
 }
 
 export function ProfileInfo(props: ProfileInfoPropsType) {
@@ -25,7 +27,10 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
                     <div className={s.name}>
                         <h3>{fullName}</h3>
                     </div>
-                    <ProfileStatus status={"lox"}/>
+                    <ProfileStatus
+                        status={props.status}
+                        updateProfileStatusHandler={props.updateProfileStatusHandler}
+                    />
                     <div className={s.description}>{aboutMe}</div>
                     <div className={s.description}>{lookingForAJobDescription} </div>
                 </div>

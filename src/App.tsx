@@ -7,7 +7,7 @@ import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import "./App.css";
 import UsersContainer from "./components/Users/UsersContainer";
-import {ProfileContainer} from "./components/Profile/ProfileContainer";
+import {Profile} from "./components/Profile/Profile";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
 
@@ -22,7 +22,7 @@ export const App = (props: AppPropsType) => {
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/" element={<Navigate to="/profile/"/>}/>
-                    <Route path="/profile/:userId" element={<ProfileContainer/>}/>
+                    <Route path="/profile/:userId" element={<Profile/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/dialogs" element={<Dialogs/>}/>
                     <Route path="/news" element={<News/>}/>
