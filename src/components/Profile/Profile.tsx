@@ -24,7 +24,7 @@ export const Profile: React.FC = withAuthRedirect(() => {
             dispatch(setUserInfoTC(+params.userId))
             dispatch(getProfileStatusTC(+params.userId))
         }
-    }, [dispatch, params.userId])
+    }, [])
 
     const updateProfileStatusHandler = useCallback( (status: string) => {
         if (params.userId && authId === +params.userId) {
@@ -35,7 +35,7 @@ export const Profile: React.FC = withAuthRedirect(() => {
 
     return (
         <div>
-            <ProfileInfo
+                <ProfileInfo
                 userInfo={userInfo}
                 status={status}
                 updateProfileStatusHandler={updateProfileStatusHandler}

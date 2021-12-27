@@ -6,7 +6,6 @@ type ProfileStatusType = {
 }
 
 export class ProfileStatus extends React.Component<ProfileStatusType> {
-
     state = {
         editMode: false,
         statusValue: this.props.status
@@ -29,6 +28,12 @@ export class ProfileStatus extends React.Component<ProfileStatusType> {
         })
     }
 
+    componentDidUpdate(prevProps: Readonly<ProfileStatusType>, prevState: Readonly<{}>) {
+        if (prevProps.status !== this.props.status)
+        this.setState({
+            statusValue :this.props.status
+        })
+    }
 
     render() {
         return (
