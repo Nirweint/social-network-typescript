@@ -5,7 +5,6 @@ import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {useDispatch} from "react-redux";
-import {RootActionsType} from "../../redux/redux-store";
 import {getProfileStatusTC, setUserInfoTC, updateProfileStatusTC} from "../../redux/action-creators/profile";
 
 export const Profile: React.FC = withAuthRedirect(() => {
@@ -17,20 +16,18 @@ export const Profile: React.FC = withAuthRedirect(() => {
     const dispatch = useDispatch()
     const params = useParams<'userId'>()
 
-    // let userId = params.userId  ? params.userId : authId
-
     useEffect(() => {
         if (params.userId) {
             dispatch(setUserInfoTC(+params.userId))
             dispatch(getProfileStatusTC(+params.userId))
         }
-    }, [])
+    }, [dispatch, params.userId])
 
     const updateProfileStatusHandler = useCallback( (status: string) => {
         if (params.userId && authId === +params.userId) {
             dispatch(updateProfileStatusTC(status))
         }
-    }, [dispatch, authId])
+    }, [dispatch, authId, params.userId])
 
 
     return (
