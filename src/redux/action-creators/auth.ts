@@ -18,7 +18,18 @@ export const getUserDataTC = (): ThunkType => async dispatch => {
         if (res.resultCode === 0) {
             dispatch(setAuthUserDataAC(res.data))
         }
-    } catch (e: any) {
-        throw new Error(e)
+    } catch (err: any) {
+        console.warn(err)
+    }
+}
+
+export const authorizeTC = (email: string, password: string, rememberMe: boolean): ThunkType => async dispatch => {
+    try {
+        const res = await authAPI.authorize(email, password, rememberMe)
+        if (res.data.resultCode === 0) {
+
+        }
+    } catch (err: any) {
+        console.warn(err)
     }
 }

@@ -46,5 +46,9 @@ export const authAPI = {
     getUserData() {
         return instance.get("/auth/me")
             .then(res => res.data)
+    },
+    authorize(email: string, password: string, rememberMe: boolean) {
+        return instance.post("/auth/login", {email, password, rememberMe})
+            .then(res => res)
     }
 }

@@ -107,13 +107,11 @@ export const profileReducer = (state = initialProfileState, action: ProfileActio
         case CHANGE_NEW_POST_TEXT_CALL_BACK:
             return {...state, newPostText: action.newText}
 
-        case SET_USER_INFO: {
+        case SET_USER_INFO:
             return {...state, userInfo: action.userInfo}
-        }
 
-        case SET_PROFILE_STATUS: {
+        case SET_PROFILE_STATUS:
             return {...state, status: action.status}
-        }
 
         default:
             return state;
