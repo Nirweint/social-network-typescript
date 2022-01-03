@@ -2,8 +2,9 @@ import React from 'react';
 import {Formik, FormikHelpers} from 'formik';
 import {LoginForm} from "./LoginForm";
 import {useDispatch} from "react-redux";
-import {authorizeTC} from "../../redux/action-creators/auth";
-import {AddPostFormValues} from "../Profile/MyPosts/AddPostForm/AddPostForm";
+import {loginTC} from "../../redux/action-creators/auth";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {Navigate} from "react-router-dom";
 
 type LoginValues = {
     email: string
@@ -12,6 +13,9 @@ type LoginValues = {
 }
 
 export const Login = () => {
+    const isAuth = useTypedSelector(state => state.auth.isAuth)
+    const authId = useTypedSelector(state => state.auth.id)
+
     const dispatch = useDispatch()
 
     const loginValidate = (values: LoginValues) => {
@@ -40,10 +44,13 @@ export const Login = () => {
         {setSubmitting}: FormikHelpers<LoginValues>
     ) => {
         const {email, password, rememberMe} = values
-        dispatch(authorizeTC(email, password, rememberMe))
+        dispatch(loginTC(email, password, rememberMe))
         setSubmitting(false);
     }
 
+    if (isAuth) {
+        return <Navigate to={`/profile/${authId}`}/>
+    }
 
     return (
         <div>

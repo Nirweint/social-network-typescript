@@ -6,9 +6,11 @@ import {Button} from "../../UI/Button/Button";
 export type HeaderPropsType = {
     login: string | null
     isAuth: boolean
+    logoutHandler: () => void
 }
 
-export const Header: React.FC<HeaderPropsType> = ({isAuth, login}) => {
+export const Header: React.FC<HeaderPropsType> = ({isAuth, login, logoutHandler}) => {
+
     return (
         <header className={s.header}>
             <img
@@ -18,7 +20,10 @@ export const Header: React.FC<HeaderPropsType> = ({isAuth, login}) => {
 
             <div className={s.loginBlock}>
                 {isAuth ? (
-                        login
+                        <div>
+                            <span>{login}</span>
+                                <Button onClick={logoutHandler}>Logout</Button>
+                        </div>
                     )
                     :
                     (

@@ -54,8 +54,6 @@ export const Users = (props: UsersPropsType) => {
                             name={u.name}
                             status={u.status}
                             isButtonDisabled={isButtonDisabledHandler(u.id)}
-                            // city={u.location.city}
-                            // country={u.location.country}
                             onClick={() => props.onFollowClick(u.id)}
                         />
                     )

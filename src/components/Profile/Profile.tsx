@@ -1,13 +1,12 @@
 import React, {useCallback, useEffect} from 'react';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useParams} from "react-router-dom";
-import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {useDispatch} from "react-redux";
 import {getProfileStatusTC, setUserInfoTC, updateProfileStatusTC} from "../../redux/action-creators/profile";
 
-export const Profile: React.FC = withAuthRedirect(() => {
+export const Profile: React.FC = () => {
 
     const userInfo = useTypedSelector(state => state.profilePage.userInfo)
     const authId = useTypedSelector(state => state.auth.id)
@@ -23,7 +22,7 @@ export const Profile: React.FC = withAuthRedirect(() => {
         }
     }, [dispatch, params.userId])
 
-    const updateProfileStatusHandler = useCallback( (status: string) => {
+    const updateProfileStatusHandler = useCallback((status: string) => {
         if (params.userId && authId === +params.userId) {
             dispatch(updateProfileStatusTC(status))
         }
@@ -32,7 +31,7 @@ export const Profile: React.FC = withAuthRedirect(() => {
 
     return (
         <div>
-                <ProfileInfo
+            <ProfileInfo
                 userInfo={userInfo}
                 status={status}
                 updateProfileStatusHandler={updateProfileStatusHandler}
@@ -40,4 +39,4 @@ export const Profile: React.FC = withAuthRedirect(() => {
             <MyPostsContainer/>
         </div>
     );
-})
+}
