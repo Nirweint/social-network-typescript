@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import {DialogsActionsType} from "../action-creators/dialog";
 
-const avatarImage = "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw";
+const avatarImage = "https://sun9-52.userapi.com/impf/c850120/v850120142/de34f/-V0Lx1I09fo.jpg?size=2160x2160&quality=96&sign=e11d8ba5c927096811c14b692a8f67e0&type=album";
 
 export const ADD_MESSAGE = "ADD-MESSAGE"
 export const ON_CHANGE_INPUT_VALUE_MESSAGE = "ON-CHANGE-INPUT-VALUE-MESSAGE"
@@ -31,7 +31,7 @@ const initialDialogsState = {
         {
             id: v1(),
             name: "Alex",
-            img: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+            img: avatarImage,
         },
         {
             id: v1(),
@@ -56,7 +56,7 @@ const initialDialogsState = {
             messageText: "I'm gonna make him an offer he can't refuse.",
             name: "Alex",
             time: "22:00",
-            avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+            avatar: avatarImage,
         },
         {
             head: "Alex",
@@ -72,7 +72,7 @@ const initialDialogsState = {
             messageText: "Revenge is a dish best served cold.",
             name: "Alex",
             time: "22:00",
-            avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+            avatar: avatarImage,
         },
         {
             head: "Alex",
@@ -88,7 +88,7 @@ const initialDialogsState = {
             messageText: "Sure I do.",
             name: "Alex",
             time: "22:00",
-            avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQEdJHJUKr7psA/profile-displayphoto-shrink_200_200/0/1634277974590?e=1640822400&v=beta&t=omPVN9KbsKhKnN2Yn0dTkqkGXi0QkSGtEJ5thjvYGPw",
+            avatar: avatarImage,
         },
         {
             head: "Alex",
