@@ -4,7 +4,6 @@ import {ProfileActionsType} from "../action-creators/profile";
 const imgForNewPost = "https://sun9-52.userapi.com/impf/c850120/v850120142/de34f/-V0Lx1I09fo.jpg?size=2160x2160&quality=96&sign=e11d8ba5c927096811c14b692a8f67e0&type=album"
 
 export const ADD_POST = "ADD-POST"
-export const CHANGE_NEW_POST_TEXT_CALL_BACK = "CHANGE-NEW-POST-TEXT-CALL-BACK"
 export const SET_USER_INFO = "SET-USER-INFO"
 export const SET_PROFILE_STATUS = "SET-PROFILE-STATUS"
 
@@ -41,7 +40,6 @@ export type UserInfoType = {
 export type ProfilePageType = {
     posts: Array<PostType>
     userInfo: UserInfoType
-    newPostText: string
     status: string
 }
 
@@ -87,7 +85,6 @@ const initialProfileState: ProfilePageType = {
             img: imgForNewPost,
         },
     ] as Array<PostType>,
-    newPostText: "",
     status: "",
 }
 
@@ -98,14 +95,11 @@ export const profileReducer = (state = initialProfileState, action: ProfileActio
             return {
                 ...state, posts: [...state.posts, {
                     id: v1(),
-                    message: state.newPostText,
+                    message: action.newPostText,
                     likesCount: 0,
                     img: imgForNewPost,
                 }]
             }
-
-        case CHANGE_NEW_POST_TEXT_CALL_BACK:
-            return {...state, newPostText: action.newText}
 
         case SET_USER_INFO:
             return {...state, userInfo: action.userInfo}

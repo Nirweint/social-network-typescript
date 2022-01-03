@@ -1,41 +1,25 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react';
+import React from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {MyPostsPropsType} from "./MyPostsContainer";
-import {PostType} from "../../../redux/reducers/profile-reducer";
-
-// export type MyPostsPropsType = {
-//     posts: Array<PostType>
-//     newPostText: string
-//     addPost: () => void
-//     changeTextValue: (textValue: string) => void
-//     addPostOnEnterPress: (keyValue: string) => void
-// }
+import {AddPostForm} from "./AddPostForm";
+import {useDispatch} from "react-redux";
+import {addPostAC} from "../../../redux/action-creators/profile";
 
 export function MyPosts(props: MyPostsPropsType) {
 
-    const onChangeTextValueHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeTextValue(e.currentTarget.value)
-    }
-    const addPostOnEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        props.addPostOnEnterPress(e.key)
-        e.key === "Enter" && e.preventDefault()// to think about
-    }
-    const addPostHandler = () => {
-        props.addPost()
+    const dispatch = useDispatch()
+
+    const addNewPost = (newPostText: string) => {
+        dispatch(addPostAC(newPostText))
     }
 
     return (
         <div className={style.myPosts}>
             <h3>My posts</h3>
-            <div>
-                <textarea
-                    value={props.newPostText}
-                    onChange={onChangeTextValueHandler}
-                    onKeyPress={addPostOnEnterPressHandler}
-                />
-                <button onClick={addPostHandler}>Add post</button>
-            </div>
+            <AddPostForm
+                onSubmit={addNewPost}
+            />
             <div className={style.posts}>
                 {props.posts.map(post => {
                     return <Post

@@ -4,7 +4,6 @@ import {DialogsActionsType} from "../action-creators/dialog";
 const avatarImage = "https://sun9-52.userapi.com/impf/c850120/v850120142/de34f/-V0Lx1I09fo.jpg?size=2160x2160&quality=96&sign=e11d8ba5c927096811c14b692a8f67e0&type=album";
 
 export const ADD_MESSAGE = "ADD-MESSAGE"
-export const ON_CHANGE_INPUT_VALUE_MESSAGE = "ON-CHANGE-INPUT-VALUE-MESSAGE"
 
 export type DialogType = {
     id: string
@@ -23,7 +22,6 @@ export type MessageType = {
 export type DialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    newMessageText: string
 }
 
 const initialDialogsState = {
@@ -99,7 +97,6 @@ const initialDialogsState = {
             avatar: "https://sun9-80.userapi.com/impg/gJeHyr8s0kj96H0LVEz1Gq7vHteh1QYV8_Kdow/FRSJlnhrNaY.jpg?size=878x627&quality=96&sign=00b60f8e76d747c622535e511da56ce4&type=album",
         },
     ],
-    newMessageText: "",
 }
 
 export const dialogsReducer = (state: DialogsPageType = initialDialogsState, action: DialogsActionsType): DialogsPageType => {
@@ -109,15 +106,11 @@ export const dialogsReducer = (state: DialogsPageType = initialDialogsState, act
             return {...state, messages: [...state.messages, {
                     head: "Alex",
                     id: v1(),
-                    messageText: state.newMessageText,
+                    messageText: action.newMessage,
                     name: "Alex",
                     time: "22:00",
                     avatar: avatarImage,
                 }]}
-
-        case ON_CHANGE_INPUT_VALUE_MESSAGE:
-            return {...state, newMessageText: action.inputValue}
-
         default:
             return state;
     }

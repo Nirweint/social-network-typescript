@@ -1,6 +1,5 @@
 import {
     ADD_POST,
-    CHANGE_NEW_POST_TEXT_CALL_BACK,
     SET_PROFILE_STATUS,
     SET_USER_INFO,
     UserInfoType
@@ -10,22 +9,14 @@ import {profileAPI} from "../../api/api";
 
 export type ProfileActionsType =
     addPostACType
-    | changeNewPostTextCallBackACType
     | setUserInfoACType
     | setProfileStatusACType
 
 export type addPostACType = ReturnType<typeof addPostAC>
-export const addPostAC = () => {
+export const addPostAC = (newPostText: string) => {
     return {
         type: ADD_POST,
-    } as const
-}
-
-export type changeNewPostTextCallBackACType = ReturnType<typeof changeNewPostTextCallBackAC>
-export const changeNewPostTextCallBackAC = (newText: string) => {
-    return {
-        type: CHANGE_NEW_POST_TEXT_CALL_BACK,
-        newText: newText
+        newPostText,
     } as const
 }
 
