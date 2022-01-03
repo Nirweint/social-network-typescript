@@ -2,7 +2,7 @@ import React from 'react';
 import style from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {MyPostsPropsType} from "./MyPostsContainer";
-import {AddPostForm} from "./AddPostForm";
+import {AddPostForm} from "./AddPostForm/AddPostForm";
 import {useDispatch} from "react-redux";
 import {addPostAC} from "../../../redux/action-creators/profile";
 

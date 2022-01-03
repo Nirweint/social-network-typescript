@@ -3,8 +3,9 @@ import {Formik, FormikHelpers} from 'formik';
 import {LoginForm} from "./LoginForm";
 import {useDispatch} from "react-redux";
 import {authorizeTC} from "../../redux/action-creators/auth";
+import {AddPostFormValues} from "../Profile/MyPosts/AddPostForm/AddPostForm";
 
-type Values = {
+type LoginValues = {
     email: string
     password: string
     rememberMe: boolean
@@ -13,6 +14,21 @@ type Values = {
 export const Login = () => {
     const dispatch = useDispatch()
 
+    const loginValidate = (values: LoginValues) => {
+        let errors: Partial<LoginValues> = {};
+        if (!values.email) {
+            errors.email = 'Required';
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+            errors.email = 'Invalid email address';
+        }
+
+        if (!values.password) {
+            errors.password = 'Required';
+        }
+
+        return errors
+    }
+
     const initValues = {
         email: '',
         password: '',
@@ -20,8 +36,8 @@ export const Login = () => {
     }
 
     const onSubmitHandler = (
-        values: Values,
-        {setSubmitting}: FormikHelpers<Values>
+        values: LoginValues,
+        {setSubmitting}: FormikHelpers<LoginValues>
     ) => {
         const {email, password, rememberMe} = values
         dispatch(authorizeTC(email, password, rememberMe))
@@ -35,6 +51,7 @@ export const Login = () => {
             <Formik
                 initialValues={initValues}
                 onSubmit={onSubmitHandler}
+                validate={loginValidate}
             >
                 <LoginForm/>
             </Formik>

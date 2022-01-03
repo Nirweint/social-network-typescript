@@ -11,6 +11,7 @@ import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {addMessageAC} from "../../redux/action-creators/dialog";
 
 export const Dialogs: React.FC = withAuthRedirect(() => {
+
     //get dialogsPage with useSelector, here i can get only state from reducer
     let dialogsPage = useSelector<RootReducerType, DialogsPageType>(state => state.dialogsPage)
 

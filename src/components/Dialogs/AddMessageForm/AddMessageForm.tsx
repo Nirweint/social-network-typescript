@@ -1,15 +1,24 @@
 import React from 'react';
-import style from "./AddMessageForm.module.css";
-import {Field, Form, Formik, FormikHelpers} from "formik";
+import s from "./AddMessageForm.module.css";
+import {ErrorMessage, Field, Form, Formik, FormikHelpers} from "formik";
 
 type AddMessageFormPropsType = {
     onSubmit: (newMessage: string) => void
 }
+type AddMessageFormValues = {
+    message: string
+}
 
 export const AddMessageForm = (props: AddMessageFormPropsType) => {
 
-    type Values = {
-        message: string
+    const addPostFormValidate = (values: AddMessageFormValues) => {
+        let errors: Partial<AddMessageFormValues> = {};
+        if (!values.message) {
+            errors.message = 'Field is required';
+        } else if (values.message.length > 50) {
+            errors.message = 'Max Length is 50 symbols';
+        }
+        return errors
     }
 
     const initValues = {
@@ -17,8 +26,8 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
     }
 
     const onSubmitHandler = (
-        values: Values,
-        {setSubmitting, resetForm}: FormikHelpers<Values>
+        values: AddMessageFormValues,
+        {setSubmitting, resetForm}: FormikHelpers<AddMessageFormValues>
     ) => {
         props.onSubmit(values.message)
         resetForm({values: {message: ''}})
@@ -28,14 +37,16 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
     return (
         <Formik initialValues={initValues}
                 onSubmit={onSubmitHandler}
+                validate={addPostFormValidate}
         >
-            <Form className={style.body}>
+            <Form className={s.body}>
                 <Field
-                    className={style.inputItem}
+                    className={s.inputItem}
                     name="message"
                     component={'input'}
                 />
-                <button type="submit" className={style.inputBtn}>Add</button>
+                <button type="submit" className={s.inputBtn}>Add</button>
+                <ErrorMessage name="message" component="div" className={s.error}/>
             </Form>
         </Formik>
 
