@@ -41,7 +41,7 @@ export const Login = () => {
 
     const onSubmitHandler = (
         values: LoginValues,
-        {setSubmitting}: FormikHelpers<LoginValues>
+        {setSubmitting}: FormikHelpers<LoginValues>,
     ) => {
         const {email, password, rememberMe} = values
         dispatch(loginTC(email, password, rememberMe))

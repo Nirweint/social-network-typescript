@@ -1,11 +1,12 @@
-import {AuthStateType, SET_USER_DATA} from "../reducers/auth-reducer";
+import {SET_USER_DATA} from "../reducers/auth-reducer";
 import {ThunkType} from "../redux-store";
 import {authAPI} from "../../api/api";
+import {Nullable} from "../../types";
 
 export type AuthActionsType = setAuthUserDataACType
 
 export type setAuthUserDataACType = ReturnType<typeof setAuthUserDataAC>
-export const setAuthUserDataAC = (email: string | null,  id: number | null, login: string | null, isAuth: boolean) => {
+export const setAuthUserDataAC = (email: Nullable<string>,  id: Nullable<number>, login: Nullable<string>, isAuth: boolean) => {
     return {
         type: SET_USER_DATA,
         payload: {email, id, login, isAuth},
