@@ -39,9 +39,9 @@ export const Login = () => {
         rememberMe: false,
     }
 
-    const onSubmitHandler = (
+    const handleOnSubmitClick = (
         values: LoginValues,
-        {setSubmitting}: FormikHelpers<LoginValues>,
+        {setSubmitting }: FormikHelpers<LoginValues>,
     ) => {
         const {email, password, rememberMe} = values
         dispatch(loginTC(email, password, rememberMe))
@@ -57,7 +57,7 @@ export const Login = () => {
             <h1>Log in</h1>
             <Formik
                 initialValues={initValues}
-                onSubmit={onSubmitHandler}
+                onSubmit={handleOnSubmitClick}
                 validate={loginValidate}
             >
                 <LoginForm/>

@@ -11,7 +11,7 @@ type ProfileInfoPropsType = {
     updateProfileStatusHandler: (status: string) => void
 }
 
-export function ProfileInfo(props: ProfileInfoPropsType) {
+export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
     if (!props.userInfo) {
         return <Preloader/>
     }
@@ -37,4 +37,4 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
             </div>
         </div>
     );
-}
+})

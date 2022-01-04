@@ -3,6 +3,7 @@ import {Header} from "./Header";
 import {connect} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
 import {getUserDataTC, logoutTC} from "../../redux/action-creators/auth";
+import {Nullable} from "../../types";
 
 type mapDispatchToPropsType = {
     getUserDataTC: () => void
@@ -10,7 +11,7 @@ type mapDispatchToPropsType = {
 }
 
 type mapStateToPropsType = {
-    login: string | null
+    login: Nullable<string>
     isAuth: boolean
 }
 

@@ -13,20 +13,20 @@ export const Profile: React.FC = () => {
     const status = useTypedSelector(state => state.profilePage.status)
 
     const dispatch = useDispatch()
-    const params = useParams<'userId'>()
+    const {userId} = useParams<'userId'>()
 
     useEffect(() => {
-        if (params.userId) {
-            dispatch(setUserInfoTC(+params.userId))
-            dispatch(getProfileStatusTC(+params.userId))
+        if (userId) {
+            dispatch(setUserInfoTC(+userId))
+            dispatch(getProfileStatusTC(+userId))
         }
-    }, [dispatch, params.userId])
+    }, [dispatch, userId])
 
-    const updateProfileStatusHandler = useCallback((status: string) => {
-        if (params.userId && authId === +params.userId) {
+    const handleProfileStatusUpdate = useCallback((status: string) => {
+        if (userId && authId === +userId) {
             dispatch(updateProfileStatusTC(status))
         }
-    }, [dispatch, authId, params.userId])
+    }, [dispatch, authId, userId])
 
 
     return (
@@ -34,7 +34,7 @@ export const Profile: React.FC = () => {
             <ProfileInfo
                 userInfo={userInfo}
                 status={status}
-                updateProfileStatusHandler={updateProfileStatusHandler}
+                updateProfileStatusHandler={handleProfileStatusUpdate}
             />
             <MyPostsContainer/>
         </div>
