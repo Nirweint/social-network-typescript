@@ -11,7 +11,6 @@ export const Profile: React.FC = () => {
     const userInfo = useTypedSelector(state => state.profilePage.userInfo)
     const authId = useTypedSelector(state => state.auth.id)
     const status = useTypedSelector(state => state.profilePage.status)
-
     const dispatch = useDispatch()
     const {userId} = useParams<'userId'>()
 

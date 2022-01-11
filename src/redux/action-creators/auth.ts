@@ -13,12 +13,14 @@ export const setAuthUserDataAC = (email: Nullable<string>,  id: Nullable<number>
     } as const
 }
 
+// THUNK
 export const getUserDataTC = (): ThunkType => async dispatch => {
     try {
         const res = await authAPI.getUserData()
         if (res.resultCode === 0) {
             const {email, id, login} = res.data
             dispatch(setAuthUserDataAC(email, id, login, true))
+            return res
         }
     } catch (err: any) {
         console.warn(err)

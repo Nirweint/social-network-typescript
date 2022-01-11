@@ -1,28 +1,39 @@
 import React from 'react';
-import {Navigate, NavLink} from 'react-router-dom';
+import {NavLink, useParams} from 'react-router-dom';
 import style from './Sidebar.module.css';
 import {ActiveFriends} from "./ActiveFriends/ActiveFriends";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/redux-store";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {FriendsType} from "../../redux/reducers/sidebar-reducer";
+import {Nullable} from "../../types";
 
-
-type SidebarPropsType = {}
-
-export const Sidebar = (props: SidebarPropsType) => {
+export const Sidebar = () => {
     let sidebar = useSelector<RootReducerType, FriendsType>(state => state.sidebar)
     const authId = useTypedSelector(state => state.auth.id)
+    const isAuth = useTypedSelector(state => state.auth.isAuth)
+    const {userId} = useParams<'userId'>()
 
-    // const activeLinkStyle = style.activeLink;
+    const navigateTo = (isAuth: boolean, authId: Nullable<number>, userId: string | undefined) => {
+        if (isAuth) {
+            return `/profile/${authId}`
+        }
+        if (!userId) {
+            return `/login`
+        }
+        return `/profile/${userId}`
+
+    }
+
     const activeLinkStyle = ({isActive}: { isActive: boolean }) => isActive ? style.activeLink : ""
+    const activeLinkStyleForProfile = ({isActive}: { isActive: boolean }) => isActive && authId ? style.activeLink : ""
 
     return (
         <nav className={style.nav}>
             <div className={style.item}>
                 <NavLink
-                    to={`/profile/${authId ? authId : <Navigate to="/login"/>}`}
-                    className={activeLinkStyle}>
+                    to={navigateTo(isAuth, authId, userId)}
+                    className={activeLinkStyleForProfile}>
                     Profile</NavLink>
             </div>
             <div className={style.item}>

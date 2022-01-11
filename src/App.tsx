@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 import {Sidebar} from "./components/Sidebar/Sidebar";
 import {Dialogs} from "./components/Dialogs/Dialogs";
@@ -10,10 +10,25 @@ import UsersContainer from "./components/Users/UsersContainer";
 import {Profile} from "./components/Profile/Profile";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
+import {useDispatch} from "react-redux";
+import {initializeAppTC} from "./redux/action-creators/app";
+import {useTypedSelector} from "./hooks/useTypedSelector";
+import {Preloader} from "./components/common/Preloader/Preloader";
 
 type AppPropsType = {}
 
 export const App = (props: AppPropsType) => {
+
+    const initialized = useTypedSelector(state => state.app.initialized)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(initializeAppTC())
+    }, [dispatch, initializeAppTC])
+
+    if (!initialized) {
+        return <Preloader/>
+    }
 
     return (
         <div className="app-wrapper">

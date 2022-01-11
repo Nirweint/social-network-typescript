@@ -17,7 +17,7 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
     }
     const {photos, fullName, lookingForAJobDescription, aboutMe} = props.userInfo;
 
-    let isPhotosSmallExists = photos.small ? photos.small : avatarDefault
+    const isPhotosSmallExists = photos.small ? photos.small : avatarDefault
 
     return (
         <div>

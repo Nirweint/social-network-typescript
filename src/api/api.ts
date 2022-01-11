@@ -44,7 +44,7 @@ export const profileAPI = {
 
 export const authAPI = {
     getUserData() {
-        return instance.get("/auth/me")
+        return instance.get<getUserDataResponseType>("/auth/me")
             .then(res => res.data)
     },
     login(email: string, password: string, rememberMe: boolean) {
@@ -55,4 +55,14 @@ export const authAPI = {
         return instance.delete("/auth/login")
             .then(res => res.data)
     },
+}
+
+export type getUserDataResponseType = {
+    resultCode: number
+    messages: string[]
+    data: {
+        id: number
+        email: string
+        login: string
+    }
 }

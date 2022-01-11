@@ -18,9 +18,6 @@ type mapStateToPropsType = {
 export type HeaderContainerPropsType = mapStateToPropsType & mapDispatchToPropsType
 
 class HeaderContainer extends React.Component<HeaderContainerPropsType> {
-    componentDidMount() {
-        this.props.getUserDataTC()
-    }
 
     logoutHandler = () => {
         this.props.logoutTC()

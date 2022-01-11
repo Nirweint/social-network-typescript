@@ -22,7 +22,9 @@ export const Header: React.FC<HeaderPropsType> = ({isAuth, login, logoutHandler}
                 {isAuth ? (
                         <div>
                             <span>{login}</span>
+                            <NavLink to={"/login"}>
                                 <Button onClick={logoutHandler}>Logout</Button>
+                            </NavLink>
                         </div>
                     )
                     :
