@@ -15,9 +15,7 @@ import {initializeAppTC} from "./redux/action-creators/app";
 import {useTypedSelector} from "./hooks/useTypedSelector";
 import {Preloader} from "./components/common/Preloader/Preloader";
 
-type AppPropsType = {}
-
-export const App = (props: AppPropsType) => {
+export const App = () => {
 
     const initialized = useTypedSelector(state => state.app.initialized)
     const dispatch = useDispatch()
