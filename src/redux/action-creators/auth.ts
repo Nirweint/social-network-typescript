@@ -17,8 +17,8 @@ export const setAuthUserDataAC = (email: Nullable<string>,  id: Nullable<number>
 export const getUserDataTC = (): ThunkType => async dispatch => {
     try {
         const res = await authAPI.getUserData()
-        if (res.resultCode === 0) {
-            const {email, id, login} = res.data
+        if (res.data.resultCode === 0) {
+            const {email, id, login} = res.data.data
             dispatch(setAuthUserDataAC(email, id, login, true))
             return res
         }
@@ -30,7 +30,7 @@ export const getUserDataTC = (): ThunkType => async dispatch => {
 export const loginTC = (email: string, password: string, rememberMe: boolean): ThunkType => async dispatch => {
     try {
         const res = await authAPI.login(email, password, rememberMe)
-        if (res.resultCode === 0) {
+        if (res.data.resultCode === 0) {
             dispatch(getUserDataTC())
         }
     } catch (err: any) {
@@ -41,7 +41,7 @@ export const loginTC = (email: string, password: string, rememberMe: boolean): T
 export const logoutTC = (): ThunkType => async dispatch => {
     try {
         const res = await authAPI.logout()
-        if (res.resultCode === 0) {
+        if (res.data.resultCode === 0) {
             dispatch(setAuthUserDataAC(null, null, null, false))
         }
     } catch (err: any) {

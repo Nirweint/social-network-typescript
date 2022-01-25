@@ -8,16 +8,22 @@ import {ProfileStatus} from "./ProfileStatus";
 type ProfileInfoPropsType = {
     userInfo: UserInfoType
     status: string
-    updateProfileStatusHandler: (status: string) => void
+    handleProfileStatusUpdate: (status: string) => void
 }
 
-export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
-    if (!props.userInfo) {
-        return <Preloader/>
-    }
-    const {photos, fullName, lookingForAJobDescription, aboutMe} = props.userInfo;
+export const ProfileInfo: React.FC<ProfileInfoPropsType> = React.memo(props => {
+    const {
+        userInfo,
+        status,
+        handleProfileStatusUpdate
+    } = props;
+    const {photos, fullName, lookingForAJobDescription, aboutMe} = userInfo;
 
     const isPhotosSmallExists = photos.small ? photos.small : avatarDefault
+
+    if (!userInfo) {
+        return <Preloader/>
+    }
 
     return (
         <div>
@@ -28,8 +34,8 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                         <h3>{fullName}</h3>
                     </div>
                     <ProfileStatus
-                        status={props.status}
-                        updateProfileStatusHandler={props.updateProfileStatusHandler}
+                        status={status}
+                        handleProfileStatusUpdate={handleProfileStatusUpdate}
                     />
                     <div className={s.description}>{aboutMe}</div>
                     <div className={s.description}>{lookingForAJobDescription} </div>

@@ -33,7 +33,7 @@ export const Profile: React.FC = () => {
             <ProfileInfo
                 userInfo={userInfo}
                 status={status}
-                updateProfileStatusHandler={handleProfileStatusUpdate}
+                handleProfileStatusUpdate={handleProfileStatusUpdate}
             />
             <MyPostsContainer/>
         </div>

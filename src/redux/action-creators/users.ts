@@ -74,8 +74,8 @@ export const getUsersTC = (currentPage: number, count: number): ThunkType => asy
         const res = await usersAPI.getUsers(currentPage, count)
         dispatch(toggleIsFetchingAC(false))
         dispatch(setCurrentPageAC(currentPage))
-        dispatch(setUsersAC(res.items));
-        dispatch(setTotalCountAC(res.totalCount));
+        dispatch(setUsersAC(res.data.items));
+        dispatch(setTotalCountAC(res.data.totalCount));
 
     } catch (err: any) { // TODO how to type this?
         console.warn(err)
@@ -87,16 +87,16 @@ export const getIsFollowedTC = (userId: number): ThunkType => async dispatch => 
     try {
         dispatch(toggleFollowingProgressAC(true, userId))
         const res = await usersAPI.isFollowed(userId)
-        if (res === true) {
+        if (res.data === true) {
             const res = await usersAPI.unfollowUser(userId)
-            if (res.resultCode === 0) {
+            if (res.data.resultCode === 0) {
                 dispatch(toggleFollowAC(userId))
             }
             dispatch(toggleFollowingProgressAC(false, userId))
         }
-        if (res === false) {
+        if (res.data === false) {
             const res = await usersAPI.followUser(userId)
-            if (res.resultCode === 0) {
+            if (res.data.resultCode === 0) {
                 dispatch(toggleFollowAC(userId))
             }
             dispatch(toggleFollowingProgressAC(false, userId))
