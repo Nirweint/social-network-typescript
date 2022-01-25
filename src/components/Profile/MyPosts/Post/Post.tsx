@@ -8,7 +8,7 @@ type PostPropsType = {
     id: string
 }
 
-export function Post(props: PostPropsType) {
+export const Post = React.memo((props: PostPropsType) => {
     return (
         <div className={style.item} key={props.id}>
             <img className={style.avatar} src={props.img}
@@ -19,4 +19,4 @@ export function Post(props: PostPropsType) {
             </div>
         </div>
     );
-};
+});

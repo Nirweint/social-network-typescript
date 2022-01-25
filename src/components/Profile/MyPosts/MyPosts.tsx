@@ -6,7 +6,7 @@ import {AddPostForm} from "./AddPostForm/AddPostForm";
 import {useDispatch} from "react-redux";
 import {addPostAC} from "../../../redux/action-creators/profile";
 
-export function MyPosts(props: MyPostsPropsType) {
+export const MyPosts = React.memo((props: MyPostsPropsType) => {
 
     const dispatch = useDispatch()
 
@@ -33,4 +33,4 @@ export function MyPosts(props: MyPostsPropsType) {
             </div>
         </div>
     );
-}
+})

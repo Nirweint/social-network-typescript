@@ -3,13 +3,13 @@ import {NavLink, useParams} from 'react-router-dom';
 import style from './Sidebar.module.css';
 import {ActiveFriends} from "./ActiveFriends/ActiveFriends";
 import {useSelector} from "react-redux";
-import {RootReducerType} from "../../redux/redux-store";
+import {RootStateType} from "../../redux/redux-store";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {FriendsType} from "../../redux/reducers/sidebar-reducer";
 import {Nullable} from "../../types";
 
 export const Sidebar = () => {
-    let sidebar = useSelector<RootReducerType, FriendsType>(state => state.sidebar)
+    let sidebar = useSelector<RootStateType, FriendsType>(state => state.sidebar)
     const authId = useTypedSelector(state => state.auth.id)
     const isAuth = useTypedSelector(state => state.auth.isAuth)
     const {userId} = useParams<'userId'>()

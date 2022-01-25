@@ -4,7 +4,11 @@ import {useParams} from "react-router-dom";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {useDispatch} from "react-redux";
-import {getProfileStatusTC, setUserInfoTC, updateProfileStatusTC} from "../../redux/action-creators/profile";
+import {
+    getProfileStatusTC,
+    setUserInfoTC,
+    updateProfileStatusTC
+} from "../../redux/action-creators/profile";
 
 export const Profile: React.FC = () => {
 
@@ -26,7 +30,6 @@ export const Profile: React.FC = () => {
             dispatch(updateProfileStatusTC(status))
         }
     }, [dispatch, authId, userId])
-
 
     return (
         <div>

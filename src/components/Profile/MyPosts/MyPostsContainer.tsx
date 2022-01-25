@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {MyPosts} from "./MyPosts";
 import {Dispatch} from "redux";
 import {addPostAC} from "../../../redux/action-creators/profile";
-import {RootReducerType} from "../../../redux/redux-store";
+import {RootStateType} from "../../../redux/redux-store";
 import {PostType} from "../../../redux/reducers/profile-reducer";
 
 type mapStateToPropsType = {
@@ -17,7 +17,7 @@ type mapDispatchToPropsType = {
 export type MyPostsPropsType = mapStateToPropsType & mapDispatchToPropsType
 
 
-let mapStateToProps = (state: RootReducerType): mapStateToPropsType => {
+let mapStateToProps = (state: RootStateType): mapStateToPropsType => {
     return {
         posts: state.profilePage.posts,
     }

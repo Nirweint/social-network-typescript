@@ -14,15 +14,16 @@ import {useDispatch} from "react-redux";
 import {initializeAppTC} from "./redux/action-creators/app";
 import {useTypedSelector} from "./hooks/useTypedSelector";
 import {Preloader} from "./components/common/Preloader/Preloader";
+import {selectInitialized} from "./redux/selectors/app-selectors";
 
 export const App = () => {
 
-    const initialized = useTypedSelector(state => state.app.initialized)
+    const initialized = useTypedSelector(selectInitialized)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(initializeAppTC())
-    }, [dispatch, initializeAppTC])
+    }, [dispatch])
 
     if (!initialized) {
         return <Preloader/>

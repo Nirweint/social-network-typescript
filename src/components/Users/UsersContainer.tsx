@@ -9,7 +9,7 @@ import {
     toggleFollowAC,
     toggleIsFetchingAC
 } from "../../redux/action-creators/users";
-import {RootReducerType} from "../../redux/redux-store";
+import {RootStateType} from "../../redux/redux-store";
 import React from "react";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
@@ -67,7 +67,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
 }
 
 let
-    mapStateToProps = (state: RootReducerType): UsersPageType => {
+    mapStateToProps = (state: RootStateType): UsersPageType => {
         return {
             users: getUsers(state),
             count: getPageSize(state),

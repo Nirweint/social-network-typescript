@@ -27,8 +27,8 @@ let rootReducer = combineReducers({
 
 export let store = createStore(rootReducer, applyMiddleware(thunk));
 
-export type RootReducerType = ReturnType<typeof rootReducer>
-export type ThunkType = ThunkAction<void, RootReducerType, unknown, RootActionsType>
+export type RootStateType = ReturnType<typeof rootReducer>
+export type ThunkType = ThunkAction<void, RootStateType, unknown, RootActionsType>
 
 export type RootActionsType =
     AuthActionsType

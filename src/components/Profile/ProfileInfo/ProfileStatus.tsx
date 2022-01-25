@@ -5,11 +5,12 @@ type ProfileStatusType = {
     handleProfileStatusUpdate: (status: string) => void
 }
 
-export class ProfileStatus extends React.Component<ProfileStatusType> {
+export class ProfileStatus extends React.PureComponent<ProfileStatusType> {
     state = {
         editMode: false,
         statusValue: this.props.status
     }
+
 
     activateEditMode = () => {
         this.setState({

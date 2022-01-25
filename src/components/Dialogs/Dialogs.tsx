@@ -3,7 +3,7 @@ import style from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../redux/redux-store";
+import {RootStateType} from "../../redux/redux-store";
 import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {DialogsPageType} from "../../redux/reducers/dialogs-reducer";
@@ -13,7 +13,7 @@ import {addMessageAC} from "../../redux/action-creators/dialog";
 export const Dialogs: React.FC = withAuthRedirect(() => {
 
     //get dialogsPage with useSelector, here i can get only state from reducer
-    let dialogsPage = useSelector<RootReducerType, DialogsPageType>(state => state.dialogsPage)
+    let dialogsPage = useSelector<RootStateType, DialogsPageType>(state => state.dialogsPage)
 
     // get dialogs with custom hook, here i get in dialogsPage/dialogs. i can't do this with useSelector
     let dialogs = useTypedSelector(state => state.dialogsPage.dialogs)
