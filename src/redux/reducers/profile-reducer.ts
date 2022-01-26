@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import {ProfileActionsType} from "../action-creators/profile";
 
-const imgForNewPost = "https://sun9-52.userapi.com/impf/c850120/v850120142/de34f/-V0Lx1I09fo.jpg?size=2160x2160&quality=96&sign=e11d8ba5c927096811c14b692a8f67e0&type=album"
+export const imgForNewPost = "https://sun9-52.userapi.com/impf/c850120/v850120142/de34f/-V0Lx1I09fo.jpg?size=2160x2160&quality=96&sign=e11d8ba5c927096811c14b692a8f67e0&type=album"
 
 export const ADD_POST = "ADD-POST"
 export const SET_USER_INFO = "SET-USER-INFO"
@@ -43,7 +43,7 @@ export type ProfilePageType = {
     status: string
 }
 
-const initialProfileState: ProfilePageType = {
+export const initialProfileState: ProfilePageType = {
     userInfo: {
         userId: 1,
         lookingForAJob: false,
