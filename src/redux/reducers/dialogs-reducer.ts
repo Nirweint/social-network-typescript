@@ -3,7 +3,7 @@ import {DialogsActionsType} from "../action-creators/dialog";
 
 const avatarImage = "https://sun9-52.userapi.com/impf/c850120/v850120142/de34f/-V0Lx1I09fo.jpg?size=2160x2160&quality=96&sign=e11d8ba5c927096811c14b692a8f67e0&type=album";
 
-export const ADD_MESSAGE = "ADD-MESSAGE"
+export const ADD_MESSAGE = "dialogs/ADD-MESSAGE"
 
 export type DialogType = {
     id: string
@@ -103,14 +103,16 @@ export const dialogsReducer = (state: DialogsPageType = initialDialogsState, act
 
     switch (action.type) {
         case ADD_MESSAGE:
-            return {...state, messages: [...state.messages, {
+            return {
+                ...state, messages: [...state.messages, {
                     head: "Alex",
                     id: v1(),
                     messageText: action.newMessage,
                     name: "Alex",
                     time: "22:00",
                     avatar: avatarImage,
-                }]}
+                }]
+            }
         default:
             return state;
     }

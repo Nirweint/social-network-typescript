@@ -1,6 +1,6 @@
 import {AuthActionsType} from "../action-creators/auth";
 
-export const SET_USER_DATA = "SET_USER_DATA";
+export const SET_USER_DATA = "auth/SET_USER_DATA";
 
 export type AuthStateType = {
     id: number | null

@@ -77,7 +77,7 @@ export const getUsersTC = (currentPage: number, count: number): ThunkType => asy
         dispatch(setUsersAC(res.data.items));
         dispatch(setTotalCountAC(res.data.totalCount));
 
-    } catch (err: any) { // TODO how to type this?
+    } catch (err: any) {
         console.warn(err)
     }
 

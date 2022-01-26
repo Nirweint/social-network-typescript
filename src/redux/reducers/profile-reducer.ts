@@ -3,9 +3,9 @@ import {ProfileActionsType} from "../action-creators/profile";
 
 export const imgForNewPost = "https://sun9-52.userapi.com/impf/c850120/v850120142/de34f/-V0Lx1I09fo.jpg?size=2160x2160&quality=96&sign=e11d8ba5c927096811c14b692a8f67e0&type=album"
 
-export const ADD_POST = "ADD-POST"
-export const SET_USER_INFO = "SET-USER-INFO"
-export const SET_PROFILE_STATUS = "SET-PROFILE-STATUS"
+export const ADD_POST = "profile/ADD-POST"
+export const SET_USER_INFO = "profile/SET-USER-INFO"
+export const SET_PROFILE_STATUS = "profile/SET-PROFILE-STATUS"
 
 
 export type PostType = {

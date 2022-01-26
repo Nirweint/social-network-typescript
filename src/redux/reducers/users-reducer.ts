@@ -1,10 +1,11 @@
 import {UsersActionsType} from "../action-creators/users";
-export const TOGGLE_FOLLOW = "TOGGLE-FOLLOW"
-export const SET_USERS = "SET-USERS";
-export const SET_CURRENT_PAGE = "SET-CURRENT-PAGE"
-export const SET_TOTAL_COUNT = "SET-TOTAL-COUNT"
-export const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING"
-export const TOGGLE_FOLLOWING_PROGRESS = "TOGGLE-IS-FOLLOWING-PROGRESS"
+
+export const TOGGLE_FOLLOW = "users/TOGGLE-FOLLOW"
+export const SET_USERS = "users/SET-USERS";
+export const SET_CURRENT_PAGE = "users/SET-CURRENT-PAGE"
+export const SET_TOTAL_COUNT = "users/SET-TOTAL-COUNT"
+export const TOGGLE_IS_FETCHING = "users/TOGGLE-IS-FETCHING"
+export const TOGGLE_FOLLOWING_PROGRESS = "users/TOGGLE-IS-FOLLOWING-PROGRESS"
 
 export type UserType = {
     id: number
@@ -36,7 +37,11 @@ export const usersReducer = (state = initialUsersState, action: UsersActionsType
 
     switch (action.type) {
         case TOGGLE_FOLLOW:
-            return {...state, users: state.users.map(u => u.id === action.userId ? {...u, followed: !u.followed} : u)}
+            return {
+                ...state,
+                users: state.users
+                    .map(u => u.id === action.userId ? {...u, followed: !u.followed} : u)
+            }
 
         case SET_USERS:
             return {...state, users: [...action.users]}
@@ -52,7 +57,9 @@ export const usersReducer = (state = initialUsersState, action: UsersActionsType
         case TOGGLE_FOLLOWING_PROGRESS:
             return {
                 ...state,
-                followingInProgress: action.followingInProgress ? [...state.followingInProgress, action.userId]
+                followingInProgress: action.followingInProgress
+                    ?
+                    [...state.followingInProgress, action.userId]
                     :
                     state.followingInProgress.filter(id => id !== action.userId)
             }
