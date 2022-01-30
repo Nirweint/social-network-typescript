@@ -1,20 +1,23 @@
 import React, {useEffect} from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {useTypedSelector} from "./hooks/useTypedSelector";
+
 import {Sidebar} from "./components/Sidebar/Sidebar";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import "./App.css";
-import UsersContainer from "./components/Users/UsersContainer";
 import {Profile} from "./components/Profile/Profile";
-import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
-import {useDispatch} from "react-redux";
-import {initializeAppTC} from "./redux/action-creators/app";
-import {useTypedSelector} from "./hooks/useTypedSelector";
 import {Preloader} from "./components/common/Preloader/Preloader";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+
+import {initializeAppTC} from "./redux/action-creators/app";
 import {selectInitialized} from "./redux/selectors/app-selectors";
+
+import "./App.css";
 
 export const App = () => {
 

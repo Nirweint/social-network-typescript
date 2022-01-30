@@ -2,8 +2,10 @@ import React, {ChangeEvent} from 'react';
 
 type ProfileStatusType = {
     status: string
-    handleProfileStatusUpdate: (status: string) => void
+    handleProfileStatusUpdate?: (status: string) => void
 }
+
+const DEFAULT_STATUS = "Dont have status yet"
 
 export class ProfileStatus extends React.PureComponent<ProfileStatusType> {
     state = {
@@ -21,9 +23,9 @@ export class ProfileStatus extends React.PureComponent<ProfileStatusType> {
         this.setState({
             editMode: false
         })
-        this.props.handleProfileStatusUpdate(this.state.statusValue)
+        this.props.handleProfileStatusUpdate && this.props.handleProfileStatusUpdate(this.state.statusValue)
     }
-    onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             statusValue: e.currentTarget.value
         })
@@ -31,24 +33,27 @@ export class ProfileStatus extends React.PureComponent<ProfileStatusType> {
 
     componentDidUpdate(prevProps: Readonly<ProfileStatusType>, prevState: Readonly<{}>) {
         if (prevProps.status !== this.props.status)
-        this.setState({
-            statusValue :this.props.status
-        })
+            this.setState({
+                statusValue: this.props.status
+            })
     }
 
     render() {
         return (
             <div>
-                {this.state.editMode ?
+                {this.state.editMode
+                    ?
                     <input
                         type="text"
                         value={this.state.statusValue}
                         autoFocus
                         onBlur={this.deactivateEditMode}
-                        onChange={this.onChangeHandler}
+                        onChange={this.handleChange}
                     />
                     :
-                    <span onDoubleClick={this.activateEditMode}>{this.props.status || "Dont have status yet"}</span>
+                    <span onDoubleClick={this.activateEditMode}>
+                        {this.props.status || DEFAULT_STATUS}
+                    </span>
                 }
             </div>)
     };
