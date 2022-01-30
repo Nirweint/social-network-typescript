@@ -37,7 +37,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
         this.props.getUsers(this.props.currentPage, this.props.count)
     }
 
-    setCurrentPageHandler = (pageNumber: number) => {
+    setCurrentPage = (pageNumber: number) => {
         this.props.getUsers(pageNumber, this.props.count)
     }
 
@@ -58,7 +58,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                         totalCount={this.props.totalCount}
                         followingInProgress={this.props.followingInProgress}
                         onFollowClick={this.toggleFollow}
-                        setCurrentPageHandler={this.setCurrentPageHandler}
+                        setCurrentPage={this.setCurrentPage}
                     />
                 }
             </>

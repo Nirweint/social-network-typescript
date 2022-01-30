@@ -1,7 +1,7 @@
 import React from 'react';
-import s from "./Users.module.css";
 import {User} from "./User";
 import {UserType} from "../../redux/reducers/users-reducer";
+import {Paginator} from "../common/Paginator/Paginator";
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -10,55 +10,50 @@ type UsersPropsType = {
     currentPage: number
     followingInProgress: number[]
     onFollowClick: (userId: number) => void
-    setCurrentPageHandler: (p: number) => void
+    setCurrentPage: (page: number) => void
 }
 
 
-export const Users = (props: UsersPropsType) => {
+export const Users: React.FC<UsersPropsType> = ({
+                                                    totalCount,
+                                                    users,
+                                                    count,
+                                                    followingInProgress,
+                                                    currentPage,
+                                                    onFollowClick,
+                                                    setCurrentPage
+                                                }) => {
 
-    let pagesCount = Math.ceil(props.totalCount / props.count);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
+    const isButtonDisabled = (userId: number) => {
+        return followingInProgress.some(id => id === userId)
     }
 
-    const isButtonDisabledHandler = (userId: number) => {
-        return props.followingInProgress.some(id => id === userId)
-    }
 
     return (
         <div>
-            <div>
-                {
-                    pages.map(p => {
-                        return (
-                            <span
-                                key={p}
-                                className={props.currentPage === p ? `${s.selected} ${s.page}` : `${s.page}`}
-                                onClick={() => props.setCurrentPageHandler(p)}
-                            >{p}</span>
-                        )
-                    })
-                }
-            </div>
+            <Paginator currentPage={currentPage}
+                       count={count}
+                       totalCount={totalCount}
+                       setCurrentPage={setCurrentPage}
+            />
 
-            {
-                props.users && props.users.map(u => {
-
-                    return (
-                        <User
-                            key={u.id}
-                            id={u.id}
-                            followed={u.followed}
-                            img={u.photos.small}
-                            name={u.name}
-                            status={u.status}
-                            isButtonDisabled={isButtonDisabledHandler(u.id)}
-                            onClick={() => props.onFollowClick(u.id)}
-                        />
-                    )
-                })
-            }
+            {users && users.map(({
+                                     id, followed, photos,
+                                     name, status
+                                 }) => {
+                return (
+                    <User
+                        key={id}
+                        id={id}
+                        followed={followed}
+                        img={photos.small}
+                        name={name}
+                        status={status}
+                        isButtonDisabled={isButtonDisabled(id)}
+                        onClick={() => onFollowClick(id)}
+                    />
+                )
+            })}
         </div>
     );
 }

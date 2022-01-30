@@ -14,20 +14,24 @@ type UsersPropsType = {
     isButtonDisabled: boolean
 }
 
-export const User: React.FC<UsersPropsType> = ({onClick, id, followed, img, name, status ,isButtonDisabled, ...props}) => {
-
+export const User: React.FC<UsersPropsType> = (
+    {
+        onClick, id,
+        followed, img, name,
+        status, isButtonDisabled, ...props
+    }) => {
 
     return (
         <div className={s.container} key={id}>
-            <div  id={id.toString()} className={s.item}>
+            <div id={id.toString()} className={s.item}>
                 <div className={s.follow}>
-                       <NavLink to={`/profile/${id}`}>
-                           <img
-                               className={s.avatar}
-                               src={img !== null ? img : defaultImg}
-                               alt="avatar"
-                           />
-                       </NavLink>
+                    <NavLink to={`/profile/${id}`}>
+                        <img
+                            className={s.avatar}
+                            src={img !== null ? img : defaultImg}
+                            alt="avatar"
+                        />
+                    </NavLink>
                     <Button
                         disabled={isButtonDisabled}
                         red={followed}
