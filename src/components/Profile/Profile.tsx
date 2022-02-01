@@ -10,7 +10,7 @@ import {
     updateProfileStatusTC
 } from "../../redux/action-creators/profile";
 
-export const Profile: React.FC = () => {
+const Profile: React.FC = () => {
 
     const userInfo = useTypedSelector(state => state.profilePage.userInfo)
     const authId = useTypedSelector(state => state.auth.id)
@@ -42,3 +42,5 @@ export const Profile: React.FC = () => {
         </div>
     );
 }
+
+export default Profile;

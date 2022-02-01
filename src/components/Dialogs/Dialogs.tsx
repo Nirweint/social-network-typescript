@@ -10,7 +10,7 @@ import {DialogsPageType} from "../../redux/reducers/dialogs-reducer";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {addMessageAC} from "../../redux/action-creators/dialog";
 
-export const Dialogs: React.FC = withAuthRedirect(() => {
+const Dialogs: React.FC = withAuthRedirect(() => {
 
     //get dialogsPage with useSelector, here i can get only state from reducer
     let dialogsPage = useSelector<RootStateType, DialogsPageType>(state => state.dialogsPage)
@@ -57,5 +57,7 @@ export const Dialogs: React.FC = withAuthRedirect(() => {
         </div>
     );
 })
+
+export default Dialogs;
 
 // TODO add style to messages go up, when you write new messages

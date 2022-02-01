@@ -1,10 +1,7 @@
 import React from 'react';
 import {ErrorMessage, Field, Form} from "formik";
-import s from "../Profile/MyPosts/AddPostForm/AddPostForm.module.css";
-
-type LoginFormPropsType = {
-
-}
+import s from "./LoginForm.module.css";
+import {Button} from "../../UI/Button/Button";
 
 export const LoginForm = () => {
     return (
@@ -13,6 +10,7 @@ export const LoginForm = () => {
                 <label htmlFor="email">Email</label>
                 <div>
                     <Field
+                        className={s.formInput}
                         id="email"
                         name="email"
                         placeholder="email"
@@ -23,14 +21,14 @@ export const LoginForm = () => {
 
                 <label htmlFor="password">Password</label>
                 <div>
-                    <Field id="password" name="password" type='password' placeholder="password"/>
+                    <Field className={s.formInput} id="password" name="password" type='password' placeholder="password"/>
                     <ErrorMessage name="password" component="div" className={s.error}/>
                 </div>
                 <div>
-                    <Field name="rememberMe" type="checkbox"/>
-                    <label htmlFor="rememberMe">remember me</label>
+                    <Field className={s.checkbox}  name="rememberMe" type="checkbox"/>
+                    <label className={s.checkbox} htmlFor="rememberMe">remember me</label>
                 </div>
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
             </Form>
         </>
     );

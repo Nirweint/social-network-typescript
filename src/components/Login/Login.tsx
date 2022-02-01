@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {loginTC} from "../../redux/action-creators/auth";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {Navigate} from "react-router-dom";
+import s from './Login.module.css'
 
 type LoginValues = {
     email: string
@@ -53,15 +54,17 @@ export const Login = () => {
     }
 
     return (
-        <div>
-            <h1>Log in</h1>
-            <Formik
-                initialValues={initValues}
-                onSubmit={handleOnSubmitClick}
-                validate={loginValidate}
-            >
-                <LoginForm/>
-            </Formik>
+        <div className={s.loginWrapper}>
+            <div>
+                <h1>Log in</h1>
+                <Formik
+                    initialValues={initValues}
+                    onSubmit={handleOnSubmitClick}
+                    validate={loginValidate}
+                >
+                    <LoginForm/>
+                </Formik>
+            </div>
         </div>
     );
 }
