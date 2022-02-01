@@ -13,6 +13,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 
 import {initializeAppTC} from "./redux/action-creators/app";
 import {selectInitialized} from "./redux/selectors/app-selectors";
+import {selectAuthID} from "./redux/selectors/auth-selectors";
 
 import "./App.css";
 
@@ -23,11 +24,14 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 export const App = () => {
 
     const initialized = useTypedSelector(selectInitialized)
+    const authID = useTypedSelector(selectAuthID)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(initializeAppTC())
     }, [dispatch])
+
+    const isUserAuth = authID ? `/profile/${authID}` : '/login'
 
     if (!initialized) {
         return <Preloader/>
@@ -40,7 +44,7 @@ export const App = () => {
             <div className="app-wrapper-content">
                 <Suspense fallback={<Preloader/>}>
                     <Routes>
-                        <Route path="/" element={<Navigate to="/profile/"/>}/>
+                        <Route path="/" element={<Navigate to={isUserAuth}/>}/>
                         <Route path="/profile/:userId" element={<Profile/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/dialogs" element={<Dialogs/>}/>
