@@ -5,7 +5,7 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {useDispatch} from "react-redux";
 import {
-    getProfileStatusTC,
+    getProfileStatusTC, savePhotoTC,
     setUserInfoTC,
     updateProfileStatusTC
 } from "../../redux/action-creators/profile";
@@ -18,10 +18,18 @@ const Profile: React.FC = () => {
     const dispatch = useDispatch()
     const {userId} = useParams<'userId'>()
 
+    const isProfileOwner = userId ? authId === +userId : false
+
     useEffect(() => {
         if (userId) {
             dispatch(setUserInfoTC(+userId))
             dispatch(getProfileStatusTC(+userId))
+        }
+    }, [dispatch, userId])
+
+    const savePhoto = useCallback((photoFile: File) => {
+        if (userId) {
+            dispatch(savePhotoTC(photoFile,+userId ))
         }
     }, [dispatch, userId])
 
@@ -34,6 +42,8 @@ const Profile: React.FC = () => {
     return (
         <div>
             <ProfileInfo
+                savePhoto={savePhoto}
+                isProfileOwner={isProfileOwner}
                 userInfo={userInfo}
                 status={status}
                 handleProfileStatusUpdate={handleProfileStatusUpdate}

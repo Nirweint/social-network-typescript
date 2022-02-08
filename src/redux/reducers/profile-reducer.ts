@@ -6,6 +6,7 @@ export const imgForNewPost = "https://sun9-52.userapi.com/impf/c850120/v85012014
 export const ADD_POST = "profile/ADD-POST"
 export const SET_USER_INFO = "profile/SET-USER-INFO"
 export const SET_PROFILE_STATUS = "profile/SET-PROFILE-STATUS"
+export const SET_PROFILE_PHOTO = "profile/SET-PROFILE-PHOTO"
 
 
 export type PostType = {
@@ -14,9 +15,9 @@ export type PostType = {
     likesCount: number
     img: string
 }
-type PhotosType = {
-    small: string
-    large: string
+export type PhotosType = {
+    small: string | null
+    large: string | null
 }
 type ContactsType = {
     github: string | null
@@ -61,8 +62,8 @@ export const initialProfileState: ProfilePageType = {
             mainLink: null,
         },
         photos: {
-            small: "",
-            large: "",
+            small: null,
+            large: null,
         },
     } as UserInfoType,
     posts: [
@@ -107,6 +108,11 @@ export const profileReducer = (state = initialProfileState, action: ProfileActio
         case SET_PROFILE_STATUS:
             return {...state, status: action.status}
 
+        case SET_PROFILE_PHOTO:
+            return {
+                ...state,
+                userInfo: {...state.userInfo, photos: action.photos}
+            }
         default:
             return state;
     }

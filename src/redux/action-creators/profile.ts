@@ -1,5 +1,5 @@
 import {
-    ADD_POST,
+    ADD_POST, PhotosType, SET_PROFILE_PHOTO,
     SET_PROFILE_STATUS,
     SET_USER_INFO,
     UserInfoType
@@ -11,6 +11,7 @@ export type ProfileActionsType =
     addPostACType
     | setUserInfoACType
     | setProfileStatusACType
+    | SetProfilePhotoACACType
 
 export type addPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = (newPostText: string) => {
@@ -33,6 +34,14 @@ export const setProfileStatusAC = (status: string) => {
     return {
         type: SET_PROFILE_STATUS,
         status,
+    } as const
+}
+
+export type SetProfilePhotoACACType = ReturnType<typeof setProfilePhotoAC>
+export const setProfilePhotoAC = (photos: PhotosType) => {
+    return {
+        type: SET_PROFILE_PHOTO,
+        photos,
     } as const
 }
 
@@ -60,6 +69,18 @@ export const updateProfileStatusTC = (status: string): ThunkType => async dispat
         const res = await profileAPI.updateProfileStatus(status)
         if (res.data.resultCode === 0) {
             dispatch(setProfileStatusAC(status))
+        }
+    } catch (err: any) {
+        console.warn(err)
+    }
+}
+
+export const savePhotoTC = (photoFile: File, userId: number): ThunkType => async dispatch => {
+    try {
+        const res = await profileAPI.setProfileImage(photoFile)
+        if (res.data.resultCode === 0) {
+            dispatch(setProfilePhotoAC(res.data))
+            dispatch(setUserInfoTC(userId))
         }
     } catch (err: any) {
         console.warn(err)

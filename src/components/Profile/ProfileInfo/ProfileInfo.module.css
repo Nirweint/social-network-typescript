@@ -27,3 +27,8 @@
 .description {
     color: #9f9f9f;
 }
+
+.avatarBlock {
+    display: flex;
+    flex-direction: column;
+}
