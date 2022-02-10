@@ -2,20 +2,25 @@ import React from 'react';
 import {Formik, FormikHelpers} from 'formik';
 import {LoginForm} from "./LoginForm";
 import {useDispatch} from "react-redux";
-import {loginTC} from "../../redux/action-creators/auth";
+import {loginTC, setCaptchaUrlAC} from "../../redux/action-creators/auth";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {Navigate} from "react-router-dom";
 import s from './Login.module.css'
+import {
+    selectAuthID,
+    selectIsAuth
+} from "../../redux/selectors/auth-selectors";
 
 type LoginValues = {
     email: string
     password: string
     rememberMe: boolean
+    captchaUrl: string
 }
 
 export const Login = () => {
-    const isAuth = useTypedSelector(state => state.auth.isAuth)
-    const authId = useTypedSelector(state => state.auth.id)
+    const isAuth = useTypedSelector(selectIsAuth)
+    const authId = useTypedSelector(selectAuthID)
 
     const dispatch = useDispatch()
 
@@ -38,14 +43,16 @@ export const Login = () => {
         email: '',
         password: '',
         rememberMe: false,
+        captchaUrl: '',
     }
 
     const handleOnSubmitClick = (
         values: LoginValues,
-        {setSubmitting }: FormikHelpers<LoginValues>,
+        {setSubmitting}: FormikHelpers<LoginValues>,
     ) => {
-        const {email, password, rememberMe} = values
-        dispatch(loginTC(email, password, rememberMe))
+        const {email, password, rememberMe, captchaUrl} = values
+        dispatch(loginTC(email, password, rememberMe, captchaUrl))
+        dispatch(setCaptchaUrlAC(null))
         setSubmitting(false);
     }
 
@@ -55,8 +62,15 @@ export const Login = () => {
 
     return (
         <div className={s.loginWrapper}>
+
             <div>
                 <h1>Log in</h1>
+                <div>
+                    <h4>Here's default email and password so you can try it online
+                        <p>login: <span className={s.description}>free@samuraijs.com</span></p>
+                        <p>password: <span className={s.description}>free</span></p>
+                    </h4>
+                </div>
                 <Formik
                     initialValues={initValues}
                     onSubmit={handleOnSubmitClick}
@@ -64,6 +78,7 @@ export const Login = () => {
                 >
                     <LoginForm/>
                 </Formik>
+
             </div>
         </div>
     );

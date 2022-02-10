@@ -3,5 +3,9 @@
     justify-content: center;
     align-items: center;
 
-    height: 50%;
+    height: 70%;
+}
+
+.description {
+    color: #9f9f9f;
 }
