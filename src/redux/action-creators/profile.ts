@@ -55,6 +55,18 @@ export const setUserInfoTC = (userId: number): ThunkType => async dispatch => {
     }
 }
 
+export const updateProfileInfoTC = (data: Omit<UserInfoType, 'photos'>): ThunkType => async (dispatch, getState) => {
+    try {
+        const userId = getState().auth.id
+        const res = await profileAPI.updateProfile(data)
+        if (res.data.resultCode === 0 && userId) {
+            dispatch(setUserInfoTC(userId))
+        }
+    } catch (err: any) {
+        console.warn(err)
+    }
+}
+
 export const getProfileStatusTC = (userId: number): ThunkType => async dispatch => {
     try {
         const res = await profileAPI.getProfileStatus(userId)

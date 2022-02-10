@@ -1,4 +1,5 @@
 import axios from "axios";
+import {UserInfoType} from "../redux/reducers/profile-reducer";
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0',
@@ -26,6 +27,9 @@ export const usersAPI = {
 export const profileAPI = {
     getProfile(userId: number) {
         return instance.get(`/profile/${userId}`)
+    },
+    updateProfile(data: Omit<UserInfoType, 'photos' >) {
+        return instance.put(`/profile/`, data)
     },
     getProfileStatus(userId: number) {
         return instance.get(`/profile/status/${userId}`)

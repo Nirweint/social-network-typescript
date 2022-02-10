@@ -40,7 +40,7 @@ export class ProfileStatus extends React.PureComponent<ProfileStatusType> {
 
     render() {
         return (
-            <div>
+            <>
                 {this.state.editMode
                     ?
                     <input
@@ -55,6 +55,6 @@ export class ProfileStatus extends React.PureComponent<ProfileStatusType> {
                         {this.props.status || DEFAULT_STATUS}
                     </span>
                 }
-            </div>)
+            </>)
     };
 }

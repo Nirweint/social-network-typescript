@@ -1,9 +1,11 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useCallback, useState} from 'react';
 import s from './ProfileInfo.module.css';
 import {UserInfoType} from "../../../redux/reducers/profile-reducer";
 import {Preloader} from "../../common/Preloader/Preloader";
 import avatarDefault from "../../../assets/images/user-avatar.webp";
-import {ProfileStatus} from "./ProfileStatus";
+import {Button} from "../../../UI/Button/Button";
+import {ProfileDataForm} from "./ProfileDataForm/ProfileDataForm";
+import {ProfileData} from "./ProfileData/ProfileData";
 
 type ProfileInfoPropsType = {
     userInfo: UserInfoType
@@ -21,13 +23,20 @@ export const ProfileInfo: React.FC<ProfileInfoPropsType> = React.memo(props => {
         isProfileOwner,
         handleProfileStatusUpdate
     } = props;
-    const {photos, fullName, lookingForAJobDescription, aboutMe} = userInfo;
 
-    const handleMAinPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+    const {photos} = userInfo;
+
+    const [editMode, setEditMode] = useState<boolean>(false)
+
+    const onMainPhotoChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files !== null) {
             savePhoto(e.target.files[0])
         }
     }
+
+    const onEditProfileClick = useCallback(() => {
+        setEditMode(!editMode)
+    }, [editMode])
 
     const isPhotosSmallExists = photos.small || avatarDefault
 
@@ -40,23 +49,37 @@ export const ProfileInfo: React.FC<ProfileInfoPropsType> = React.memo(props => {
             <div className={s.wrapper}>
                 <div className={s.avatarBlock}>
                     <img className={s.avatar} src={isPhotosSmallExists} alt="avatar"/>
-                    {isProfileOwner && <div>
-						<input type={'file'}
-							   accept="image/png, image/gif, image/jpeg"
-                               onChange={handleMAinPhotoSelected}/>
+                    {editMode &&
+					<div>
+                        <h4>Change photo</h4>
+						<input
+							type={'file'}
+							name={"file"}
+							accept="image/png, image/gif, image/jpeg"
+							onChange={onMainPhotoChange}
+						/>
 					</div>}
+                    {isProfileOwner &&
+					<Button onClick={onEditProfileClick} className={s.btn}>
+                        Edit Profile
+                    </Button>}
                 </div>
-                <div>
-                    <div className={s.name}>
-                        <h3>{fullName}</h3>
-                    </div>
-                    <ProfileStatus
-                        status={status}
+                {editMode ?
+                    <ProfileDataForm
+                        userInfo={userInfo}
                         handleProfileStatusUpdate={handleProfileStatusUpdate}
+                        status={status}
+                        isEditModeOn={editMode}
+                        onEditProfileClick={onEditProfileClick}
                     />
-                    <div className={s.description}>{aboutMe}</div>
-                    <div className={s.description}>{lookingForAJobDescription} </div>
-                </div>
+                    :
+                    <ProfileData
+                        handleProfileStatusUpdate={handleProfileStatusUpdate}
+                        status={status}
+                        userInfo={userInfo}
+                        isEditModeOn={editMode}
+                    />
+                }
             </div>
         </div>
     );

@@ -1,0 +1,15 @@
+.wrapper h4{
+    margin: 0;
+}
+
+.description {
+    color: #9f9f9f;
+}
+
+.name {
+    display: block;
+}
+
+.name h3 {
+    margin: 0 0 0.5em 0;
+}

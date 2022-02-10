@@ -19,15 +19,15 @@ export type PhotosType = {
     small: string | null
     large: string | null
 }
-type ContactsType = {
-    github: string | null
-    vk: string | null
-    facebook: string | null
-    instagram: string | null
-    twitter: string | null
-    website: string | null
-    youtube: string | null
-    mainLink: string | null
+export type ContactsType = {
+    [github: string]: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string
 }
 export type UserInfoType = {
     aboutMe: string
@@ -52,14 +52,14 @@ export const initialProfileState: ProfilePageType = {
         fullName: "",
         aboutMe: "",
         contacts: {
-            github: null,
-            vk: null,
-            facebook: null,
-            instagram: null,
-            twitter: null,
-            website: null,
-            youtube: null,
-            mainLink: null,
+            github: "",
+            vk: "",
+            facebook: "",
+            instagram: "",
+            twitter: "",
+            website: "",
+            youtube: "",
+            mainLink: "",
         },
         photos: {
             small: null,
