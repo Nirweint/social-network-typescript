@@ -1,6 +1,7 @@
 import React from 'react';
 import {ErrorMessage, Field, Form, Formik, FormikHelpers} from "formik";
 import s from './AddPostForm.module.css'
+import {Button} from "../../../../UI/Button/Button";
 
 export type AddPostFormValues = {
     post: string
@@ -39,14 +40,18 @@ export const AddPostForm = (props: AddPostFormPropsType) => {
             onSubmit={onSubmitHandler}
             validate={addPostFormValidate}
         >
-            <Form>
-                <Field
-                    name="post"
-                    component={"textarea"}
-                    placeholder={"add Post..."}
-                />
-                <button type="submit">Add</button>
-                <ErrorMessage name="post" component="div" className={s.error}/>
+            <Form className={s.form}>
+                <div>
+                    <Field
+                        className={s.textarea}
+                        name="post"
+                        type='text'
+                        component={"textarea"}
+                        placeholder={"add Post..."}
+                    />
+                    <ErrorMessage name="post" component="div" className={s.error}/>
+                </div>
+                <Button className={s.btn} type="submit">Add</Button>
             </Form>
         </Formik>
     );

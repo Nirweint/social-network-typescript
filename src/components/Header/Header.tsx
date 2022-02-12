@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from "../../UI/Button/Button";
+import logo from '../../assets/images/sn-icon.png';
 
 export type HeaderPropsType = {
     login: string | null
@@ -15,7 +16,7 @@ export const Header: React.FC<HeaderPropsType> = ({isAuth, login, logoutHandler}
         <header className={s.header}>
             <img
                 className={s.logo}
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/1200px-Check_green_icon.svg.png"
+                src={logo}
                 alt="logo"/>
 
             <div className={s.loginBlock}>
